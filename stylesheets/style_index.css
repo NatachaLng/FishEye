@@ -1,0 +1,63 @@
+@font-face 
+{
+    font-family: "DMSansRegular";
+    src: url('../font/DMSans-Regular.ttf') format('truetype');
+}
+
+*
+{
+    font-family: "DMSansRegular";
+}
+
+/*HEADER*/
+
+header
+{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header__logo
+{
+width: 200px;
+height: 50px;
+left: 100px;
+top: 42px;
+
+}
+nav 
+{
+    margin-top: 20px;
+}
+.header__filter
+{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #911C1C;
+    border: 0.5px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 11px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/*MAIN*/
+
+h1
+{
+    width: 25%;
+    position:absolute;
+    margin-left: 10px;
+    top: -10px;
+    right: 5px;
+    font-size: 36px;
+    line-height: 47px;
+    
+    /* identical to box height */
+    
+    color: #911C1C;
+}
