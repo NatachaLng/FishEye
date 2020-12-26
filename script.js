@@ -13,20 +13,29 @@ https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
 
 https://codepen.io/alown666/pen/gOwaJGW*/
 
-let requestURL = 'data/FishEyeDataFR.json';
+let requestURL = 'https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json';
 let request = new XMLHttpRequest();
 request.open('GET', requestURL);
 request.responseType ='json';
 request.send();
+var photographer;
+var photograph;
+var medias;
 
-request.onload = function (){
-    let photographer = request.response;
-    createCards(photographer);
+request.onload=function(){
+    console.log(request.response);
+     photographer= request.response;
+     photograph=photographer['photographers'];
+     media=photographer['media'];
+    console.log("onload");
+    createCards("");
 }
 
-function createCards(jsonObj){
-    let photograph = jsonObj['photographers'];
+function index(){
 
+}
+
+function createCards(tag){
     for (var i=0; i<photograph.length; i++){
         let photograph__card = document.createElement('article');
         photograph__card.className = 'card';
@@ -41,9 +50,9 @@ function createCards(jsonObj){
         let photograph__price = document.createElement('p');
         photograph__price.className = 'card__price';
         let photograph__taglist = document.createElement('ul');
-        photograph__taglist = 'card__taglist';
+        photograph__taglist.className = 'card__taglist';
         
-        //photograph__img.
+        //photograph__img.src="images/Sample Photos"+
         photograph__name.textContent = photograph[i].name;
         photograph__location.textContent = photograph[i].city + ', ' + photograph[i].country;
         photograph__tagline.textContent = photograph[i].tagline;
@@ -53,11 +62,13 @@ function createCards(jsonObj){
         for (let j = 0; j < photograph__tag.length; j++){
             let tagList = document.createElement('li');
             tagList.className = 'tag';
-            tagList.textContent = tags[j];
+            tagList.textContent = '#' + photograph__tag[j];
             photograph__taglist.appendChild(tagList);
         }
 
-        let photographerList = document.getElementsByClassName('photographer');
+        let photographerList = document.createElement("article");
+        let main=document.getElementById("main");
+        main.appendChild(photographerList);
 
         photograph__card.appendChild(photograph__img);
         photograph__card.appendChild(photograph__name);
