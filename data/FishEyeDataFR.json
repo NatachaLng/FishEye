@@ -8,7 +8,8 @@
       "tags": ["portrait", "events", "travel", "animals"],
       "tagline": "Voir le beau dans le quotidien",
       "price": 400,
-      "portrait": "images/PhotographersID/MimiKeel.jpg"
+      "portrait": "images/PhotographersID/MimiKeel.jpg",
+      "chosenPicture": "images/243/Portrait_Nora.jpg"
     },
     {
       "name": "Ellie-Rose Wilkens",
@@ -18,7 +19,8 @@
       "tags": ["sports", "architecture"],
       "tagline": "Capturer des compositions complexes",
       "price": 250,
-      "portrait": "images/PhotographersID/EllieRoseWilkens.jpg"
+      "portrait": "images/PhotographersID/EllieRoseWilkens.jpg",
+      "chosenPicture": "images/930/Architecture_Horseshoe.jpg",
     },
     {
       "name": "Tracy Galindo",
@@ -28,7 +30,8 @@
       "tags": ["art", "fashion", "events"],
       "tagline": "Photographe freelance",
       "price": 500,
-      "portrait": "images/PhotographersID/TracyGalindo.jpg"
+      "portrait": "images/PhotographersID/TracyGalindo.jpg",
+      "chosenPicture": "images/82/Fashion_Urban_Jungle.jpg"
     },
     {
       "name": "Nabeel Bradford",
@@ -38,7 +41,8 @@
       "tags": ["travel", "portrait"],
       "tagline": "Toujours aller de l'avant",
       "price": 350,
-      "portrait": "images/PhotographersID/NabeelBradford.jpg"
+      "portrait": "images/PhotographersID/NabeelBradford.jpg",
+      "chosenPicture": "images/527/Travel_Outdoor_Baths.jpg"
     },
     {
       "name": "Rhode Dubois",
@@ -48,7 +52,8 @@
       "tags": ["sport", "fashion", "events", "animals"],
       "tagline": "Je crée des souvenirs",
       "price": 275,
-      "portrait": "images/PhotographersID/RhodeDubois.jpg"
+      "portrait": "images/PhotographersID/RhodeDubois.jpg",
+      "chosenPicture": "images/925/Fashion_Melody_Red_on_Stripes.jpg"
     },
     {
       "name": "Marcel Nikolic",
@@ -58,7 +63,8 @@
       "tags": ["travel", "architecture"],
       "tagline": "Toujours à la recherche de LA photo",
       "price": 300,
-      "portrait": "images/PhotographersID/MarcelNikolic.jpg"
+      "portrait": "images/PhotographersID/MarcelNikolic.jpg",
+      "chosenPicture": "images/195/Travel_Tower.jpg"
     }
   ],
   "media": [

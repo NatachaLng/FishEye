@@ -39,6 +39,7 @@ function createCards(tag){
     for (var i=0; i<photograph.length; i++){
         let photographCard = document.createElement('article');
         photographCard.className = 'card';
+        photographCard.id=photograph[i].id;
         let photographImg = document.createElement('img');
         photographImg.className = 'card__image';
         let photographName = document.createElement('h3');
