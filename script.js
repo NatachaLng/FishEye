@@ -53,7 +53,7 @@ function createCards(tag){
         let photographTaglist = document.createElement('ul');
         photographTaglist.className = 'card__taglist';
         
-        photographImg.src=photograph[i].portrait;
+        photographImg.src=photograph[i].chosenPicture;
         photographName.textContent = photograph[i].name;
         photographLocation.textContent = photograph[i].city + ', ' + photograph[i].country;
         photographTagline.textContent = photograph[i].tagline;
