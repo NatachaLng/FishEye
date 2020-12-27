@@ -11,7 +11,9 @@ https://www.alsacreations.com/article/lire/1161-json-ajax-jquery-jsonp-getjson.h
 
 https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
 
-https://codepen.io/alown666/pen/gOwaJGW*/
+https://codepen.io/alown666/pen/gOwaJGW
+
+https://etienner.github.io/les-filtres-en-java-script/*/
 
 let requestURL = 'https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json';
 let request = new XMLHttpRequest();
@@ -79,3 +81,4 @@ function createCards(tag){
         photographCard.appendChild(photographTaglist);
     }
 }
+
