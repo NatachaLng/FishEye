@@ -65,6 +65,7 @@ function createCards(tag){
             tagList.className = 'tag';
             tagList.textContent = '#' + photographTag[j];
             photographTaglist.appendChild(tagList);
+            photographCard.classList.add(photographTag[j]);
         }
 
         let main=document.getElementById("photographer");
