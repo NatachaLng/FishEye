@@ -73,13 +73,13 @@ h1
 {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
 .card
 {
-    width: 25%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -20,7 +20,7 @@ request.responseType ='json';
 request.send();
 var photographer;
 var photograph;
-var medias;
+var media;
 
 request.onload=function(){
     console.log(request.response);
@@ -37,46 +37,43 @@ function index(){
 
 function createCards(tag){
     for (var i=0; i<photograph.length; i++){
-        let photograph__card = document.createElement('article');
-        photograph__card.className = 'card';
-        let photograph__img = document.createElement('img');
-        photograph__img.className = 'card__image';
-        let photograph__name = document.createElement('h3');
-        photograph__name.className = 'card__name';
-        let photograph__location = document.createElement('p');
-        photograph__location.className = 'card__location';
-        let photograph__tagline = document.createElement('p');
-        photograph__tagline.className = 'card__tagline';
-        let photograph__price = document.createElement('p');
-        photograph__price.className = 'card__price';
-        let photograph__taglist = document.createElement('ul');
-        photograph__taglist.className = 'card__taglist';
+        let photographCard = document.createElement('article');
+        photographCard.className = 'card';
+        let photographImg = document.createElement('img');
+        photographImg.className = 'card__image';
+        let photographName = document.createElement('h3');
+        photographName.className = 'card__name';
+        let photographLocation = document.createElement('p');
+        photographLocation.className = 'card__location';
+        let photographTagline = document.createElement('p');
+        photographTagline.className = 'card__tagline';
+        let photographPrice = document.createElement('p');
+        photographPrice.className = 'card__price';
+        let photographTaglist = document.createElement('ul');
+        photographTaglist.className = 'card__taglist';
         
         //photograph__img.src="images/Sample Photos"+
-        photograph__name.textContent = photograph[i].name;
-        photograph__location.textContent = photograph[i].city + ', ' + photograph[i].country;
-        photograph__tagline.textContent = photograph[i].tagline;
-        photograph__price.textContent = photograph[i].price + '€/jour';
+        photographName.textContent = photograph[i].name;
+        photographLocation.textContent = photograph[i].city + ', ' + photograph[i].country;
+        photographTagline.textContent = photograph[i].tagline;
+        photographPrice.textContent = photograph[i].price + '€/jour';
         
-        let photograph__tag=photograph[i].tags;
-        for (let j = 0; j < photograph__tag.length; j++){
+        let photographTag=photograph[i].tags;
+        for (let j = 0; j < photographTag.length; j++){
             let tagList = document.createElement('li');
             tagList.className = 'tag';
-            tagList.textContent = '#' + photograph__tag[j];
-            photograph__taglist.appendChild(tagList);
+            tagList.textContent = '#' + photographTag[j];
+            photographTaglist.appendChild(tagList);
         }
 
-        let photographerList = document.createElement("article");
-        let main=document.getElementById("main");
-        main.appendChild(photographerList);
+        let main=document.getElementById("photographer");
+        main.appendChild(photographCard);
 
-        photograph__card.appendChild(photograph__img);
-        photograph__card.appendChild(photograph__name);
-        photograph__card.appendChild(photograph__location);
-        photograph__card.appendChild(photograph__tagline);
-        photograph__card.appendChild(photograph__price);
-        photograph__card.appendChild(photograph__taglist);
-
-        photographerList.appendChild(photograph__card);
+        photographCard.appendChild(photographImg);
+        photographCard.appendChild(photographName);
+        photographCard.appendChild(photographLocation);
+        photographCard.appendChild(photographTagline);
+        photographCard.appendChild(photographPrice);
+        photographCard.appendChild(photographTaglist);
     }
 }
