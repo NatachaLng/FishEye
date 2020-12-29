@@ -13,29 +13,38 @@ https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
 
 https://codepen.io/alown666/pen/gOwaJGW
 
-https://etienner.github.io/les-filtres-en-java-script/*/
+https://etienner.github.io/les-filtres-en-java-script/
 
-let requestURL = 'https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json';
-let request = new XMLHttpRequest();
-request.open('GET', requestURL);
-request.responseType ='json';
-request.send();
+fetch("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json").then (data => data.json().then (console.log))
+
+fetch
+
+https://codepen.io/cferdinandi/pen/RwwVmyO*/
+
+/*
+
+générer liste de tag automatiquement 
+set 
+queryselector card hidden
+https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Set
+*/
+
+
 var photographer;
 var photograph;
 var media;
 
-request.onload=function(){
-    console.log(request.response);
-     photographer= request.response;
-     photograph=photographer['photographers'];
-     media=photographer['media'];
-    console.log("onload");
-    createCards("");
+function load(body){
+    photograph=body['photographers'];
+    media=body['media'];
+    createCards();
 }
 
 function index(){
 
 }
+
+
 
 function createCards(tag){
     for (var i=0; i<photograph.length; i++){
@@ -70,6 +79,29 @@ function createCards(tag){
             photographCard.classList.add(photographTag[j]);
         }
 
+        let allTag = new Array(photograph[0].tags, photograph[1].tags, photograph[2].tags, photograph[3].tags, photograph[4].tags, photograph[5].tags);
+        let listAllTags= new Set(allTag.flatwrap(elem => elem.allTag));
+        for (let k = 0; k < listAllTags.length; k++){
+            let tagList = document.createElement('li');
+            let tags = document.createElement("li");
+            tags.className = 'tagFilter';
+            tags.textContent = '#' + listTagsFlat[k];
+            let nav = document.getElementById('header');
+             nav.appendChild(listTags);}
+
+        /*function createTaglist (){
+            for (let h=0; h<photograph.length; h++){
+            let listTag = new Array(photograph[h].tags);
+            let listTagsFlat = new Set(listTag.flatwrap(elem => elem.listTag));
+            for (let k = 0; k < listTagsFlat.length; k++){
+                let listTags = document.createElement("li");
+                tag.className = 'tagFilter';
+                tag.textContent = '#' + listTagsFlat[k];
+                let nav = document.getElementById('header');
+                nav.appendChild(listTags);
+            }
+        }
+        }*/
         let main=document.getElementById("photographer");
         main.appendChild(photographCard);
 
@@ -82,3 +114,4 @@ function createCards(tag){
     }
 }
 
+fetch("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json").then (data => data.json().then (json => load(json)));
