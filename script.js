@@ -70,8 +70,10 @@ function createCards(tag){
         photographTagline.textContent = photograph[i].tagline;
         photographPrice.textContent = photograph[i].price + '€/jour';
         
+        let listTag = [];
         let photographTag=photograph[i].tags;
         for (let j = 0; j < photographTag.length; j++){
+            listTag.push(photograph[j].tags);
             let tagList = document.createElement('li');
             tagList.className = 'tag';
             tagList.textContent = '#' + photographTag[j];
@@ -79,7 +81,15 @@ function createCards(tag){
             photographCard.classList.add(photographTag[j]);
         }
 
-        let allTag = new Array(photograph[0].tags, photograph[1].tags, photograph[2].tags, photograph[3].tags, photograph[4].tags, photograph[5].tags);
+        let cleanList = Array.from(new Set(listTag));
+        console.log(cleanList);
+
+
+/*
+        let allTag = [];
+        function addTags(){
+            allTag.push(new Array(photograph.tags))
+        }
         let listAllTags= new Set(allTag.flatwrap(elem => elem.allTag));
         for (let k = 0; k < listAllTags.length; k++){
             let tagList = document.createElement('li');
@@ -87,7 +97,7 @@ function createCards(tag){
             tags.className = 'tagFilter';
             tags.textContent = '#' + listTagsFlat[k];
             let nav = document.getElementById('header');
-             nav.appendChild(listTags);}
+             nav.appendChild(listTags);}*/
 
         /*function createTaglist (){
             for (let h=0; h<photograph.length; h++){

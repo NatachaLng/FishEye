@@ -73,6 +73,12 @@ top: 42px;
     font-size: 20px;
 }
 
+.contact__btn:hover
+{
+    background-color: #D3573C;
+    color: black;
+}
+
 .card__taglist
 {
     margin-left: -25px;
@@ -137,3 +143,67 @@ h3
     padding-left: 5px;
     padding-right: 5px;
 }
+
+.tag:hover
+{
+    color: blanchedalmond;
+    background-color: #901C1C;
+}
+
+.list-item-dropdown {
+    position: relative;
+}
+
+.list-item-dropdown:hover > .dropdown-menu {
+      display: block;
+      opacity: 1;
+}
+  
+.dropdown-trigger {
+    position: relative;
+}
+.dropdown-trigger:focus + .dropdown-menu 
+{
+      display: block;
+      opacity: 1;
+    }
+    
+.dropdown-trigger:focus::after {
+      content: "›";
+      position: absolute;
+      background-color: #901C1C;
+      color: white;
+      transform: rotate(90deg);
+      top: -5px;
+      right: -15px;
+    }
+
+  
+  .dropdown-list {
+    background-color: #901C1C;
+    display: inline-block;
+    text-align: right;
+    position: absolute;
+    top: 2.5rem;
+    right: -10px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease; 
+    width: 160px;
+  }
+
+.list-item-dropdown > p {
+      color: #fff;
+      font-weight: lighter;
+ }
+
+  
+  .dropdown-list-item {
+    cursor: pointer;
+    padding: 1em;
+    text-align: center;
+  }
+
+.dropdown-list-item:hover {
+      background-color: darken(#901C1C, 5%);
+    }
