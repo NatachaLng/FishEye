@@ -152,9 +152,12 @@ h3
 
 .list-item-dropdown {
     position: relative;
+    background-color: #901C1C;
+    width: 100px;
+    height: 30px;
 }
 
-.list-item-dropdown:hover > .dropdown-menu {
+.list-item-dropdown:hover > .dropdown-list {
       display: block;
       opacity: 1;
 }
@@ -162,15 +165,16 @@ h3
 .dropdown-trigger {
     position: relative;
 }
-.dropdown-trigger:focus + .dropdown-menu 
+.dropdown-trigger:focus + .dropdown-list 
 {
       display: block;
       opacity: 1;
     }
     
-.dropdown-trigger:focus::after {
+.dropdown-trigger:after {
       content: "›";
       position: absolute;
+      height: 30px;
       background-color: #901C1C;
       color: white;
       transform: rotate(90deg);
@@ -182,26 +186,27 @@ h3
   .dropdown-list {
     background-color: #901C1C;
     display: inline-block;
-    text-align: right;
-    position: absolute;
-    top: 2.5rem;
-    right: -10px;
+    text-align: left;
+    margin-top: -15px;
+    margin-left: -40px;
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease; 
-    width: 160px;
+    width: 100px;
   }
 
-.list-item-dropdown > p {
+.list-item-dropdown {
       color: #fff;
       font-weight: lighter;
+      text-align: left;
  }
 
   
   .dropdown-list-item {
     cursor: pointer;
     padding: 1em;
-    text-align: center;
+    text-align: left;
+    border-bottom: solid 2px white;
   }
 
 .dropdown-list-item:hover {
