@@ -38,10 +38,37 @@ function load(body){
     photograph=body['photographers'];
     media=body['media'];
     createCards();
+    createTaglist();
 }
 
-function index(){
+/*function index(){
 
+}*/
+let allTag = [];
+function addTags(){
+    for (let h=0; h<photograph.length; h++){
+        let photographTag=photograph[h].tags;
+        
+        for (let k = 0; k < photographTag.length; k++){
+            console.log("list tag de k : "+photographTag[k] + " => "+allTag.indexOf(photographTag[k]));
+            if (allTag.indexOf(photographTag[k])==-1){
+                allTag.push(photographTag[k]);
+            } 
+        }
+    }
+    console.log(allTag);
+}   
+
+function createTaglist (){
+    addTags();
+    for (let k = 0; k < allTag.length; k++){
+        let listTags = document.createElement("li");
+        listTags.className = 'header__filter';
+        listTags.classList.add(allTag[k]);
+        listTags.textContent = '#' + allTag[k];
+        let nav = document.getElementById('header__filter');
+        nav.appendChild(listTags);
+    }
 }
 
 
@@ -70,10 +97,8 @@ function createCards(tag){
         photographTagline.textContent = photograph[i].tagline;
         photographPrice.textContent = photograph[i].price + '€/jour';
         
-        let listTag = [];
         let photographTag=photograph[i].tags;
         for (let j = 0; j < photographTag.length; j++){
-            listTag.push(photograph[j].tags);
             let tagList = document.createElement('li');
             tagList.className = 'tag';
             tagList.textContent = '#' + photographTag[j];
@@ -81,37 +106,11 @@ function createCards(tag){
             photographCard.classList.add(photographTag[j]);
         }
 
-        let cleanList = Array.from(new Set(listTag));
-        console.log(cleanList);
+        
 
 
-/*
-        let allTag = [];
-        function addTags(){
-            allTag.push(new Array(photograph.tags))
-        }
-        let listAllTags= new Set(allTag.flatwrap(elem => elem.allTag));
-        for (let k = 0; k < listAllTags.length; k++){
-            let tagList = document.createElement('li');
-            let tags = document.createElement("li");
-            tags.className = 'tagFilter';
-            tags.textContent = '#' + listTagsFlat[k];
-            let nav = document.getElementById('header');
-             nav.appendChild(listTags);}*/
 
-        /*function createTaglist (){
-            for (let h=0; h<photograph.length; h++){
-            let listTag = new Array(photograph[h].tags);
-            let listTagsFlat = new Set(listTag.flatwrap(elem => elem.listTag));
-            for (let k = 0; k < listTagsFlat.length; k++){
-                let listTags = document.createElement("li");
-                tag.className = 'tagFilter';
-                tag.textContent = '#' + listTagsFlat[k];
-                let nav = document.getElementById('header');
-                nav.appendChild(listTags);
-            }
-        }
-        }*/
+    
         let main=document.getElementById("photographer");
         main.appendChild(photographCard);
 

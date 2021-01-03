@@ -37,24 +37,13 @@ left: 100px;
 top: 42px;
 
 }
-nav 
-{
-    margin-top: 20px;
-}
-.header__filter
-{
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    text-align: center;
-    color: #911C1C;
-    border: 0.5px solid #C4C4C4;
-    box-sizing: border-box;
-    border-radius: 11px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
 
+#header__filter
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 /*MAIN*/
 
 h1
@@ -148,7 +137,8 @@ h3
     justify-content: center;
 }
 
-.tag
+.tag,
+.header__filter
 {
     font-weight: 500;
     font-size: 12px;
@@ -163,7 +153,8 @@ h3
     padding-right: 5px;
 }
 
-.tag:hover
+.tag:hover,
+.header__filter:hover
 {
     color: blanchedalmond;
     background-color: #901C1C;
