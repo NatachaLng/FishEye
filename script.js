@@ -48,30 +48,44 @@ let allTag = [];
 function addTags(){
     for (let h=0; h<photograph.length; h++){
         let photographTag=photograph[h].tags;
-        
         for (let k = 0; k < photographTag.length; k++){
-            console.log("list tag de k : "+photographTag[k] + " => "+allTag.indexOf(photographTag[k]));
             if (allTag.indexOf(photographTag[k])==-1){
                 allTag.push(photographTag[k]);
             } 
         }
     }
-    console.log(allTag);
 }   
 
 function createTaglist (){
     addTags();
     for (let k = 0; k < allTag.length; k++){
         let listTags = document.createElement("li");
+        let labelTags = document.createElement("label");
+        labelTags.setAttribute("for", allTag[k]);
+        let checkboxTags = document.createElement("input");
+        checkboxTags.type = 'checkbox';
+        checkboxTags.className = 'checkbox'
+        checkboxTags.value = allTag[k];
+        checkboxTags.id = allTag[k];
         listTags.className = 'header__filter';
-        listTags.classList.add(allTag[k]);
         listTags.textContent = '#' + allTag[k];
         let nav = document.getElementById('header__filter');
-        nav.appendChild(listTags);
+        labelTags.appendChild(listTags)
+        listTags.appendChild(checkboxTags);
+        nav.appendChild(labelTags);
     }
 }
 
-
+let tags=document.querySelectorAll('.checkbox').forEach(tags =>{
+    if (tags.checked){
+        console.log('checked');
+        let card = document.getElementByClassName('card')
+        card.style.display='none';
+        let filterValue = tags.value;
+        let filtered = element.classList.contains(filterValue);
+        filtered.style.display="block"
+    }
+});
 
 function createCards(tag){
     for (var i=0; i<photograph.length; i++){
