@@ -87,74 +87,21 @@ function createTaglist (){
     }
 });*/
 
-function createCards(photograph){
-    for (let i=0; i<photographs.length; i++){
-      photograph=photographs[i];
-        return `<article id="${photograph.id}">
-              <img class="card__image" src="${photograph.chosenPicture}" alt="picture ${photograph.name}">
-              <h3 class="card__name">${photograph.name}</h3>
-              <p class="card__location">${photograph.city}, ${photograph.country}</p>
-              <p class="card__tagline">${photograph.tagline}</p>
-              <p class="card__price">${photograph.price}€/jour</p>
-              <ul class="card__taglist">
-              </ul>
-      </article>`;   
-      }
-           let photographTag=photograph.tags;
-          for (let j = 0; j < photographTag.length; j++){
-              let tagList = document.createElement('li');
-              tagList.className = 'tag';
-              tagList.textContent = '#' + photographTag[j];
-              let photographTaglist=document.getElementByClassName('card__taglist');       
-               photographTaglist.appendChild(tagList);
-          }
-  }
-  
-  document.querySelector('#photographer').innerHTML += createCards();
-
-/*function createCards(tag){
-    for (var i=0; i<photograph.length; i++){
-        let photographCard = document.createElement('article');
-        photographCard.className = 'card';
-        photographCard.id=photograph[i].id;
-        let photographImg = document.createElement('img');
-        photographImg.className = 'card__image';
-        let photographName = document.createElement('h3');
-        photographName.className = 'card__name';
-        let photographLocation = document.createElement('p');
-        photographLocation.className = 'card__location';
-        let photographTagline = document.createElement('p');
-        photographTagline.className = 'card__tagline';
-        let photographPrice = document.createElement('p');
-        photographPrice.className = 'card__price';
-        let photographTaglist = document.createElement('ul');
-        photographTaglist.className = 'card__taglist';
-        
-        photographImg.src=photograph[i].chosenPicture;
-        photographName.textContent = photograph[i].name;
-        photographLocation.textContent = photograph[i].city + ', ' + photograph[i].country;
-        photographTagline.textContent = photograph[i].tagline;
-        photographPrice.textContent = photograph[i].price + '€/jour';
-        
-        let photographTag=photograph[i].tags;
-        for (let j = 0; j < photographTag.length; j++){
-            let tagList = document.createElement('li');
-            tagList.className = 'tag';
-            tagList.textContent = '#' + photographTag[j];
-            photographTaglist.appendChild(tagList);
-            photographCard.classList.add(photographTag[j]);
-        }
-    
-        let main=document.getElementById("photographer");
-        main.appendChild(photographCard);
-
-        photographCard.appendChild(photographImg);
-        photographCard.appendChild(photographName);
-        photographCard.appendChild(photographLocation);
-        photographCard.appendChild(photographTagline);
-        photographCard.appendChild(photographPrice);
-        photographCard.appendChild(photographTaglist);
+function createCards(photograph) {
+    for (let i = 0; i < photographs.length; i++) {
+        photograph = photographs[i];
+            let article = `<article id="${photograph.id}" class="card">
+            <img class="card__image" src="${photograph.chosenPicture}" alt="picture ${photograph.name}">
+            <h3 class="card__name">${photograph.name}</h3>
+            <p class="card__location">${photograph.city}, ${photograph.country}</p>
+            <p class="card__tagline">${photograph.tagline}</p>
+            <p class="card__price">${photograph.price}€/jour</p>
+            <ul class="card__taglist" id="taglist_${photograph.id}">
+                ${photograph.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
+            </ul>
+        </article>`;
+        document.getElementById('photographer').innerHTML += article;
     }
-}*/
+}
 
 fetch("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json").then (data => data.json().then (json => load(json)));
