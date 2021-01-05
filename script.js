@@ -31,11 +31,11 @@ https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Se
 
 
 var photographer;
-var photograph;
+var photographs;
 var media;
 
 function load(body){
-    photograph=body['photographers'];
+    photographs=body['photographers'];
     media=body['media'];
     createCards();
     createTaglist();
@@ -45,9 +45,9 @@ function load(body){
 
 }*/
 let allTag = [];
-function addTags(){
-    for (let h=0; h<photograph.length; h++){
-        let photographTag=photograph[h].tags;
+function addTags(photographTag){
+    for (let h=0; h<photographs.length; h++){
+        photographTag=photographs[h].tags;
         for (let k = 0; k < photographTag.length; k++){
             if (allTag.indexOf(photographTag[k])==-1){
                 allTag.push(photographTag[k]);
@@ -60,6 +60,8 @@ function createTaglist (){
     addTags();
     for (let k = 0; k < allTag.length; k++){
         let listTags = document.createElement("li");
+        listTags.className = 'header__filter';
+        listTags.textContent = '#' + allTag[k];
         let labelTags = document.createElement("label");
         labelTags.setAttribute("for", allTag[k]);
         let checkboxTags = document.createElement("input");
@@ -67,8 +69,6 @@ function createTaglist (){
         checkboxTags.className = 'checkbox'
         checkboxTags.value = allTag[k];
         checkboxTags.id = allTag[k];
-        listTags.className = 'header__filter';
-        listTags.textContent = '#' + allTag[k];
         let nav = document.getElementById('header__filter');
         labelTags.appendChild(listTags)
         listTags.appendChild(checkboxTags);
@@ -76,8 +76,8 @@ function createTaglist (){
     }
 }
 
-let tags=document.querySelectorAll('.checkbox').forEach(tags =>{
-    if (tags.checked){
+/*let alltags=document.querySelectorAll('.checkbox').forEach(tags =>{
+    if (tags.checked == true){
         console.log('checked');
         let card = document.getElementByClassName('card')
         card.style.display='none';
@@ -85,9 +85,34 @@ let tags=document.querySelectorAll('.checkbox').forEach(tags =>{
         let filtered = element.classList.contains(filterValue);
         filtered.style.display="block"
     }
-});
+});*/
 
-function createCards(tag){
+function createCards(photograph){
+    for (let i=0; i<photographs.length; i++){
+      photograph=photographs[i];
+        return `<article id="${photograph.id}">
+              <img class="card__image" src="${photograph.chosenPicture}" alt="picture ${photograph.name}">
+              <h3 class="card__name">${photograph.name}</h3>
+              <p class="card__location">${photograph.city}, ${photograph.country}</p>
+              <p class="card__tagline">${photograph.tagline}</p>
+              <p class="card__price">${photograph.price}€/jour</p>
+              <ul class="card__taglist">
+              </ul>
+      </article>`;   
+      }
+           let photographTag=photograph.tags;
+          for (let j = 0; j < photographTag.length; j++){
+              let tagList = document.createElement('li');
+              tagList.className = 'tag';
+              tagList.textContent = '#' + photographTag[j];
+              let photographTaglist=document.getElementByClassName('card__taglist');       
+               photographTaglist.appendChild(tagList);
+          }
+  }
+  
+  document.querySelector('#photographer').innerHTML += createCards();
+
+/*function createCards(tag){
     for (var i=0; i<photograph.length; i++){
         let photographCard = document.createElement('article');
         photographCard.className = 'card';
@@ -130,6 +155,6 @@ function createCards(tag){
         photographCard.appendChild(photographPrice);
         photographCard.appendChild(photographTaglist);
     }
-}
+}*/
 
 fetch("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json").then (data => data.json().then (json => load(json)));
