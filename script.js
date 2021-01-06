@@ -1,35 +1,3 @@
-/*https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
-
- p = document.getElementById("para1");
-p_prime = p.cloneNode(true);
-
-https://medium.com/better-programming/javascript-design-patterns-25f0faaaa15
-
-https://refactoring.guru/design-patterns/factory-method
-
-https://www.alsacreations.com/article/lire/1161-json-ajax-jquery-jsonp-getjson.html
-
-https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
-
-https://codepen.io/alown666/pen/gOwaJGW
-
-https://etienner.github.io/les-filtres-en-java-script/
-
-fetch("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json").then (data => data.json().then (console.log))
-
-fetch
-
-https://codepen.io/cferdinandi/pen/RwwVmyO*/
-
-/*
-
-générer liste de tag automatiquement 
-set 
-queryselector card hidden
-https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Set
-*/
-
-
 var photographer;
 var photographs;
 var media;

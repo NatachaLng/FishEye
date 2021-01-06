@@ -4,6 +4,10 @@
 var photographer;
 var photographs;
 var media;
+let url = window.location.href
+let pageId = url.match(/[^=/]+$/)[0];
+
+console.log(pageId)
 
 function load(body){
     photographs=body['photographers'];
