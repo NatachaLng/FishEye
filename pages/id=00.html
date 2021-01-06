@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>Fisheye - Photographe 00</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style_pages.css">
+    <script src="https://kit.fontawesome.com/2b64b48d7b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <a href="../index.html"><img class="header__logo" src="../images/logo.png" alt="Fisheye Home page"></a>
+    </header>
+    <main>
+        <section class="photograph__header">
+            <div class="flex__img"><img class="card__image" src="../images/243/Portrait_Nora.jpg" alt="picture mimi keel"></div>
+            <div class="flex__contact"><button class="contact__btn">Contactez moi</button></div>
+            <div class="flex__details"><h3 class="card__name">Mimi Keel</h3>
+            <p class="card__location">London, UK</p>
+            <p class="card__tagline">Voir le beau dans le quotidien</p>
+            <p class="card__price">400€/jour</p>
+            <ul class="card__taglist">
+                <li class='tag'>#portrait</li>
+                <li class='tag'>#events</li>
+                <li class='tag'>#travel</li>
+                <li class='tag'>#animals</li>
+            </ul>
+            </div>
+        </section>
+        <section class='filter__section'>
+            <div>Trier par</div>
+        <div class="dropdown">
+            <a href="#" class="dropbtn dropOne">Popularité</a><button onclick="filter()" class="dropbtn triger"><p class="triger__content">></p></button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#">Date</a>
+              <a href="#">Prix</a>
+            </div>
+          </div>
+        </section>
+        <section class="galery">
+            <article class="galery__card">
+                <img class="galery__card--image" src="../images/243/Animals_Rainbow.jpg" alt="Arc-en-cie">
+                <div class="galery__card--details">
+                <div><h4 class="galery__card--title galery__card--text">Arc-en-Cie</h4></div>
+                <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>70€ <div class="number__likes galery__card--text" id="number__likes">59</div><i class="fas fa-heart galery__card--text" id="like__btn"></i></p></div>
+                </div>
+            </article>
+        </section>
+
+        <div class="bground">
+            <div class="content" id="formular">
+                <h3 class="modal__title">Contactez-moi</br> Mimi Keel!</h3>
+              <span class="close" id="close"></span>
+              <div class="modal-body">
+                <form
+                  name="contact"
+                  action="id=00.html"
+                  method="get"
+                  onsubmit="return validate();"
+                >
+                  <div
+                    class="formData">
+                    <label for="first">Prénom</label><br>
+                    <input
+                      class="text-control"
+                      type="text"
+                      id="first"
+                      name="first"
+                      required 
+                      minlength="2"
+                    /><span id="missFirst"></span><br>
+                    <div id="msgFirst" class="tooltip">Veuillez saisir un prénom valide</div>
+                  </div>
+                  <div class="formData">
+                    <label for="last">Nom</label><br>
+                    <input class="text-control"
+                      type="text"
+                      id="last"
+                      name="last"
+                      required 
+                      minlength="2"
+                    /><span id="missLast"></span><br>
+                    <div id="msgLast" class="tooltip">Veuillez saisir un nom valide</div>
+                  </div>
+                  <div class="formData">
+                    <label for="email">E-mail</label><br>
+                    <input
+                      class="text-control"
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                    /><span id="missEmail"></span><br>
+                  </div>
+                  <label for="message">Message</label><br>
+                    <input
+                      class="text-control"
+                      type="text"
+                      id="message"
+                      name="message"
+                      required 
+                      minlength="2"
+                    /><span id="missFirst"></span><br>
+                    <div id="msgMsg" class="tooltip">Veuillez saisir un message</div>
+                  </div>
+                  <input
+                    class="btn-submit button"
+                    type="submit"
+                    value="Envoyer"
+                  />
+                </form>
+              </div>
+            </div>
+
+              <div class="form__sent" id="form__sent">
+                <div class="content">
+                  <a href="id=00.html"><span class="close2" id="close2"></span></a>
+                <div class="iconValidMsg"><i class="far fa-check-circle"></i></div>
+                <p id="validationMsg">Merci, nous avons bien reçu votre demande. </br></br>Mimi va vous répondre dans les plus brefs délais.</p>
+              </div>
+              </div>
+    </main>
+    <script src="script_pages.js"></script>
+</body>

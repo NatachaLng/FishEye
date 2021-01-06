@@ -13,6 +13,10 @@ ul, li{
     list-style: none;
 }
 
+a{
+    text-decoration: none;
+}
+
 .header__logo
 {
 width: 200px;
@@ -150,65 +154,359 @@ h3
     background-color: #901C1C;
 }
 
-.list-item-dropdown {
-    position: relative;
-    background-color: #901C1C;
-    width: 100px;
-    height: 30px;
+/*filter section*/
+
+.filter__section{
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    margin-left: 10px;
 }
 
-.list-item-dropdown:hover > .dropdown-list {
-      display: block;
-      opacity: 1;
-}
-  
-.dropdown-trigger {
-    position: relative;
-}
-.dropdown-trigger:focus + .dropdown-list 
-{
-      display: block;
-      opacity: 1;
-    }
-    
-.dropdown-trigger:after {
-      content: "›";
-      position: absolute;
-      height: 30px;
-      background-color: #901C1C;
-      color: white;
-      transform: rotate(90deg);
-      top: -5px;
-      right: -15px;
-    }
-
-  
-  .dropdown-list {
-    background-color: #901C1C;
-    display: inline-block;
-    text-align: left;
-    margin-top: -15px;
-    margin-left: -40px;
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease; 
-    width: 100px;
-  }
-
-.list-item-dropdown {
-      color: #fff;
-      font-weight: lighter;
-      text-align: left;
- }
-
-  
-  .dropdown-list-item {
+.dropbtn {
+    background-color: #901C1c;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
     cursor: pointer;
-    padding: 1em;
-    text-align: left;
-    border-bottom: solid 2px white;
   }
 
-.dropdown-list-item:hover {
-      background-color: darken(#901C1C, 5%);
-    }
+  .dropOne{
+      border-top-left-radius: 5px;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 0;
+  }
+
+  
+  .dropbtn:hover {
+    background-color: #D3573C;
+    color: black;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    height: 53px;
+    margin-left: 20px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #901C1c;
+    min-width: 161px;
+    overflow: auto;
+    margin-top: 15px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  
+  .dropdown-content a {
+    border-top: 2px solid white;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    margin-left: 15px;
+  }
+  
+  .dropdown a:hover {background-color: #D3573C;
+color: black;}
+
+  .triger{
+      height: 53px;
+      width: 54px;
+      position: absolute;
+    font-size: 24px;
+    margin-top: -16px;
+  }
+
+  .triger__content
+  {
+    color: white;
+    text-align: center;
+    transform: rotate(90deg);
+    margin-top: -5px;
+  }
+  
+  .show {display: block;
+margin-top: 11px;}
+
+/*Galery section*/
+
+.galery{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.galery__card
+{
+    width: 350px;
+    height: 350px;
+}
+
+.galery__card--image{
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.galery__card--details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.galery__card--details2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.galery__card--text{
+    font-size: 24px;
+    color: #901C1C;
+    margin: 10px;
+}
+
+/*contact form*/
+.modal-btn {
+    font-size: 145%;
+    background: #901C1C;
+    display: flex;
+    margin: auto;
+    padding: 2em;
+    color: #fff;
+    padding: 0.75rem 2.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+  }
+  
+  .modal-btn:hover {
+    background: #D3573C;
+  }
+  
+  .footer {
+    margin: 20px;
+    padding: 10px;
+    font-family: var(--font-slab);
+  }
+  
+  /* Modal form */
+
+  .modal__title{
+      color: black;
+      text-align: left;
+      margin-left: 40px;
+  }
+  
+  .button {
+    background: #901C1C;
+    margin-top: 0.5em;
+    padding: 1em;
+    color: #fff;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .button:hover {
+    background: #D3573C;
+    color: black;
+  }
+  
+  .smFont {
+    font-size: 16px;
+  }
+  
+  .bground {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(89, 90, 97, 0.4);
+  }
+  
+  .form__sent{
+    display:none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(89, 90, 97, 0.4);
+  }
+  
+  .content {
+    margin: 5% auto;
+    width: 100%;
+    max-width: 500px;
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    background: #DB8876;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    color: #000;
+    padding-top: 10px;
+  }
+
+  
+  .modal-body {
+    padding: 15px 8%;
+    margin: 15px auto;
+  }
+  
+  label {
+    font-family: var(--font-default);
+    font-size: 17px;
+    font-weight: normal;
+    display: inline-block;
+    margin-bottom: 11px;
+  }
+  input {
+    padding: 8px;
+    border: 0.8px solid #ccc;
+    outline: none;
+  }
+  .text-control {
+    margin: 0;
+    padding: 8px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 20px;
+    height: 30px;
+  }
+
+  #message
+  {
+      height: 150px;
+  }
+  .formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: #e54858;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-align: right;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  .formData[data-error-visible="true"]::after {
+    opacity: 1;
+  }
+  .formData[data-error-visible="true"] .text-control {
+    border: 2px solid #e54858;
+  }
+  
+  input[data-error]::after {
+      content: attr(data-error);
+      font-size: 0.4em;
+      color: red;
+  } 
+  
+  .tooltip
+  {
+    display: none;
+    font-size: 12px;
+    color: #901C1C;
+    margin-left: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .close,
+  .close2{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(0.7);
+  }
+  .close:before,
+  .close:after,
+  .close2:before,
+  .close2:after {
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 33px;
+    width: 3px;
+    background-color: #fff;
+  }
+  .close:before,
+  .close2:before {
+    transform: rotate(45deg);
+  }
+  .close:after,
+  .close2:after {
+    transform: rotate(-45deg);
+  }
+  .btn-submit,
+  .btn-close,
+  .btn-signup {
+    background: #901C1C;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    font-size: 1rem;
+    padding: 12px 82px;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+  }
+  
+  .btn-close
+  {
+    margin-top: 200px;
+    margin-bottom: 10px;
+  }
+
+  .icon{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /*validation message*/
+  #validationMsg
+  {
+    font-size: 1.6em;
+    margin: 20px;
+    margin-top: 20px;
+    display:inline-block;
+    text-align: center;
+  }
+  .fa-check-circle
+  {
+    color: rgb(26, 75, 58);
+    font-size: 3em;
+    text-align: center!important;
+    margin-top: 30px;
+  }
+  
+  .iconValidMsg
+  {
+    display: block;
+    text-align: center;
+  }
