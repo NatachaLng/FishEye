@@ -86,17 +86,12 @@ function grabCheckboxValues() {
     return checkboxValues;
 }
 
-function filterCards(text) {
-    text = text.substring(1, text.length);
-    console.log("check :" + text);
-    cardContainer.innerHTML = "";
-    photographs.forEach((photograph) => {
-          let tags = photograph.tags;
-          let isMatch = (tags.indexOf(text) != -1) || (text === 'tous');
-          if (isMatch) {
-                    let article = `<article data-aos="fade-up" data-aos-duration=100 id="${photograph.id}" class="card">
+function affiche(photograph){
+    let article = `<article data-aos="fade-up" data-aos-duration=100 id="${photograph.id}" class="card">
+    <a href="pages/photographe.html?id=${photograph.id}">
                     <img class="card__image" src="${photograph.chosenPicture}" alt="picture ${photograph.name}">
                     <h3 class="card__name">${photograph.name}</h3>
+                    </a>
                     <p class="card__location">${photograph.city}, ${photograph.country}</p>
                     <p class="card__tagline">${photograph.tagline}</p>
                     <p class="card__price">${photograph.price}€/jour</p>
@@ -104,9 +99,21 @@ function filterCards(text) {
                         ${photograph.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
                     </ul>
                 </article>`;
-                document.getElementById('photographer').innerHTML += article;
+                return article;
+}
+
+function filterCards(text) {
+    text = text.substring(1, text.length);
+    console.log("check :" + text);
+    cardContainer.innerHTML = "";
+    photographs.forEach((photograph) => {
+          let tags = photograph.tags;
+          let isMatch = (tags.indexOf(text) != -1) || (text === 'tous');
+          if (isMatch) {    
+                document.getElementById('photographer').innerHTML += affiche(photograph);
         }
-    });}
+    });
+}
 
 /*let alltags=document.querySelectorAll('.checkbox').forEach(tags =>{
     if (tags.checked == true){
@@ -123,18 +130,7 @@ function filterCards(text) {
 let article 
 function createCards() {
     for (let i = 0; i < photographs.length; i++) {
-        photograph = photographs[i];
-            let article = `<article data-aos="fade-up" data-aos-duration=100 id="${photograph.id}" class="card">
-            <img class="card__image" src="${photograph.chosenPicture}" alt="picture ${photograph.name}">
-            <h3 class="card__name">${photograph.name}</h3>
-            <p class="card__location">${photograph.city}, ${photograph.country}</p>
-            <p class="card__tagline">${photograph.tagline}</p>
-            <p class="card__price">${photograph.price}€/jour</p>
-            <ul class="card__taglist" id="taglist_${photograph.id}">
-                ${photograph.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
-            </ul>
-        </article>`;
-        document.getElementById('photographer').innerHTML += article;
+        document.getElementById('photographer').innerHTML += affiche(photographs[i]);
     }
 }
 

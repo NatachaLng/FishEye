@@ -54,12 +54,18 @@
               <div class="modal-body">
                 <form
                   name="contact"
-                  action="id=00.html"
+                  action="#"
                   method="get"
                   onsubmit="return validate();"
                 >
                   <div
                     class="formData">
+                    <input
+                    id = "id"
+                    name = "id"
+                    value = "777"
+                    type = "hidden"
+                    />
                     <label for="first">Prénom</label><br>
                     <input
                       class="text-control"
@@ -114,7 +120,7 @@
 
               <div class="form__sent" id="form__sent">
                 <div class="content">
-                  <a href="id=00.html"><span class="close2" id="close2"></span></a>
+                  <a href="#"><span class="close2" id="close2"></span></a>
                 <div class="iconValidMsg"><i class="far fa-check-circle"></i></div>
                 <p id="validationMsg">Merci, nous avons bien reçu votre demande. </br></br>Mimi va vous répondre dans les plus brefs délais.</p>
               </div>
