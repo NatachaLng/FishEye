@@ -12,6 +12,33 @@ console.log(pageId)
 function load(body){
     photographs=body['photographers'];
     media=body['media'];
+    showPhotographer();
+}
+
+function populateHeader(photograph){
+  let article = `<div class="flex__img"><img class="card__image" src="../images/${pageId}/${photograph.chosenPicture}.jpg" alt="picture ${photograph.name}"></div>
+  <div class="flex__contact"><button class="contact__btn">Contactez moi</button></div>
+  <div class="flex__details"><h3 class="card__name">${photograph.name}</h3>
+  <p class="card__location">${photograph.city}, ${photograph.country}</p>
+  <p class="card__tagline">${photograph.tagline}</p>
+  <p class="card__price">${photograph.price}€/jour</p>
+  <ul class="card__taglist" id="taglist_${photograph.id}">
+  ${photograph.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
+  </ul>
+  </div>`;
+              return article;
+}
+
+function showPhotographer(text) {
+  let header = document.getElementById('photograph__header');
+  header.innerHTML= " ";
+  photographs.forEach((photograph) => {
+        let id = photograph.id;
+        let isMatch = (id == pageId);
+        if (isMatch) {    
+              document.getElementById('photograph__header').innerHTML += populateHeader(photograph);
+      }
+  });
 }
 
 function filter() {
@@ -44,7 +71,7 @@ function filter() {
 		}
 	}
 }
-
+/*
 //modal 
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelector(".contact__btn");
