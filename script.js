@@ -39,7 +39,6 @@ function load(body){
     media=body['media'];
     createCards();
     createTaglist();
-    loadCheckboxes();
 }
 
 
@@ -62,18 +61,16 @@ function createTaglist (){
         let listTags = document.createElement("li");
         listTags.className = 'header__filter';
         listTags.textContent = '#' + allTag[k];
-        let labelTags = document.createElement("label");
-        labelTags.setAttribute("for", allTag[k]);
-        let checkboxTags = document.createElement("input");
-        checkboxTags.type = 'checkbox';
-        checkboxTags.className = 'checkbox'
-        checkboxTags.value = allTag[k];
-        checkboxTags.id = allTag[k];
-        let nav = document.getElementById('header__filter');
-        labelTags.appendChild(listTags)
-        listTags.appendChild(checkboxTags);
-        nav.appendChild(labelTags);
+        listTags.addEventListener("click", () => {filterCards(listTags.innerHTML)});
+        let nav = document.getElementById('header__filters');
+        nav.appendChild(listTags);
     }
+    let listTags = document.createElement("li");
+    listTags.className = 'header__filter';
+    listTags.textContent = '#tous' ;
+    listTags.addEventListener("click", () => {filterCards(listTags.innerHTML)});
+    let nav = document.getElementById('header__filters');
+    nav.appendChild(listTags);
 }
 
 const checkboxes = document.querySelectorAll("input[type='checkbox']");
@@ -82,29 +79,33 @@ let checkboxValues = [ ];
 
 console.log(checkboxes);
 
-function loadCheckboxes(){
-checkboxes.forEach((box) => {
-    box.checked = false;
-    box.addEventListener("change", () => filterCards());
-});}
-
 function grabCheckboxValues() {
-    let checkboxValues = [];
     checkboxes.forEach((checkbox) => {
           if (checkbox.checked) checkboxValues.push(checkbox.value);
     });
     return checkboxValues;
 }
 
-function filterCards() {
-    console.log("check");
+function filterCards(text) {
+    text = text.substring(1, text.length);
+    console.log("check :" + text);
     cardContainer.innerHTML = "";
-    checkboxValues = grabCheckboxValues();data.forEach((item) => {
-          let classes = item.classes;
-          let result = (arr, target) => target.every((v) => arr.includes(v));let isMatch = result(classes, checkboxValues);
+    photographs.forEach((photograph) => {
+          let tags = photograph.tags;
+          let isMatch = (tags.indexOf(text) != -1) || (text === 'tous');
           if (isMatch) {
-                cardContainer.innerHTML += article;
-          }
+                    let article = `<article data-aos="fade-up" data-aos-duration=100 id="${photograph.id}" class="card">
+                    <img class="card__image" src="${photograph.chosenPicture}" alt="picture ${photograph.name}">
+                    <h3 class="card__name">${photograph.name}</h3>
+                    <p class="card__location">${photograph.city}, ${photograph.country}</p>
+                    <p class="card__tagline">${photograph.tagline}</p>
+                    <p class="card__price">${photograph.price}€/jour</p>
+                    <ul class="card__taglist" id="taglist_${photograph.id}">
+                        ${photograph.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
+                    </ul>
+                </article>`;
+                document.getElementById('photographer').innerHTML += article;
+        }
     });}
 
 /*let alltags=document.querySelectorAll('.checkbox').forEach(tags =>{
@@ -120,7 +121,7 @@ function filterCards() {
 
 // creation of the cards
 let article 
-function createCards(photograph) {
+function createCards() {
     for (let i = 0; i < photographs.length; i++) {
         photograph = photographs[i];
             let article = `<article data-aos="fade-up" data-aos-duration=100 id="${photograph.id}" class="card">
