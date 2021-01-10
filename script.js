@@ -29,6 +29,7 @@ function createTaglist (){
         let listTags = document.createElement("a");
         listTags.href = '#';
         listTags.className = 'header__filter';
+        listTags.setAttribute("aria-label", "tag")
         listTags.textContent = '#' + allTag[k];
         listTags.addEventListener("click", () => {filterCards(listTags.innerHTML)});
         let nav = document.getElementById('header__filters');
@@ -44,7 +45,7 @@ let checkboxValues = [ ];
 //template of the photographer
 function showPhotographer(photograph){
     let article = `<article id="${photograph.id}" class="card">
-    <a href="pages/photographe.html?id=${photograph.id}">
+    <a href="pages/photographe.html?id=${photograph.id}" aria-label="${photograph.name}">
                     <img class="card__image" src="${photograph.chosenPicture}" alt="picture ${photograph.name}">
                     <h3 class="card__name">${photograph.name}</h3>
                     </a>

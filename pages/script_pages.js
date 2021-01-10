@@ -19,7 +19,7 @@ function load(body){
 
 function populateHeader(photograph){
   let article = `<div class="flex__img"><img class="card__image" src="../${photograph.chosenPicture}" alt="picture ${photograph.name}"></div>
-  <div class="flex__contact"><button class="contact__btn" onclick="launchModal()">Contactez moi</button></div>
+  <div class="flex__contact"><button class="contact__btn" onclick="launchModal()" aria-label="contact me">Contactez moi</button></div>
   <div class="flex__details"><h3 class="card__name">${photograph.name}</h3>
   <p class="card__location">${photograph.city}, ${photograph.country}</p>
   <p class="card__tagline">${photograph.tagline}</p>
