@@ -3,7 +3,7 @@
 
 var photographer;
 var photographs;
-var media;
+var medias;
 let url = window.location.href
 let pageId = url.match(/[^=/]+$/)[0];
 
@@ -11,13 +11,15 @@ console.log(pageId)
 
 function load(body){
     photographs=body['photographers'];
-    media=body['media'];
+    medias=body['media'];
     showPhotographer();
+    mediasCreation();
+    showGallery();
 }
 
 function populateHeader(photograph){
-  let article = `<div class="flex__img"><img class="card__image" src="../images/${pageId}/${photograph.chosenPicture}.jpg" alt="picture ${photograph.name}"></div>
-  <div class="flex__contact"><button class="contact__btn">Contactez moi</button></div>
+  let article = `<div class="flex__img"><img class="card__image" src="../${photograph.chosenPicture}" alt="picture ${photograph.name}"></div>
+  <div class="flex__contact"><button class="contact__btn" onclick="launchModal()">Contactez moi</button></div>
   <div class="flex__details"><h3 class="card__name">${photograph.name}</h3>
   <p class="card__location">${photograph.city}, ${photograph.country}</p>
   <p class="card__tagline">${photograph.tagline}</p>
@@ -61,25 +63,92 @@ function filter() {
 
   //like function
   window.onload = function(){
-	let likeBtn = document.getElementById('like__btn');
-	let numberLike = parseInt(document.getElementById('number__likes').textContent); 
+	let likeBtn = document.querySelectorAll('.like__btn');
+	let numberLike = parseInt(document.querySelectorAll('.number__likes').textContent); 
 	if(likeBtn){
 		likeBtn.onclick = function(){
 			numberLike += 1;
-			document.getElementById('number__likes').textContent = numberLike; //Attention, IE n'aime pas textContent. Il faut voir avec innerText
+			document.getElementById('number__likes').textContent = numberLike; 
 			return false;
 		}
 	}
 }
-/*
+
+//Galery 
+let images 
+let videos 
+
+function Images(prop) {
+  this.prop = prop;
+}
+
+function Videos(prop) {
+  this.prop = prop;
+}
+
+let media 
+
+function mediasCreation (){
+  for (let i = 0; i < medias.length; i++) {
+  media = medias[i];
+    if (media.image){
+      images = new Images(media)
+      console.log(images);
+    }
+    if (media.video){
+      videos = new Videos(media)
+    }
+  }
+}
+
+
+function createImage(){
+  let templateImage = `<article class="galery__card">
+  <a href="" class="lightbox__triger><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}"></a>
+  <div class="galery__card--details">
+  <div><h4 class="galery__card--title galery__card--text">${images.prop.name}</h4></div>
+  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" class="number__likes" aria-label="likes">${images.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn"></i></p></div>
+  </div>`;
+    return templateImage;
+}
+
+function createVideo(){
+  let templateVideo = `<article class="galery__card">
+  <video class="galery__card--video">
+    <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4">
+  </video> 
+  <div class="galery__card--details">
+  <div><h4 class="galery__card--title galery__card--text">Chevaux</h4></div>
+  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" class="number__likes">${videos.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn"></i></p></div>
+  </div>
+</article>`;
+    return templateVideo;
+}
+
+function showGallery() {
+  let galery = document.getElementsByClassName("galery");
+  galery.innerHTML = "";
+  images.forEach((images) => {
+        let photographerId = images.prop.photographerId;
+        let isMatch = (photographerId.indexOf(pageId) != -1);
+        if (isMatch) {    
+              galery.innerHTML += createImage(media);
+      }
+      videos.forEach((videos) => {
+        let photographerId = videos.prop.photographerId;
+        let isMatch = (photographerId.indexOf(pageId) != -1);
+        if (isMatch) {    
+              galery.innerHTML += createVideo(media);
+      }
+  });
+});
+}
+
+
 //modal 
 const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelector(".contact__btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
-
-// launch modal event
-modalBtn.addEventListener("click", launchModal);
 
 // launch modal form
 function launchModal() {
@@ -155,10 +224,17 @@ function validateMessage(){
     return formValid; // return true as formValid=true
   }
 
+ /* function confirmationMessage(){
+    if ((validate()==true)){
+      let formSent = document.getElementById("form__sent");
+    formSent.style.display="block";
+    }
+  }
 //display confirmation
-/*let formSent = document.getElementById("form__sent"); //validation message
 
-if(window.location.href.indexOf("?") > 1){ //if the url contain a ? (because of the get method of the datas in the form)
+let formSent = document.getElementById("form__sent"); //validation message
+
+/*if(window.location.href.indexOf("?") > 1){ //if the url contain a ? (because of the get method of the datas in the form)
   formSent.style.display = "block"; //then we display the validation message
   }
 else{

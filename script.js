@@ -26,36 +26,24 @@ function addTags(photographTag){
 function createTaglist (){
     addTags();
     for (let k = 0; k < allTag.length; k++){
-        let listTags = document.createElement("li");
+        let listTags = document.createElement("a");
+        listTags.href = '#';
         listTags.className = 'header__filter';
         listTags.textContent = '#' + allTag[k];
         listTags.addEventListener("click", () => {filterCards(listTags.innerHTML)});
         let nav = document.getElementById('header__filters');
         nav.appendChild(listTags);
     }
-    let listTags = document.createElement("li");
-    listTags.className = 'header__filter';
-    listTags.textContent = '#tous' ;
-    listTags.addEventListener("click", () => {filterCards(listTags.innerHTML)});
-    let nav = document.getElementById('header__filters');
-    nav.appendChild(listTags);
 }
 
 const checkboxes = document.querySelectorAll("input[type='checkbox']");
 const cardContainer = document.getElementById("photographer");
 let checkboxValues = [ ]; 
 
-console.log(checkboxes);
 
-function grabCheckboxValues() {
-    checkboxes.forEach((checkbox) => {
-          if (checkbox.checked) checkboxValues.push(checkbox.value);
-    });
-    return checkboxValues;
-}
-
-function affiche(photograph){
-    let article = `<article data-aos="fade-up" data-aos-duration=100 id="${photograph.id}" class="card">
+//template of the photographer
+function showPhotographer(photograph){
+    let article = `<article id="${photograph.id}" class="card">
     <a href="pages/photographe.html?id=${photograph.id}">
                     <img class="card__image" src="${photograph.chosenPicture}" alt="picture ${photograph.name}">
                     <h3 class="card__name">${photograph.name}</h3>
@@ -64,7 +52,7 @@ function affiche(photograph){
                     <p class="card__tagline">${photograph.tagline}</p>
                     <p class="card__price">${photograph.price}€/jour</p>
                     <ul class="card__taglist" id="taglist_${photograph.id}">
-                        ${photograph.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
+                        ${photograph.tags.map(tag => `<li class="tag" onclick="filterCards(innerHTML)">#${tag}</li>`).join('')}
                     </ul>
                 </article>`;
                 return article;
@@ -78,27 +66,16 @@ function filterCards(text) {
           let tags = photograph.tags;
           let isMatch = (tags.indexOf(text) != -1) || (text === 'tous');
           if (isMatch) {    
-                document.getElementById('photographer').innerHTML += affiche(photograph);
+                document.getElementById('photographer').innerHTML += showPhotographer(photograph);
         }
     });
 }
-
-/*let alltags=document.querySelectorAll('.checkbox').forEach(tags =>{
-    if (tags.checked == true){
-        console.log('checked');
-        let card = document.getElementByClassName('card');
-        card.style.display='none';
-        let filterValue = tags.value;
-        let filtered = element.classList.contains(filterValue);
-        filtered.style.display="block"
-    }
-});*/
 
 // creation of the cards
 let article 
 function createCards() {
     for (let i = 0; i < photographs.length; i++) {
-        document.getElementById('photographer').innerHTML += affiche(photographs[i]);
+        document.getElementById('photographer').innerHTML += showPhotographer(photographs[i]);
     }
 }
 

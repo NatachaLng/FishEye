@@ -245,18 +245,26 @@ margin-top: 11px;}
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .galery__card
 {
     width: 350px;
     height: 350px;
+    margin: 20px;
 }
 
 .galery__card--image{
     width: 350px;
     height: 300px;
     object-fit: cover;
+}
+
+.galery__card--video{
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
 }
 
 .galery__card--details{
