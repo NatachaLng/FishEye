@@ -518,3 +518,47 @@ margin-top: 11px;}
     display: block;
     text-align: center;
   }
+
+  @media only screen and (max-width: 450px)
+  {
+    .photograph__header
+    {
+      display: block;
+      height: auto;
+      background-color: white;
+      margin-top: -70px;
+    }
+
+    .card__image
+    {
+      float: right;
+      width: 150px;
+      height: 150px;
+      margin-top: 10px;
+    }
+
+    .contact__btn
+    {
+      position: fixed;
+      z-index: 1000;
+      left: auto;
+      bottom: 15px;
+      width: 170px;
+      height: 35px;
+    }
+
+    .flex__details
+    {
+      margin-top: 10px;
+    }
+
+    .flex__details, .card__name, .card__location, .card__tagline, .card__price
+    {
+      text-align: left;
+    }
+    
+    .card__taglist
+    {
+      justify-content: start;
+    }
+  }
