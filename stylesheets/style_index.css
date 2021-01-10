@@ -74,6 +74,7 @@ h1
 .card
 {
     width: 30%;
+    min-width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -162,4 +163,33 @@ h3
 {
     color: blanchedalmond;
     background-color: #901C1C;
+}
+
+@media only screen and (max-width: 450px)
+{
+    .header__logo
+    {
+        width: 170px;
+    }
+
+    main > h1
+    {
+        font-size: 14px;
+        margin-top: 15px;
+        width: 150px;
+    }
+
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-self: center;
+        width: 170px;
+    }
+
+    #header__filters
+    {
+        width: 350px;
+        margin-left: -10px;
+        justify-content: center;
+    }
 }
