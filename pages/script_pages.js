@@ -107,7 +107,7 @@ function createImage(images){
   let templateImage = `<article class="galery__card">
   <a href="" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
   <div class="galery__card--details">
-  <div><h4 class="galery__card--title galery__card--text">${images.prop.alt-text}</h4></div>
+  <div><h4 class="galery__card--title galery__card--text">${images.prop.alt}</h4></div>
   <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" class="number__likes" aria-label="likes">${images.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn"></i></p></div>
   </div>`;
     return templateImage;
@@ -119,7 +119,7 @@ function createVideo(videos){
     <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}'>
   </video> 
   <div class="galery__card--details">
-  <div><h4 class="galery__card--title galery__card--text">${videos.prop.alt-text}</h4></div>
+  <div><h4 class="galery__card--title galery__card--text">${videos.prop.alt}</h4></div>
   <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" class="number__likes">${videos.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn"></i></p></div>
   </div>
 </article>`;
