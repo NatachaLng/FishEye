@@ -89,8 +89,6 @@ function Videos(prop) {
 }
 
 let allMedias = []; 
-let images = [];
-let videos = []; 
 
 function mediasCreation (){
   for (let i = 0; i < medias.length; i++) {
@@ -107,9 +105,9 @@ function mediasCreation (){
 
 function createImage(images){
   let templateImage = `<article class="galery__card">
-  <a href="" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}"></a>
+  <a href="" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt-text='${images.prop.alt-text}'></a>
   <div class="galery__card--details">
-  <div><h4 class="galery__card--title galery__card--text">${images.prop.name}</h4></div>
+  <div><h4 class="galery__card--title galery__card--text">${images.prop.alt-text}</h4></div>
   <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" class="number__likes" aria-label="likes">${images.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn"></i></p></div>
   </div>`;
     return templateImage;
@@ -118,10 +116,10 @@ function createImage(images){
 function createVideo(videos){
   let templateVideo = `<article class="galery__card">
   <video class="galery__card--video">
-    <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4">
+    <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt-text='${videos.prop.alt-text}'>
   </video> 
   <div class="galery__card--details">
-  <div><h4 class="galery__card--title galery__card--text">Chevaux</h4></div>
+  <div><h4 class="galery__card--title galery__card--text">${videos.prop.alt-text}</h4></div>
   <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" class="number__likes">${videos.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn"></i></p></div>
   </div>
 </article>`;
@@ -132,13 +130,11 @@ function showGallery() {
   let galery = document.getElementById("galery");
   galery.innerHTML = "";
   allMedias.forEach((media) => {
-    if (media instanceof Images){
-      if (media.prop.photographerId == pageId) {    
+    if (media.prop.photographerId == pageId) {    
+      if (media instanceof Images){
         galery.innerHTML += createImage(media);
-    }
-  }
-    if (media instanceof Videos){
-      if (media.prop.photographerId == pageId) {    
+      }
+      if (media instanceof Videos){
         galery.innerHTML += createVideo(media);
       }
     }
