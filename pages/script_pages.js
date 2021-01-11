@@ -15,6 +15,7 @@ function load(body){
     showPhotographer();
     mediasCreation();
     showGallery();
+    //titleModal();
 }
 
 function populateHeader(photograph){
@@ -70,10 +71,11 @@ function filter() {
 
 
   function like(){
-	let numberLike = parseInt(document.querySelectorAll('.number__likes').textContent); 
-			numberLike += 1;
-      document.getElementById('number__likes').textContent = numberLike; 
-      likeBtn.removeEventListener("click", like);
+  let numberLike = parseInt(document.querySelectorAll('.number__likes').value);
+  console.log(numberLike)
+  let newLike = (numberLike + 1);
+  console.log('click');
+      document.getElementsByClassName('number__likes').textContent = newLike;
 			return false;
 		}
 
@@ -108,7 +110,7 @@ function createImage(images){
   <a href="" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${images.prop.alt}</h4></div>
-  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" class="number__likes" aria-label="likes">${images.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn"></i></p></div>
+  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" class="number__likes" aria-label="likes">${images.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn" onclick="like()"></i></p></div>
   </div>`;
     return templateImage;
 }
@@ -120,7 +122,7 @@ function createVideo(videos){
   </video> 
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${videos.prop.alt}</h4></div>
-  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" class="number__likes">${videos.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn"></i></p></div>
+  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" class="number__likes">${videos.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn" onclick="like()"></i></p></div>
   </div>
 </article>`;
     return templateVideo;
@@ -159,6 +161,22 @@ closeBtn.addEventListener("click", closeModal);
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+//name 
+/*function titleModal(photograph){
+  let templateTitle = `Contactez-moi <br> ${photograph.name}`;
+  return templateTitle
+}
+
+function titleModal() {
+  let modalTitle = document.getElementById('modal__title');
+  photographs.forEach((photograph) => {
+        let id = photograph.id;;
+        if (id == pageId) {    
+              modalTitle.innerHTML += titleModal(photograph);
+      }
+  });
+}*/
 
 // Form elements
 let firstName = document.getElementById("first");
