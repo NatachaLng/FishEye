@@ -62,17 +62,21 @@ function filter() {
   }
 
   //like function
-  window.onload = function(){
-	let likeBtn = document.querySelectorAll('.like__btn');
+
+  const likeBtn = document.getElementsByClassName('like__btn');
+  for (var i = 0; i < likeBtn; i++) {
+    likeBtn[i].addEventListener('click', like(), false);
+  }
+
+
+  function like(){
 	let numberLike = parseInt(document.querySelectorAll('.number__likes').textContent); 
-	if(likeBtn){
-		likeBtn.onclick = function(){
 			numberLike += 1;
-			document.getElementById('number__likes').textContent = numberLike; 
+      document.getElementById('number__likes').textContent = numberLike; 
+      likeBtn.removeEventListener("click", like);
 			return false;
 		}
-	}
-}
+
 
 //Galery 
 let images 
