@@ -79,8 +79,6 @@ function filter() {
 
 
 //Galery 
-let images 
-let videos 
 
 function Images(prop) {
   this.prop = prop;
@@ -90,25 +88,26 @@ function Videos(prop) {
   this.prop = prop;
 }
 
-let media 
+let allMedias = []; 
+let images = [];
+let videos = []; 
 
 function mediasCreation (){
   for (let i = 0; i < medias.length; i++) {
   media = medias[i];
     if (media.image){
-      images = new Images(media)
-      console.log(images);
+      allMedias.push(new Images(media));
     }
     if (media.video){
-      videos = new Videos(media)
+      allMedias.push(new Videos(media));
     }
   }
 }
 
 
-function createImage(){
+function createImage(images){
   let templateImage = `<article class="galery__card">
-  <a href="" class="lightbox__triger><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}"></a>
+  <a href="" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}"></a>
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${images.prop.name}</h4></div>
   <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" class="number__likes" aria-label="likes">${images.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn"></i></p></div>
@@ -116,7 +115,7 @@ function createImage(){
     return templateImage;
 }
 
-function createVideo(){
+function createVideo(videos){
   let templateVideo = `<article class="galery__card">
   <video class="galery__card--video">
     <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4">
@@ -130,22 +129,20 @@ function createVideo(){
 }
 
 function showGallery() {
-  let galery = document.getElementsByClassName("galery");
+  let galery = document.getElementById("galery");
   galery.innerHTML = "";
-  images.forEach((images) => {
-        let photographerId = images.prop.photographerId;
-        let isMatch = (photographerId.indexOf(pageId) != -1);
-        if (isMatch) {    
-              galery.innerHTML += createImage(media);
+  allMedias.forEach((media) => {
+    if (media instanceof Images){
+      if (media.prop.photographerId == pageId) {    
+        galery.innerHTML += createImage(media);
+    }
+  }
+    if (media instanceof Videos){
+      if (media.prop.photographerId == pageId) {    
+        galery.innerHTML += createVideo(media);
       }
-      videos.forEach((videos) => {
-        let photographerId = videos.prop.photographerId;
-        let isMatch = (photographerId.indexOf(pageId) != -1);
-        if (isMatch) {    
-              galery.innerHTML += createVideo(media);
-      }
+    }
   });
-});
 }
 
 
