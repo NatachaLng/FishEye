@@ -15,7 +15,7 @@ function load(body){
     showPhotographer();
     mediasCreation();
     showGallery();
-    //titleModal();
+    titleModal();
 }
 
 function populateHeader(photograph){
@@ -219,7 +219,7 @@ function closeModal() {
 }
 
 //name 
-/*function titleModal(photograph){
+function templateModal(photograph){
   let templateTitle = `Contactez-moi <br> ${photograph.name}`;
   return templateTitle
 }
@@ -229,10 +229,10 @@ function titleModal() {
   photographs.forEach((photograph) => {
         let id = photograph.id;;
         if (id == pageId) {    
-              modalTitle.innerHTML += titleModal(photograph);
+              modalTitle.innerHTML += templateModal(photograph);
       }
   });
-}*/
+}
 
 // Form elements
 let firstName = document.getElementById("first");

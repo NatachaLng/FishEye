@@ -178,7 +178,7 @@ h3
   }
 
   
-  .dropbtn:hover {
+  .dropbtn:hover + .dropbtn {
     background-color: #D3573C;
     color: black;
   }
@@ -429,7 +429,7 @@ svg, g {
   
   /* Modal form */
 
-  .modal__title{
+  #modal__title{
       color: black;
       text-align: left;
       margin-left: 40px;
