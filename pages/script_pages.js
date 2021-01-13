@@ -110,9 +110,34 @@ function createImage(images){
   <a href="" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${images.prop.alt}</h4></div>
-  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" class="number__likes" aria-label="likes">${images.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn" onclick="like()"></i></p></div>
+  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" aria-label="likes">${images.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn" onclick="like()"></i></p></div>
   </div>`;
     return templateImage;
+}
+
+
+function createSlideImage(images){
+  `<div class="slide-item" role="group" aria-roledescription="Slide">
+              <figure>
+                  <img class="slide__medias" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}' width="1200" height="600">
+                <figcaption>
+                  ${images.prop.alt}
+                </figcaption>
+              </figure>
+            </div>`
+}
+
+function createSlideVideo(videos){
+  `<div class="slide-item" role="group" aria-roledescription="Slide">
+              <figure>
+                  <video>
+                      <source class="slide__medias" src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}'>
+                  </video> 
+                <figcaption>
+                  ${videos.prop.alt}
+                </figcaption>
+              </figure>
+            </div>`
 }
 
 function createVideo(videos){
@@ -122,7 +147,7 @@ function createVideo(videos){
   </video> 
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${videos.prop.alt}</h4></div>
-  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" class="number__likes">${videos.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn" onclick="like()"></i></p></div>
+  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" aria-label="likes">${videos.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn" onclick="like()"></i></p></div>
   </div>
 </article>`;
     return templateVideo;
@@ -130,17 +155,48 @@ function createVideo(videos){
 
 function showGallery() {
   let galery = document.getElementById("galery");
+  //let slide = document.getElementById("slides-items");
   galery.innerHTML = "";
   allMedias.forEach((media) => {
     if (media.prop.photographerId == pageId) {    
       if (media instanceof Images){
         galery.innerHTML += createImage(media);
+        //slide.innerHTML += createSlideImage(media);
       }
       if (media instanceof Videos){
         galery.innerHTML += createVideo(media);
+        //slide.innerHTML += createSlideVideo(media);
       }
     }
   });
+}
+
+//Sort by 
+
+function sortByPrice () {
+  allMedias.sort(function(a, b){
+  return a.prop.price - b.prop.price;
+});
+  showGallery();
+console.log(allMedias)
+}
+
+function sortByPopularity () {
+  allMedias.sort(function(a, b){
+  return b.prop.likes - a.prop.likes;
+});
+  showGallery();
+console.log(allMedias)
+}
+
+function sortByDate () {
+  allMedias.sort(function(a, b){
+  let c = new Date(a.prop.date);
+  let d = new Date(b.prop.date);
+  return c - d; 
+});
+  showGallery();
+console.log(allMedias)
 }
 
 
