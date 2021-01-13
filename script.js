@@ -46,7 +46,7 @@ let checkboxValues = [ ];
 function showPhotographer(photograph){
     let article = `<article id="${photograph.id}" class="card">
     <a href="pages/photographe.html?id=${photograph.id}" aria-label="${photograph.name}">
-                    <img class="card__image" src="${photograph.chosenPicture}" alt="picture ${photograph.name}">
+                    <img class="card__image" src="${photograph.chosenPicture}" alt="">
                     <h3 class="card__name">${photograph.name}</h3>
                     </a>
                     <p class="card__location">${photograph.city}, ${photograph.country}</p>

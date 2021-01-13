@@ -284,9 +284,22 @@ margin-top: 11px;}
 }
 
 .galery__card--text{
-    font-size: 24px;
+    font-size: 18px;
     color: #901C1C;
     margin: 10px;
+}
+
+.number__likes
+{
+  height: 23px;
+  text-align: center;
+}
+
+.like
+{
+  height: 23px;
+  width: auto;
+  margin-left: 5px;
 }
 
 /*Slide

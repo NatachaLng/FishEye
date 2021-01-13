@@ -110,8 +110,10 @@ function createImage(images){
   <a href="" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${images.prop.alt}</h4></div>
-  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" aria-label="likes">${images.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn" onclick="like()"></i></p></div>
-  </div>`;
+  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" aria-label="likes">${images.prop.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" onclick="like()" alt="liker la photo ${images.prop.alt}">
+  </div>
+  </div>
+  </article>`;
     return templateImage;
 }
 
@@ -147,7 +149,7 @@ function createVideo(videos){
   </video> 
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${videos.prop.alt}</h4></div>
-  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" aria-label="likes">${videos.prop.likes}</div><i class="fas fa-heart galery__card--text like__btn" onclick="like()"></i></p></div>
+  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" aria-label="likes">${videos.prop.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" onclick="like()" alt="liker la photo ${videos.prop.alt}"></div>
   </div>
 </article>`;
     return templateVideo;
