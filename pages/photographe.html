@@ -12,22 +12,22 @@
         <a href="../index.html"><img class="header__logo" src="../images/logo.png" alt="Fisheye Home page"></a>
     </header>
     <main>
-        <section class="photograph__header" id="photograph__header">
+        <div class="photograph__header" id="photograph__header">
  
-        </section>
-        <section class='filter__section'>
+        </div>
+        <div class='filter__section'>
             <div>Trier par</div>
         <div class="dropdown">
-            <a class="dropbtn dropOne" href="javascript:void(0);" onclick="sortByPopularity()">Popularité</a><button onclick="filter()" class="dropbtn triger"><p class="triger__content">></p></button>
+            <a class="dropbtn dropOne" href="javascript:void(0);" onclick="sortByPopularity()">Popularité</a><button onclick="filter()" class="dropbtn triger"><span class="triger__content" onclick="filter()">></span></button>
             <div id="myDropdown" class="dropdown-content">
               <a href="javascript:void(0);"><p class="droptext" onclick="sortByDate()">Date</p></a>
               <a href="javascript:void(0);"><p class="droptext" onclick="sortByPrice()">Prix</p></a>
             </div>
           </div>
-        </section>
-        <section id="galery">
+        </div>
+        <div id="galery">
            
-        </section>
+        </div>
 
         <!--<section id="slides" aria-roledescription="Slideshow" aria-label="Carousel images">
 	
@@ -61,12 +61,11 @@
 
         <div class="bground">
             <div class="content" id="formular">
-                <h3 id="modal__title"></h3>
+                <h3 id="modal__title">Contact</h3>
               <span class="close" id="close"></span>
               <div class="modal-body">
                 <form
                   name="contact"
-                  action=""
                   method="POST"
                   onsubmit="return validate();"
                 >
@@ -80,7 +79,7 @@
                       name="first"
                       required 
                       minlength="2"
-                    /><span id="missFirst"></span><br>
+                    />
                     <div id="msgFirst" class="tooltip">Veuillez saisir un prénom valide</div>
                   </div>
                   <div class="formData">
@@ -91,7 +90,7 @@
                       name="last"
                       required 
                       minlength="2"
-                    /><span id="missLast"></span><br>
+                    />
                     <div id="msgLast" class="tooltip">Veuillez saisir un nom valide</div>
                   </div>
                   <div class="formData">
@@ -114,7 +113,6 @@
                       minlength="2"
                     /><span id="missFirst"></span><br>
                     <div id="msgMsg" class="tooltip">Veuillez saisir un message</div>
-                  </div>
                   <input
                     class="btn-submit button"
                     type="submit"
@@ -128,7 +126,8 @@
                 <div class="content">
                   <a href="#"><span class="close2" id="close2"></span></a>
                 <div class="iconValidMsg"><i class="far fa-check-circle"></i></div>
-                <p id="validationMsg">Merci, nous avons bien reçu votre demande. </br></br>Mimi va vous répondre dans les plus brefs délais.</p>
+                <p id="validationMsg">Merci, nous avons bien reçu votre demande.<br>Mimi va vous répondre dans les plus brefs délais.</p>
+              </div>
               </div>
               </div>
     </main>

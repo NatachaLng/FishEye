@@ -237,6 +237,7 @@ color: black;}
     text-align: center;
     transform: rotate(90deg);
     margin-top: -5px;
+    display: block;
   }
   
   .show {display: block;
@@ -595,6 +596,7 @@ svg, g {
     display: block;
     margin: 0 auto;
     margin-bottom: 10px;
+    margin-top: 10px;
     border-radius: 7px;
     font-size: 1rem;
     padding: 12px 82px;

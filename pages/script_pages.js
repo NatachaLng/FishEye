@@ -226,6 +226,7 @@ function templateModal(photograph){
 
 function titleModal() {
   let modalTitle = document.getElementById('modal__title');
+  modalTitle.innerHTML= "";
   photographs.forEach((photograph) => {
         let id = photograph.id;;
         if (id == pageId) {    
