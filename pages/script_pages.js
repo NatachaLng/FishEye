@@ -107,7 +107,7 @@ function mediasCreation (){
 
 function createImage(images){
   let templateImage = `<article class="galery__card">
-  <a href="" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
+  <a href="https://natachalng.github.io/NatachaLang_6_21122020/images/${images.prop.photographerId}/${images.prop.image}" alt="${images.prop.alt}" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${images.prop.alt}</h4></div>
   <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" aria-label="likes">${images.prop.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" onclick="like()" alt="liker la photo ${images.prop.alt}">
@@ -118,35 +118,11 @@ function createImage(images){
 }
 
 
-function createSlideImage(images){
-  `<div class="slide-item" role="group" aria-roledescription="Slide">
-              <figure>
-                  <img class="slide__medias" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}' width="1200" height="600">
-                <figcaption>
-                  ${images.prop.alt}
-                </figcaption>
-              </figure>
-            </div>`
-}
-
-function createSlideVideo(videos){
-  `<div class="slide-item" role="group" aria-roledescription="Slide">
-              <figure>
-                  <video>
-                      <source class="slide__medias" src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}'>
-                  </video> 
-                <figcaption>
-                  ${videos.prop.alt}
-                </figcaption>
-              </figure>
-            </div>`
-}
-
 function createVideo(videos){
   let templateVideo = `<article class="galery__card">
-  <video class="galery__card--video">
+  <a href ="https://natachalng.github.io/NatachaLang_6_21122020/images/${videos.prop.photographerId}/${videos.prop.video}" class="lightbox__triger"><video class="galery__card--video">
     <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}'>
-  </video> 
+  </video></a>
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${videos.prop.alt}</h4></div>
   <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" aria-label="likes">${videos.prop.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" onclick="like()" alt="liker la photo ${videos.prop.alt}"></div>
@@ -314,6 +290,8 @@ let formSent = document.getElementById("form__sent"); //validation message
 else{
   formSent.style.display="none"; //otherwise we don't 
 }*/
+
+
 
 
 fetch("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json").then (data => data.json().then (json => load(json)));
