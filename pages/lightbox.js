@@ -7,7 +7,7 @@
 
 class Lightbox{
     static init () {
-        const links = Array.from(document.querySelectorAll('.lightbox__triger'))
+        const links = Array.from(document.querySelectorAll('a[href$="jpg"'))
         const gallery = links.map(link => link.getAttribute("href"))
         .forEach(link => link.addEventListener('click', e =>
         {
@@ -23,11 +23,26 @@ class Lightbox{
      * @param {string[]} gallery
      */
     constructor(url, gallery) {
-      const element = this.buildDOM(url);
+      this.element = this.buildDOM(url);
+      this.loadImage(url);
       this.gallery = gallery;
       this.onKeyUp = this.onKeyUp.bind(this);
-      document.body.appendChild(element);
+      document.body.appendChild(this.element);
       document.addEventListener('keyup', this.onKeyUp);
+    }
+
+    loadImage (url){
+        const image = new Image();
+        const container = this.element.querySelector('lightbox__container');
+        const loader = document.createElement('div');
+        loader.classList.add('lightbox__loader');
+        container.appendChild('loader');
+        image.onload = function(){
+            container.removeChild(loader);
+            container.appendChild(image);
+        }
+        image.src = url;
+
     }
     /**
      * 

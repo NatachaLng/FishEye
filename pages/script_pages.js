@@ -20,7 +20,7 @@ function load(body){
 
 function populateHeader(photograph){
   let article = `<div class="flex__img"><img class="card__image" src="../${photograph.chosenPicture}" alt="picture ${photograph.name}"></div>
-  <div class="flex__contact"><button class="contact__btn" onclick="launchModal()" aria-label="contact me">Contactez moi</button></div>
+  <div class="flex__contact"><button class="contact__btn" onclick="launchModal()" aria-label="Formulaire de contact de ${photograph.name}">Contactez moi</button></div>
   <div class="flex__details"><h3 class="card__name">${photograph.name}</h3>
   <p class="card__location">${photograph.city}, ${photograph.country}</p>
   <p class="card__tagline">${photograph.tagline}</p>
@@ -107,10 +107,10 @@ function mediasCreation (){
 
 function createImage(images){
   let templateImage = `<article class="galery__card">
-  <a href="https://natachalng.github.io/NatachaLang_6_21122020/images/${images.prop.photographerId}/${images.prop.image}" alt="${images.prop.alt}" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
+  <a href="https://natachalng.github.io/NatachaLang_6_21122020/images/${images.prop.photographerId}/${images.prop.image}" alt="${images.prop.alt}" aria-label="afficher ${images.prop.alt}" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${images.prop.alt}</h4></div>
-  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" aria-label="likes">${images.prop.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" onclick="like()" alt="liker la photo ${images.prop.alt}">
+  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" aria-label="aimer la photo">${images.prop.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" onclick="like()" alt="liker la photo ${images.prop.alt}">
   </div>
   </div>
   </article>`;
@@ -120,12 +120,12 @@ function createImage(images){
 
 function createVideo(videos){
   let templateVideo = `<article class="galery__card">
-  <a href ="https://natachalng.github.io/NatachaLang_6_21122020/images/${videos.prop.photographerId}/${videos.prop.video}" class="lightbox__triger"><video class="galery__card--video">
+  <a href ="https://natachalng.github.io/NatachaLang_6_21122020/images/${videos.prop.photographerId}/${videos.prop.video}" aria-label="afficher ${videos.prop.alt}" class="lightbox__triger"><video class="galery__card--video">
     <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}'>
   </video></a>
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${videos.prop.alt}</h4></div>
-  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" aria-label="likes">${videos.prop.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" onclick="like()" alt="liker la photo ${videos.prop.alt}"></div>
+  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" aria-label="aimer la vidéo">${videos.prop.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" onclick="like()" alt="liker la photo ${videos.prop.alt}"></div>
   </div>
 </article>`;
     return templateVideo;
