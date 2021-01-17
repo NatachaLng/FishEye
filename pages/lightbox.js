@@ -1,5 +1,6 @@
 //Lightbox
 
+
 /**
  * @property {HTMLElement} element
  * @property {string[]} gallery
@@ -7,13 +8,13 @@
 
 class Lightbox{
     static init () {
-        const links = Array.from(document.querySelectorAll('a[href$="jpg"'))
-        const gallery = links.map(link => link.getAttribute("href"))
+        const links = Array.from(document.querySelectorAll("a [href$='.jpg'], a [href$='.mp4']"))
         .forEach(link => link.addEventListener('click', e =>
         {
           e.preventDefault();
           new Lightbox(e.currentTarget.getAttribute('href'), gallery)
         }))
+        const gallery = links.map(link => link.getAttribute("href"))
         console.log(links)
     }
 

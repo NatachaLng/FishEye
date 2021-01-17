@@ -1,5 +1,4 @@
-/*https://stackoverflow.com/questions/61207082/generate-pages-based-from-a-json-file
-*/
+
 
 var photographer;
 var photographs;
@@ -16,6 +15,7 @@ function load(body){
     mediasCreation();
     showGallery();
     titleModal();
+    Lightbox.init();
 }
 
 function populateHeader(photograph){
@@ -64,14 +64,18 @@ function filter() {
 
   //like function
 
-  const likeBtn = document.getElementsByClassName('like__btn');
-  for (var i = 0; i < likeBtn; i++) {
-    likeBtn[i].addEventListener('click', like(), false);
-  }
+  let likebtn = document.querySelectorAll(".like").forEach(btn => {
+    function getArticle(object) {
+      if (object.nodeName === "ARTICLE")
+              return object;
+          return getArticle(object.parentNode)
+    }
+  btn.addEventListener("click", like())
+  })
 
 
   function like(){
-  let numberLike = parseInt(document.querySelectorAll('.number__likes').value);
+  let numberLike = parseInt(document.querySelector('.number__likes').nodevalue) ;
   console.log(numberLike)
   let newLike = (numberLike + 1);
   console.log('click');
@@ -91,6 +95,14 @@ function Videos(prop) {
 }
 
 let allMedias = []; 
+let numberLikes = [];
+
+let totalLikes = 0;
+  for (var i=0; i < numberLikes.length;i++) {
+    totalLikes += numberLikes[i].value;
+   }
+
+console.log(totalLikes)
 
 function mediasCreation (){
   for (let i = 0; i < medias.length; i++) {
@@ -131,6 +143,8 @@ function createVideo(videos){
     return templateVideo;
 }
 
+
+
 function showGallery() {
   let galery = document.getElementById("galery");
   //let slide = document.getElementById("slides-items");
@@ -139,10 +153,12 @@ function showGallery() {
     if (media.prop.photographerId == pageId) {    
       if (media instanceof Images){
         galery.innerHTML += createImage(media);
+        numberLikes.push(media.prop.likes);
         //slide.innerHTML += createSlideImage(media);
       }
       if (media instanceof Videos){
         galery.innerHTML += createVideo(media);
+        numberLikes.push(media.prop.likes);
         //slide.innerHTML += createSlideVideo(media);
       }
     }
@@ -290,8 +306,6 @@ let formSent = document.getElementById("form__sent"); //validation message
 else{
   formSent.style.display="none"; //otherwise we don't 
 }*/
-
-
 
 
 fetch("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json").then (data => data.json().then (json => load(json)));
