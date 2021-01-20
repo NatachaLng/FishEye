@@ -14,6 +14,7 @@ class Lightbox{
           e.preventDefault();
           new Lightbox(e.currentTarget.getAttribute('href'), gallery)
         }))
+
         const gallery = links.map(link => link.getAttribute("href"))
         console.log(links)
     }

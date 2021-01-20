@@ -147,19 +147,16 @@ function createVideo(videos){
 
 function showGallery() {
   let galery = document.getElementById("galery");
-  //let slide = document.getElementById("slides-items");
   galery.innerHTML = "";
   allMedias.forEach((media) => {
     if (media.prop.photographerId == pageId) {    
       if (media instanceof Images){
         galery.innerHTML += createImage(media);
         numberLikes.push(media.prop.likes);
-        //slide.innerHTML += createSlideImage(media);
       }
       if (media instanceof Videos){
         galery.innerHTML += createVideo(media);
         numberLikes.push(media.prop.likes);
-        //slide.innerHTML += createSlideVideo(media);
       }
     }
   });
