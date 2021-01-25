@@ -8,15 +8,16 @@
 
 class Lightbox{
     static init () {
-        const links = Array.from(document.querySelectorAll("a [href$='.jpg'], a [href$='.mp4']"))
+      
+        const links = Array.from(document.querySelectorAll("a [href$='.jpg']"))
         .forEach(link => link.addEventListener('click', e =>
         {
           e.preventDefault();
-          new Lightbox(e.currentTarget.getAttribute('href'), gallery)
+          new Lightbox(e.currentTarget.getAttribute('href'), link)
         }))
-
-        const gallery = links.map(link => link.getAttribute("href"))
         console.log(links)
+        //const gallery = links.map(link => link.getAttribute("href"))
+        
     }
 
     /**
@@ -92,5 +93,3 @@ class Lightbox{
           </div>
         </div>
 */
-
-Lightbox.init();
