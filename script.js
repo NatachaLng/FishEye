@@ -37,7 +37,6 @@ function createTaglist (){
     }
 }
 
-const checkboxes = document.querySelectorAll("input[type='checkbox']");
 const cardContainer = document.getElementById("photographer");
 let checkboxValues = [ ]; 
 

@@ -34,6 +34,7 @@ function populateHeader(photograph){
               return article;
 }
 
+
 function showPhotographer(text) {
   let header = document.getElementById('photograph__header');
   header.innerHTML= " ";
@@ -78,6 +79,7 @@ function Videos(prop) {
 
 let allMedias = []; 
 let numberLikes = [];
+let photographerMedia = [];
 
 let totalLikes = 0;
   for (var i=0; i < numberLikes.length;i++) {
@@ -98,10 +100,18 @@ function mediasCreation (){
   }
 }
 
+function getSlideNumber (id){
+  for(var i = 0; i < photographerMedia.length; i++) {
+    if(photographerMedia[i].prop.id === id) {
+      return i+1;
+    }
+ }
+}
+
 
 function createImage(images){
   let templateImage = `<article class="galery__card" data-like="${images.prop.likes}" data-userlike=0 onload="Article()">
-  <a href="javascript:void(0);" alt="${images.prop.alt}" aria-label="afficher ${images.prop.alt}" class="lightbox__triger" onclick="openLightbox();toSlide(1)"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
+  <a href="javascript:void(0);" alt="${images.prop.alt}" aria-label="afficher ${images.prop.alt}" class="lightbox__triger" onclick="openLightbox();toSlide(getSlideNumber(${images.prop.id}))"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${images.prop.alt}</h4></div>
   <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" aria-label="aimer la photo">${images.prop.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" alt="liker la photo ${images.prop.alt}">
@@ -121,8 +131,8 @@ function createSlideImage(images){
 }
 
 function createVideo(videos){
-  let templateVideo = `<article class="galery__card" data-like="${videos.prop.likes}" data-userlike=0 onload="Article()" onclick="openLightbox();toSlide(n)">
-  <a href ="javascript:void(0);" aria-label="afficher ${videos.prop.alt}" class="lightbox__triger"><video class="galery__card--video">
+  let templateVideo = `<article class="galery__card" data-like="${videos.prop.likes}" data-userlike=0 onload="Article()">
+  <a href ="javascript:void(0);" aria-label="afficher ${videos.prop.alt}" class="lightbox__triger"><video class="galery__card--video" onclick="openLightbox();toSlide(getSlideNumber(${videos.prop.id}))">
     <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}'>
   </video></a>
   <div class="galery__card--details">
@@ -135,14 +145,16 @@ function createVideo(videos){
 
 function createSlideVideo(videos){
   let templateSlideVideo = `
-  <div class="slide" controls="true">
-  <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}' class="image-slide">
+  <div class="slide">
+  <video controls="true" class="image-slide">
+  <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}' class="image-slide"><video>
   <h4 class="galery__card--title galery__card--text slide__title">${videos.prop.alt}</h4>
   </div>`
   return templateSlideVideo
 }
 
 
+console.log(photographerMedia)
 
 function showGallery() {
   let galery = document.getElementById("galery");
@@ -154,11 +166,12 @@ function showGallery() {
         galery.innerHTML += createImage(media);
         slider.innerHTML += createSlideImage(media);
         numberLikes.push(media.prop.likes);
+        photographerMedia.push(media)
       }
       if (media instanceof Videos){
         galery.innerHTML += createVideo(media);
         slider.innerHTML += createSlideVideo(media);
-        numberLikes.push(media.prop.likes);
+        photographerMedia.push(media);
       }
     }
   });
@@ -166,12 +179,11 @@ function showGallery() {
 
 //Sort by 
 
-function sortByPrice () {
+function sortByPrice (media) {
   allMedias.sort(function(a, b){
   return a.prop.price - b.prop.price;
 });
   showGallery();
-console.log(allMedias)
 }
 
 function sortByPopularity () {
