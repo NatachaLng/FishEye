@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>Fisheye - Photographe 00</title>
+	<title>Fisheye - Photographe</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="stylesheets/style_pages.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/lightbox.css">
-    <script src="lightbox.js" ></script>
-
 </head>
 <body>
     <header>
@@ -31,8 +29,14 @@
            
         </div>
 
-        
-        
+        <div id="Lightbox" class="modal">
+          <span class="close pointer" onclick="closeLightbox()">&times;</span>
+          <div class="modal-content">
+            <a class="previous" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+          </div>
+        </div>
+
 
         <div class="bground">
             <div class="content" id="formular">
@@ -107,5 +111,5 @@
               </div>
     </main>
     <script src="script_pages.js" ></script>
-
+    <script src="lightbox.js" ></script>
 </body>

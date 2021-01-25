@@ -16,8 +16,9 @@ function load(body){
     showGallery();
     titleModal();
     Article();
-    Lightbox.init();
 }
+
+// header of the page with photograph's description
 
 function populateHeader(photograph){
   let article = `<div class="flex__img"><img class="card__image" src="../${photograph.chosenPicture}" alt="picture ${photograph.name}"></div>
@@ -44,6 +45,8 @@ function showPhotographer(text) {
       }
   });
 }
+
+//filter function
 
 function filter() {
     document.getElementById("myDropdown").classList.toggle("show");
@@ -97,8 +100,8 @@ function mediasCreation (){
 
 
 function createImage(images){
-  let templateImage = `<article class="galery__card" data-like="${images.prop.likes}" data-userlike=0>
-  <a href="https://natachalng.github.io/NatachaLang_6_21122020/images/${images.prop.photographerId}/${images.prop.image}" alt="${images.prop.alt}" aria-label="afficher ${images.prop.alt}" class="lightbox__triger"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
+  let templateImage = `<article class="galery__card" data-like="${images.prop.likes}" data-userlike=0 onload="Article()">
+  <a href="javascript:void(0);" alt="${images.prop.alt}" aria-label="afficher ${images.prop.alt}" class="lightbox__triger" onclick="openLightbox();toSlide(1)"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
   <div class="galery__card--details">
   <div><h4 class="galery__card--title galery__card--text">${images.prop.alt}</h4></div>
   <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" aria-label="aimer la photo">${images.prop.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" alt="liker la photo ${images.prop.alt}">
@@ -108,10 +111,18 @@ function createImage(images){
     return templateImage;
 }
 
+function createSlideImage(images){
+  let templateSlideImage = `
+  <div class="slide">
+  <img class="image-slide" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'>
+  <h4 class="galery__card--title galery__card--text slide__title">${images.prop.alt}</h4>
+  </div>`
+  return templateSlideImage
+}
 
 function createVideo(videos){
-  let templateVideo = `<article class="galery__card" data-like="${videos.prop.likes}" data-userlike=0>
-  <a href ="https://natachalng.github.io/NatachaLang_6_21122020/images/${videos.prop.photographerId}/${videos.prop.video}" aria-label="afficher ${videos.prop.alt}" class="lightbox__triger"><video class="galery__card--video">
+  let templateVideo = `<article class="galery__card" data-like="${videos.prop.likes}" data-userlike=0 onload="Article()" onclick="openLightbox();toSlide(n)">
+  <a href ="javascript:void(0);" aria-label="afficher ${videos.prop.alt}" class="lightbox__triger"><video class="galery__card--video">
     <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}'>
   </video></a>
   <div class="galery__card--details">
@@ -122,19 +133,31 @@ function createVideo(videos){
     return templateVideo;
 }
 
+function createSlideVideo(videos){
+  let templateSlideVideo = `
+  <div class="slide" controls="true">
+  <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}' class="image-slide">
+  <h4 class="galery__card--title galery__card--text slide__title">${videos.prop.alt}</h4>
+  </div>`
+  return templateSlideVideo
+}
+
 
 
 function showGallery() {
   let galery = document.getElementById("galery");
+  let slider = document.querySelector(".modal-content");
   galery.innerHTML = "";
   allMedias.forEach((media) => {
     if (media.prop.photographerId == pageId) {    
       if (media instanceof Images){
         galery.innerHTML += createImage(media);
+        slider.innerHTML += createSlideImage(media);
         numberLikes.push(media.prop.likes);
       }
       if (media instanceof Videos){
         galery.innerHTML += createVideo(media);
+        slider.innerHTML += createSlideVideo(media);
         numberLikes.push(media.prop.likes);
       }
     }

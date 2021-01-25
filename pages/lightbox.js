@@ -1,95 +1,53 @@
-//Lightbox
 
+// Initialize here and run showSlide() to give your lightbox a default state.
 
-/**
- * @property {HTMLElement} element
- * @property {string[]} gallery
- */
+let slideIndex = 1;
+showSlide(slideIndex);
 
-class Lightbox{
-    static init () {
-      
-        const links = Array.from(document.querySelectorAll("a [href$='.jpg']"))
-        .forEach(link => link.addEventListener('click', e =>
-        {
-          e.preventDefault();
-          new Lightbox(e.currentTarget.getAttribute('href'), link)
-        }))
-        console.log(links)
-        //const gallery = links.map(link => link.getAttribute("href"))
-        
-    }
+// You are providing the functionality for your clickable content, which is 
+// your previews, dots, controls and the close button.
 
-    /**
-     * 
-     * @param {string} url 
-     * @param {string[]} gallery
-     */
-    constructor(url, gallery) {
-      this.element = this.buildDOM(url);
-      this.loadImage(url);
-      this.gallery = gallery;
-      this.onKeyUp = this.onKeyUp.bind(this);
-      document.body.appendChild(this.element);
-      document.addEventListener('keyup', this.onKeyUp);
-    }
-
-    loadImage (url){
-        const image = new Image();
-        const container = this.element.querySelector('lightbox__container');
-        const loader = document.createElement('div');
-        loader.classList.add('lightbox__loader');
-        container.appendChild('loader');
-        image.onload = function(){
-            container.removeChild(loader);
-            container.appendChild(image);
-        }
-        image.src = url;
-
-    }
-    /**
-     * 
-     * @param {string} url
-     * @return {HTMLElement} 
-     */
-
-     close (e){
-        e.preventDefault();
-        this.element.classList.add('fadeOut');
-        window.setTimeout(() => {
-            this.element.parentElement.removeChild(this.element)
-        },500);
-        document.removeEventListener('keyup', this.onKeyUp)
-     }
-
-     onKeyUp (e){
-         if (e.key == 'escape'){
-             this.close(e);
-         }
-     }
-
-    buildDOM (url){
-        const dom=document.createElement('div');
-        dom.classList.add('lightbox');
-        dom.innerHTML = `<button class="lightbox__close">Fermer</button>
-        <button class="lightbox__next">Suivant</button>
-        <button class="lightbox__prev">Précédent</button>
-        <div class="lightbox__container">
-          <img class="lightbox__img" src="../images/243/Event_BenevidesWedding.jpg" alt="">
-          <h2>Wedding</h2>
-        </div>`
-        dom.querySelector('lightbox__close').addEventListener('click', this.close.bind(this))
-        return dom
-    }
+function openLightbox() {
+  document.getElementById('Lightbox').style.display = 'block';
 }
 
-/*<div class="lightbox">
-          <button class="lightbox__close">Fermer</button>
-          <button class="lightbox__next">Suivant</button>
-          <button class="lightbox__prev">Précédent</button>
-          <div class="lightbox__container">
-            <img class="lightbox__img" src="../images/243/Event_BenevidesWedding.jpg" alt="">
-            <h2>Wedding</h2>
-          </div>
-        </div>
-*/
+function closeLightbox() {
+  document.getElementById('Lightbox').style.display = 'none';
+};
+
+// Note that you are assigning new values here to our slidIndex.
+
+function changeSlide(n) {
+  showSlide(slideIndex += n);
+};
+
+function toSlide(n) {
+  showSlide(slideIndex = n);
+};
+
+// This is your logic for the light box. It will decide which slide to show 
+// and which dot is active.
+
+function showSlide(n) {
+  const slides = document.getElementsByClassName('slide');
+  let modalPreviews = document.getElementsByClassName('modal-preview');
+
+  if (n > slides.length) {
+    slideIndex = 1;	
+  };
+  
+  if (n < 1) {
+    slideIndex = slides.length;
+  };
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  };
+  
+  for (let i = 0; i < modalPreviews.length; i++) {
+    modalPreviews[i].className = modalPreviews[i].className.replace(' active', '');
+  };
+  
+  slides[slideIndex - 1].style.display = 'block';
+  modalPreviews[slideIndex - 1].className += ' active';
+};
