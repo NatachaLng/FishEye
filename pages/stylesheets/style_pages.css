@@ -332,11 +332,7 @@ margin-top: 11px;}
 
 .bottom__heart{
   height: 30px;
-  margin-top: 5px;
-}
-
-svg{
-  margin-top: 5px;
+  margin-left: -70px;
 }
 
 /*contact form*/

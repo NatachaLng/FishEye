@@ -129,7 +129,7 @@ function createSlideVideo(videos){
 function createBottomPages (photograph){
   let templateBottomPages = `
   <div class="bottom__flex">
-<div class="bottom__likes">${numberLikes}<span class="bottom__heart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg></span></div>
+<div class="bottom__likes">${numberLikes}</div><span class="bottom__heart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg></span>
 <div class="bottom__price">${photograph.price}€/jour</div>
 </div>
   `
@@ -227,12 +227,14 @@ function sortByDate () {
     let userLike = article.dataset.userlike;
       if (userLike<1) {
         userLike++;
+        numberLikes++;
         article.setAttribute("data-userlike", 1);
         console.log(userLike);
         article.dataset.like = parseInt(article.dataset.like) + 1;
         let nombreLike = article.dataset.like;
       article.querySelector(".number__likes").innerHTML = nombreLike;
       article.setAttribute("data-like", (nombreLike++))
+      document.querySelector(".bottom__likes").innerHTML = numberLikes;
       }
     }
 
