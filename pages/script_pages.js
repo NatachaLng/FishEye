@@ -100,13 +100,6 @@ function mediasCreation (){
   }
 }
 
-function getSlideNumber (id){
-  for(var i = 0; i < photographerMedia.length; i++) {
-    if(photographerMedia[i].prop.id === id) {
-      return i+1;
-    }
- }
-}
 
 
 function createImage(images){
@@ -155,8 +148,9 @@ function createSlideVideo(videos){
 
 function showGallery() {
   let galery = document.getElementById("galery");
-  let slider = document.querySelector(".modal-content");
+  let slider = document.querySelector(".slider-content");
   galery.innerHTML = "";
+  slider.innerHTML = "";
   photographerMedia = [];
   console.log(photographerMedia);
   allMedias.forEach((media) => {
@@ -175,6 +169,14 @@ function showGallery() {
     }
   });
   console.log(photographerMedia)
+}
+
+function getSlideNumber (id){
+  for(var i = 0; i < photographerMedia.length; i++) {
+    if(photographerMedia[i].prop.id === id) {
+      return i+1;
+    }
+ }
 }
 
 //Sort by 
