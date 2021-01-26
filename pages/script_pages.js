@@ -153,28 +153,28 @@ function createSlideVideo(videos){
   return templateSlideVideo
 }
 
-
-console.log(photographerMedia)
-
 function showGallery() {
   let galery = document.getElementById("galery");
   let slider = document.querySelector(".modal-content");
   galery.innerHTML = "";
+  photographerMedia = [];
+  console.log(photographerMedia);
   allMedias.forEach((media) => {
     if (media.prop.photographerId == pageId) {    
       if (media instanceof Images){
+        photographerMedia.push(media)
         galery.innerHTML += createImage(media);
         slider.innerHTML += createSlideImage(media);
         numberLikes.push(media.prop.likes);
-        photographerMedia.push(media)
       }
       if (media instanceof Videos){
+        photographerMedia.push(media);
         galery.innerHTML += createVideo(media);
         slider.innerHTML += createSlideVideo(media);
-        photographerMedia.push(media);
       }
     }
   });
+  console.log(photographerMedia)
 }
 
 //Sort by 
@@ -184,6 +184,7 @@ function sortByPrice (media) {
   return a.prop.price - b.prop.price;
 });
   showGallery();
+  Article();
 }
 
 function sortByPopularity () {
@@ -191,7 +192,7 @@ function sortByPopularity () {
   return b.prop.likes - a.prop.likes;
 });
   showGallery();
-console.log(allMedias)
+  Article();
 }
 
 function sortByDate () {
@@ -201,7 +202,7 @@ function sortByDate () {
   return c - d; 
 });
   showGallery();
-console.log(allMedias)
+  Article();
 }
 
   //like function
