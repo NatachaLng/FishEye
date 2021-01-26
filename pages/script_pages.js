@@ -11,28 +11,17 @@ console.log(pageId)
 function load(body){
     photographs=body['photographers'];
     medias=body['media'];
-    showPhotographer();
     mediasCreation();
     showGallery();
     titleModal();
     Article();
+    showPhotographer();
 }
 
-// header of the page with photograph's description
-
-function populateHeader(photograph){
-  let article = `<div class="flex__img"><img class="card__image" src="../${photograph.chosenPicture}" alt="picture ${photograph.name}"></div>
-  <div class="flex__contact"><button class="contact__btn" onclick="launchModal()" aria-label="Formulaire de contact de ${photograph.name}">Contactez moi</button></div>
-  <div class="flex__details"><h3 class="card__name">${photograph.name}</h3>
-  <p class="card__location">${photograph.city}, ${photograph.country}</p>
-  <p class="card__tagline">${photograph.tagline}</p>
-  <p class="card__price">${photograph.price}€/jour</p>
-  <ul class="card__taglist" id="taglist_${photograph.id}">
-  ${photograph.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
-  </ul>
-  </div>`;
-              return article;
-}
+let photographerMedia = [];
+let allMedias = []; 
+let arrayLikes = [];
+let numberLikes
 
 
 function showPhotographer(text) {
@@ -43,6 +32,8 @@ function showPhotographer(text) {
         let isMatch = (id == pageId);
         if (isMatch) {    
               document.getElementById('photograph__header').innerHTML += populateHeader(photograph);
+              let bottomPage = document.querySelector('.bottom__page');
+              bottomPage.innerHTML += createBottomPages(photograph);
       }
   });
 }
@@ -76,17 +67,6 @@ function Images(prop) {
 function Videos(prop) {
   this.prop = prop;
 }
-
-let allMedias = []; 
-let numberLikes = [];
-let photographerMedia = [];
-
-let totalLikes = 0;
-  for (var i=0; i < numberLikes.length;i++) {
-    totalLikes += numberLikes[i].value;
-   }
-
-console.log(totalLikes)
 
 function mediasCreation (){
   for (let i = 0; i < medias.length; i++) {
@@ -146,6 +126,16 @@ function createSlideVideo(videos){
   return templateSlideVideo
 }
 
+function createBottomPages (photograph){
+  let templateBottomPages = `
+  <div class="bottom__flex">
+<div class="bottom__likes">${numberLikes}<span class="bottom__heart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg></span></div>
+<div class="bottom__price">${photograph.price}€/jour</div>
+</div>
+  `
+  return templateBottomPages
+}
+
 function showGallery() {
   let galery = document.getElementById("galery");
   let slider = document.querySelector(".slider-content");
@@ -159,17 +149,21 @@ function showGallery() {
         photographerMedia.push(media)
         galery.innerHTML += createImage(media);
         slider.innerHTML += createSlideImage(media);
-        numberLikes.push(media.prop.likes);
+        arrayLikes.push(media.prop.likes);
       }
       if (media instanceof Videos){
         photographerMedia.push(media);
         galery.innerHTML += createVideo(media);
         slider.innerHTML += createSlideVideo(media);
+        arrayLikes.push(media.prop.likes);
       }
     }
   });
-  console.log(photographerMedia)
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  numberLikes = arrayLikes.reduce(reducer);
 }
+
+
 
 function getSlideNumber (id){
   for(var i = 0; i < photographerMedia.length; i++) {
@@ -177,6 +171,24 @@ function getSlideNumber (id){
       return i+1;
     }
  }
+}
+
+// header of the page with photograph's description
+console.log(photographerMedia)
+console.log(photographerMedia.length)
+function populateHeader(photograph){
+  let article = `<div class="flex__img"><img class="card__image" src="../${photograph.chosenPicture}" alt="picture ${photograph.name}"></div>
+  <div class="flex__contact"><button class="contact__btn" onclick="launchModal()" aria-label="Formulaire de contact de ${photograph.name}">Contactez moi</button></div>
+  <div class="flex__details"><h3 class="card__name">${photograph.name}</h3>
+  <p class="card__location">${photograph.city}, ${photograph.country}</p>
+  <p class="card__tagline">${photograph.tagline}</p>
+  <p class="card__price">${photograph.price}€/jour</p>
+  <ul class="card__taglist" id="taglist_${photograph.id}">
+  ${photograph.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
+  </ul>
+  <div class="card__number">Nombre total de clichés : </div>
+  </div>`;
+              return article;
 }
 
 //Sort by 
