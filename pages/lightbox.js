@@ -15,6 +15,24 @@ function closeLightbox() {
   document.getElementById('Lightbox').style.display = 'none';
 };
 
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '27') {
+      closeLightbox();
+    }
+    else if (e.keyCode == '37') {
+      changeSlide(-1);
+    }
+    else if (e.keyCode == '39') {
+      changeSlide(1)
+    }
+
+}
+
 // Note that you are assigning new values here to our slidIndex.
 
 function changeSlide(n) {
