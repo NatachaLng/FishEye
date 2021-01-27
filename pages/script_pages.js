@@ -142,6 +142,7 @@ function showGallery() {
   galery.innerHTML = "";
   slider.innerHTML = "";
   photographerMedia = [];
+  arrayLikes = [];
   console.log(photographerMedia);
   allMedias.forEach((media) => {
     if (media.prop.photographerId == pageId) {    
