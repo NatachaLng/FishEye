@@ -1,15 +1,12 @@
 //modal 
 const modalbg = document.querySelector(".bground");
 const formData = document.querySelectorAll(".formData");
-const closeBtn = document.querySelector(".close");
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal event
-closeBtn.addEventListener("click", closeModal);
 
 // close modal form
 function closeModal() {

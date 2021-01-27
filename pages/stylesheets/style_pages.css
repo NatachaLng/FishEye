@@ -25,6 +25,7 @@ left: 100px;
 top: 42px;
 }
 
+
 .photograph__header
 {
     width: 90%;
@@ -225,10 +226,10 @@ color: black;}
 
   .triger{
       height: 53px;
-      width: 54px;
+      width: 50px;
       position: absolute;
     font-size: 24px;
-    margin-top: -16px;
+    margin-top: -15px;
   }
 
   .triger__content
@@ -242,7 +243,7 @@ color: black;}
 
   
   .show {display: block;
-margin-top: 11px;}
+margin-top: 0;}
 
 /*Galery section*/
 
@@ -591,10 +592,10 @@ margin-top: 11px;}
     .contact__btn
     {
       position: fixed;
-      z-index: 1000;
-      left: auto;
+      z-index: 3;
+      left: 25%;
       bottom: 15px;
-      width: 170px;
+      width: 50%;
       height: 35px;
     }
 
@@ -611,5 +612,9 @@ margin-top: 11px;}
     .card__taglist
     {
       justify-content: start;
+    }
+
+    .bottom__page{
+      display: none;
     }
   }

@@ -9,6 +9,11 @@ function load(body){
     createTaglist();
 }
 
+window.addEventListener('scroll', function() {
+if(window.pageYOffset > 20) {
+    document.getElementsByClassName("scroll").style.display = 'block';
+    }
+});
 
 let allTag = [];
 function addTags(photographTag){

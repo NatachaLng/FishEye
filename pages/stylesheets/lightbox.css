@@ -5,7 +5,7 @@
    .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 4;
     left: 0;
     top: 0;
     width: 100%;
@@ -80,7 +80,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   } 
   
-  .close {
+  .close__lightbox {
     color: #901C1C;
     position: absolute;
     z-index: 200;
@@ -94,8 +94,8 @@
       margin-left: 120px;
   }
   
-  .close:hover,
-  .close:focus {
+  .close__lightbox:hover,
+  .close__lightbox:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -126,4 +126,20 @@
   .previous:hover,
   .next:hover {
     color: black;
+  }
+
+  @media only screen and (max-width: 450px)
+  {
+    .previous,
+    .next {
+      font-size: 16px;
+    }
+
+    .image-slide{
+      margin-left: 13%;
+    }
+
+    .slide-title{
+      margin-left: 13%;
+    }
   }

@@ -11,17 +11,18 @@
     <header>
         <a href="../index.html"><img class="header__logo" src="../images/logo.png" alt="Fisheye Home page" aria-label="retour page d'accueil"></a>
     </header>
-    <main>
+    <main id="main">
+
         <div class="photograph__header" id="photograph__header">
  
         </div>
         <div class='filter__section'>
             <div>Trier par</div>
         <div class="dropdown">
-            <a class="dropbtn dropOne" href="javascript:void(0);" onclick="sortByPopularity()" aria-label="tri des médias par popularité">Popularité</a><button onclick="filter()" class="dropbtn triger"><span class="triger__content" onclick="filter()" aria-label="afficher la liste des tris">></span></button>
+            <a class="dropbtn dropOne" href="javascript:void(0);" onclick="sortByPopularity()" aria-label="tri des médias par popularité" for='popularité'><label id='popularité'>Popularité</label></a><button onclick="filter()" class="dropbtn triger" role='button' aria-haspopup="lisbox" aria-expanded=""><span class="triger__content" onclick="filter()" aria-label="afficher la liste des tris">></span></button>
             <div id="myDropdown" class="dropdown-content">
-              <a href="javascript:void(0);" aria-label="tri des médias par date" onclick="sortByDate()"><p class="droptext" >Date</p></a>
-              <a href="javascript:void(0);" aria-label="tri des médias par prix" onclick="sortByPrice()"><p class="droptext">Prix</p></a>
+              <a href="javascript:void(0);" aria-label="tri des médias par date" role="listbox" onclick="sortByDate()" for='date'><label class="droptext" id="date">Date</label></a>
+              <a href="javascript:void(0);" aria-label="tri des médias par prix" onclick="sortByPrice()" for='prix'><label class="droptext" id="prix">Prix</label></a>
             </div>
           </div>
         </div>
@@ -30,7 +31,7 @@
         </div>
 
         <div id="Lightbox" class="modal">
-          <span class="close pointer" onclick="closeLightbox()">&times;</span>
+          <span class="close__lightbox pointer" onclick="closeLightbox()">&times;</span>
           <div class="modal-content">
             <div class="slider-content"></div>
             <a class="previous" onclick="changeSlide(-1)">&#10094;</a>
@@ -46,7 +47,7 @@
         <div class="bground">
             <div class="content" id="formular">
                 <h3 id="modal__title">Contact</h3>
-              <span class="close" id="close"></span>
+              <span class="close" id="close" onclick="closeModal()"></span>
               <div class="modal-body">
                 <form
                   name="contact"

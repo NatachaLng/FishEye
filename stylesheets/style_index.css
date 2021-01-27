@@ -50,6 +50,22 @@ top: 42px;
 }
 /*MAIN*/
 
+.scroll
+{
+    display: none;
+  position: fixed;
+  z-index: 2;
+  top: 50px;
+  left: 45%;
+  width: 10%;
+  font-size: 18px;
+  line-height: 15px;
+  text-align: center;
+  background-color: #D3573C;
+  color: #000000;
+  border-radius: 5px;
+}
+
 h1
 {
     width: 25%;
