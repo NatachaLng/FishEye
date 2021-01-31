@@ -43,7 +43,6 @@ function createTaglist (){
 }
 
 const cardContainer = document.getElementById("photographer");
-let checkboxValues = [ ]; 
 
 
 //template of the photographer
@@ -65,11 +64,10 @@ function showPhotographer(photograph){
 
 function filterCards(text) {
     text = text.substring(1, text.length);
-    console.log("check :" + text);
     cardContainer.innerHTML = "";
     photographs.forEach((photograph) => {
           let tags = photograph.tags;
-          let isMatch = (tags.indexOf(text) != -1) || (text === 'tous');
+          let isMatch = (tags.indexOf(text) != -1);
           if (isMatch) {    
                 document.getElementById('photographer').innerHTML += showPhotographer(photograph);
         }

@@ -61,6 +61,17 @@ function filter() {
 
 //Galery 
 
+class MediaFactory{
+  static build(media){
+    switch (media){
+      case "VIDEO":
+      return Videos();
+      case "IMAGES":
+      return Images();
+    }
+  }
+}
+
 function Images(prop) {
   this.prop = prop;
 }
@@ -225,7 +236,7 @@ function sortByDate () {
 
   function like(article) {
     let userLike = article.dataset.userlike;
-      if (userLike<1) {
+      if (userLike==0) {
         userLike++;
         userLikes++;
         article.setAttribute("data-userlike", 1);
@@ -233,6 +244,16 @@ function sortByDate () {
         let nombreLike = article.dataset.like;
       article.querySelector(".number__likes").innerHTML = nombreLike;
       article.setAttribute("data-like", (nombreLike++))
+      document.querySelector(".bottom__likes").innerHTML = numberLikes + userLikes;
+      }
+      else{
+        userLike--;
+        userLikes--;
+        article.setAttribute("data-userlike", 0);
+        article.dataset.like = parseInt(article.dataset.like) - 1;
+        nombreLike = article.dataset.like;
+      article.querySelector(".number__likes").innerHTML = nombreLike;
+      article.setAttribute("data-like", (nombreLike--))
       document.querySelector(".bottom__likes").innerHTML = numberLikes + userLikes;
       }
     }
