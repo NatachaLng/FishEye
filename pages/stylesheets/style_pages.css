@@ -252,6 +252,7 @@ margin-top: 0;}
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin-bottom: 60px;
 }
 
 .galery__card

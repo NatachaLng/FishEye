@@ -34,6 +34,7 @@ function createTaglist (){
         let listTags = document.createElement("a");
         listTags.href = '#';
         listTags.className = 'header__filter';
+        listTags.setAttribute("data-clic", 0);
         listTags.setAttribute("aria-label", "filtre par tag " + allTag[k])
         listTags.textContent = '#' + allTag[k];
         listTags.addEventListener("click", () => {filterCards(listTags.innerHTML)});
@@ -62,6 +63,8 @@ function showPhotographer(photograph){
                 return article;
 }
 
+
+
 function filterCards(text) {
     text = text.substring(1, text.length);
     cardContainer.innerHTML = "";
@@ -72,6 +75,7 @@ function filterCards(text) {
                 document.getElementById('photographer').innerHTML += showPhotographer(photograph);
         }
     });
+   
 }
 
 // creation of the cards

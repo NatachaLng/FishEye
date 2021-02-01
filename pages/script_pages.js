@@ -61,33 +61,37 @@ function filter() {
 
 //Galery 
 
-class MediaFactory{
-  static build(media){
-    switch (media){
-      case "VIDEO":
-      return Videos();
-      case "IMAGES":
-      return Images();
-    }
+class images{
+  constructor(prop) {
+    this.prop = prop;
   }
 }
 
-function Images(prop) {
-  this.prop = prop;
+class videos{
+  constructor(prop) {
+    this.prop = prop;
+  }
 }
 
-function Videos(prop) {
-  this.prop = prop;
+class MediaFactory{
+  constructor(type, prop) {
+    if (type == image){
+      return new images
+    }
+  if (type == video){
+      return new videos
+  }
+}
 }
 
 function mediasCreation (){
   for (let i = 0; i < medias.length; i++) {
   media = medias[i];
     if (media.image){
-      allMedias.push(new Images(media));
+      allMedias.push(new images(media));
     }
     if (media.video){
-      allMedias.push(new Videos(media));
+      allMedias.push(new videos(media));
     }
   }
 }
@@ -158,13 +162,13 @@ function showGallery() {
   console.log(photographerMedia);
   allMedias.forEach((media) => {
     if (media.prop.photographerId == pageId) {    
-      if (media instanceof Images){
+      if (media instanceof images){
         photographerMedia.push(media)
         galery.innerHTML += createImage(media);
         slider.innerHTML += createSlideImage(media);
         arrayLikes.push(media.prop.likes);
       }
-      if (media instanceof Videos){
+      if (media instanceof videos){
         photographerMedia.push(media);
         galery.innerHTML += createVideo(media);
         slider.innerHTML += createSlideVideo(media);

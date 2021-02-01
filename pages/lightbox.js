@@ -33,7 +33,6 @@ function checkKey(e) {
 
 // Note that you are assigning new values here to our slidIndex.
 
-<<<<<<< Updated upstream
 class Lightbox {
 	constructor(slides) {
     slides = document.getElementsByClassName('slide');
@@ -52,7 +51,7 @@ class Lightbox {
   }
 
   toSlide(n) {
-    showSlide(slideIndex = n);
+    showSlide(n);
   }
   
   showSlide(n) {
@@ -75,31 +74,3 @@ class Lightbox {
 
 // This is your logic for the light box. It will decide which slide to show 
 // and which dot is active.
-=======
-function changeSlide(n) {
-  slideIndex = slideIndex + n
-  showSlide(n);
-};
-
-function toSlide(n) {
-  showSlide(n);
-};
-
-// This is your logic for the light box. It will decide which slide to show 
-
-function showSlide(n) {
-  const slides = document.getElementsByClassName('slide');
-  if (n > slides.length) {
-    slideIndex = 1;	
-  };
-  
-  if (n < 1) {
-    slideIndex = slides.length;
-  };
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  };
-  console.log(slideIndex, slides);
-  slides[slideIndex - 1].style.display = 'block';
-};
->>>>>>> Stashed changes
