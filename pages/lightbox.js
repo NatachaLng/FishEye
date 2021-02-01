@@ -14,12 +14,11 @@ function closeLightbox() {
   document.getElementById('Lightbox').style.display = 'none';
 };
 
-document.onkeydown = checkKey;
+document.addEventListener("keydown", checkKey);
 
 function checkKey(e) {
-
     e = e || window.event;
-
+    console.log(e);
     if (e.keyCode == '27') {
       closeLightbox();
     }
@@ -34,6 +33,7 @@ function checkKey(e) {
 
 // Note that you are assigning new values here to our slidIndex.
 
+<<<<<<< Updated upstream
 class Lightbox {
 	constructor(slides) {
     slides = document.getElementsByClassName('slide');
@@ -75,3 +75,31 @@ class Lightbox {
 
 // This is your logic for the light box. It will decide which slide to show 
 // and which dot is active.
+=======
+function changeSlide(n) {
+  slideIndex = slideIndex + n
+  showSlide(n);
+};
+
+function toSlide(n) {
+  showSlide(n);
+};
+
+// This is your logic for the light box. It will decide which slide to show 
+
+function showSlide(n) {
+  const slides = document.getElementsByClassName('slide');
+  if (n > slides.length) {
+    slideIndex = 1;	
+  };
+  
+  if (n < 1) {
+    slideIndex = slides.length;
+  };
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  };
+  console.log(slideIndex, slides);
+  slides[slideIndex - 1].style.display = 'block';
+};
+>>>>>>> Stashed changes
