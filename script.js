@@ -43,6 +43,8 @@ function createTaglist (){
     }
 }
 
+
+
 const cardContainer = document.getElementById("photographer");
 
 

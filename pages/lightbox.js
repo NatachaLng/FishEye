@@ -18,15 +18,14 @@ document.addEventListener("keydown", checkKey);
 
 function checkKey(e) {
     e = e || window.event;
-    console.log(e);
     if (e.keyCode == '27') {
       closeLightbox();
     }
     else if (e.keyCode == '37') {
-      changeSlide(-1);
+      goPrevious();
     }
     else if (e.keyCode == '39') {
-      changeSlide(1)
+      goNext();
     }
 
 }
@@ -46,28 +45,28 @@ class Lightbox {
   }
   
   goPrevious() {
-    	this.slideIndex -= 1;
-      this.showSlide();
+    this.slideIndex -= 1;
+    this.showSlide();
   }
-
   toSlide(n) {
-    showSlide(n);
-  }
-  
+    this.showSlide(slideIndex = n);
+}
   showSlide(n) {
-    if (n > slides.length) {
-      slideIndex = 1;	
-    };
-    
-    if (n < 1) {
-      slideIndex = slides.length;
-    };
+  if (n > slides.length) {
+    slideIndex = 1;	
+  };
   
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    };
-    slides[slideIndex - 1].style.display = 'block';
-  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  };
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  };
+  slides[slideIndex - 1].style.display = 'block';
+}
+
+
 }
 
 
