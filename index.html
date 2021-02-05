@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <head>
     <title>Fisheye</title>
-    <html lang="fr" dir="ltr">
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="stylesheets/style_index.css">
-</head>
-<body>
-<header>
-    <a href="index.html"><img class="header__logo" src="images/logo.png" alt="Fisheye Home page" longdesc="Fisheye Home page" aria-label="retour page d'accueil"></a>
-    <nav aria-label="photographer categories">
-        <ul id="header__filters">
-    
-        </ul>
-    </nav>
-</header>
-<main id="main">
-    <a href='#main' class="scroll" aria-label="aller au contenu"><p>Passer au contenu</p></a>
-    <h1> Nos photographes</h1>
-    <div class="photographer" id="photographer">
 
-    </div>
-</main>
+    <script src="js/database.class.js"></script>
+    <script src="js/photographer.class.js"></script>
+    <script src="js/photographerlist.class.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <img class="header__logo" src="images/logo.png" alt="Fisheye Home page" longdesc="Fisheye Home page" aria-label="retour page d'accueil">
+        </a>
+
+        <nav aria-label="photographer categories">
+            <ul id="header__filters"></ul>
+        </nav>
+    </header>
+    <main id="main">
+        <a href='#main' class="scroll" aria-label="aller au contenu"><p>Passer au contenu</p></a>
+        <h1> Nos photographes</h1>
+
+        <div class="photographer" id="photographer"></div>
+    </main>
     <script src="script.js"></script>
 </body>

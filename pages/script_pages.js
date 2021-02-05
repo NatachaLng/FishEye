@@ -73,16 +73,7 @@ class videos{
   }
 }
 
-class MediaFactory{
-  constructor(type, prop) {
-    if (type == image){
-      return new images
-    }
-  if (type == video){
-      return new videos
-  }
-}
-}
+
 
 function mediasCreation (){
   for (let i = 0; i < medias.length; i++) {

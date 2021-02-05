@@ -8,12 +8,12 @@ function load(body){
     createCards();
     createTaglist();
 }
-
+/*
 window.addEventListener('scroll', function() {
 if(window.pageYOffset > 20) {
     document.getElementsByClassName("scroll").style.display = 'block';
     }
-});
+});*/
 
 let allTag = [];
 function addTags(photographTag){
@@ -45,26 +45,6 @@ function createTaglist (){
 
 
 
-const cardContainer = document.getElementById("photographer");
-
-
-//template of the photographer
-function showPhotographer(photograph){
-    let article = `<article id="${photograph.id}" class="card">
-    <a href="pages/photographe.html?id=${photograph.id}" aria-label="aller vers la page de ${photograph.name}">
-                    <img class="card__image" src="${photograph.chosenPicture}" alt="">
-                    <h3 class="card__name">${photograph.name}</h3>
-                    </a>
-                    <p class="card__location">${photograph.city}, ${photograph.country}</p>
-                    <p class="card__tagline">${photograph.tagline}</p>
-                    <p class="card__price">${photograph.price}€/jour</p>
-                    <ul class="card__taglist" id="taglist_${photograph.id}">
-                        ${photograph.tags.map(tag => `<li class="tag" onclick="filterCards(innerHTML)">#${tag}</li>`).join('')}
-                    </ul>
-                </article>`;
-                return article;
-}
-
 
 
 function filterCards(text) {
@@ -80,13 +60,6 @@ function filterCards(text) {
    
 }
 
-// creation of the cards
-let article 
-function createCards() {
-    for (let i = 0; i < photographs.length; i++) {
-        document.getElementById('photographer').innerHTML += showPhotographer(photographs[i]);
-    }
-}
 
 function pagePhotographer (){
     for (let i = 0; i < photographs.length; i++) {
@@ -100,4 +73,26 @@ function pagePhotographer (){
 }
 }
 
-fetch("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json").then (data => data.json().then (json => load(json)));
+//fetch("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json").then (data => data.json().then (json => load(json)));
+
+// https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Classes
+
+
+
+class TagList {
+    #tags;
+
+    constructor() {
+    }
+}
+
+
+let dbPhotographers = new Database("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json");
+dbPhotographers.load().then(
+    function () {
+        let page = new PhotographerList("#photographer", dbPhotographers);
+        page.init();
+    }
+);
+
+
