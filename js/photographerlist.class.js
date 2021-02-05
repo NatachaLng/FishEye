@@ -1,17 +1,11 @@
 class PhotographerList {
     /**
-     * Private property (pas supporté sinon possible de mettre un # devant)
-     */
-    #selector_id_list = "#photographer";
-    #db;
-
-    /**
      * Constuctor transform class to unique object
      * @param url
      */
     constructor(selector_id_list, db) {
-        this.#selector_id_list = selector_id_list;
-        this.#db = db;
+        this.selector_id_list = selector_id_list;
+        this.db = db;
     }
 
     /**
@@ -19,7 +13,7 @@ class PhotographerList {
      */
     init() {
         console.log('init()');
-        this.#createCards();
+        this.createCards();
 
         // @todo: onclick
     }
@@ -27,10 +21,10 @@ class PhotographerList {
     /**
      * Create Cards with local database
      */
-    #createCards() {
+    createCards() {
         console.log("Create cards");
-        console.log(this.#db);
-        for (let p of this.#db.getDatas().photographers) {
+        console.log(this.db);
+        for (let p of this.db.getDatas().photographers) {
             let photographer = new Photographer(
                 p.chosenPicture,
                 p.city,
@@ -44,7 +38,7 @@ class PhotographerList {
             );
 
             // Add to List
-            document.querySelector(this.#selector_id_list).innerHTML += photographer.getCardHTML();
+            document.querySelector(this.selector_id_list).innerHTML += photographer.getCardHTML();
         }
     }
 }

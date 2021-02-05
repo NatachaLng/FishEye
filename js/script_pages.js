@@ -11,11 +11,6 @@ console.log(pageId)
 function load(body){
     photographs=body['photographers'];
     medias=body['media'];
-    mediasCreation();
-    showGallery();
-    titleModal();
-    Article();
-    showPhotographer();
 }
 
 let photographerMedia = [];
@@ -181,24 +176,6 @@ function getSlideNumber (id){
  }
 }
 
-// header of the page with photograph's description
-console.log(photographerMedia)
-console.log(photographerMedia.length)
-function populateHeader(photograph){
-  let article = `<div class="flex__img"><img class="card__image" src="../${photograph.chosenPicture}" alt="picture ${photograph.name}"></div>
-  <div class="flex__contact"><button class="contact__btn" onclick="launchModal()" aria-label="Formulaire de contact de ${photograph.name}">Contactez moi</button></div>
-  <div class="flex__details"><h3 class="card__name">${photograph.name}</h3>
-  <p class="card__location">${photograph.city}, ${photograph.country}</p>
-  <p class="card__tagline">${photograph.tagline}</p>
-  <p class="card__price">${photograph.price}€/jour</p>
-  <ul class="card__taglist" id="taglist_${photograph.id}">
-  ${photograph.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
-  </ul>
-  <div class="card__number">Nombre total de clichés : </div>
-  </div>`;
-              return article;
-}
-
 //Sort by 
 
 function sortByPrice (media) {
@@ -284,6 +261,10 @@ let formSent = document.getElementById("form__sent"); //validation message
 else{
   formSent.style.display="none"; //otherwise we don't 
 }*/
-
-
-fetch("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json").then (data => data.json().then (json => load(json)));
+let dbPhotographers = new Database("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json");
+dbPhotographers.load().then(
+    function () {
+      let page = new PhotographerHeader("#photograph__header", dbPhotographers);
+      page.init();
+    }
+);

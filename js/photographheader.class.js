@@ -10,8 +10,8 @@ class PhotographerHeader {
      * @param url
      */
     constructor(selector_id_list, db, pageId) {
-        this.#selector_id_list = selector_id_list;
-        this.#db = db;
+        this.selector_id_list = selector_id_list;
+        this.db = db;
         this.pageId = pageId
     }
 
@@ -19,7 +19,7 @@ class PhotographerHeader {
      * Init to load Datas and others event
      */
     init() {
-        this.#createHeader();
+        this.createHeader();
 
         // @todo: Bind events
     }
@@ -27,9 +27,9 @@ class PhotographerHeader {
     /**
      * Create Cards with local database
      */
-    #createHeader() {
-        for (let p of this.#db.getDatas().photographers) {
-            if (pageId == photographers)
+    createHeader()
+            {
+        for (let p of this.db.getDatas().photographers) {
             let photographer = new Photographer(
                 p.chosenPicture,
                 p.city,
@@ -43,7 +43,7 @@ class PhotographerHeader {
             );
 
             // Add to List
-            document.querySelector(this.#selector_id_list).innerHTML += photographer.getCardHTML();
+            document.querySelector(this.selector_id_list).innerHTML += photographer.getHeaderHTML();
         }
     }
 }

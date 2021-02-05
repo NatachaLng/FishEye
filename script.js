@@ -5,30 +5,11 @@ var media;
 function load(body){
     photographs=body['photographers'];
     media=body['media'];
-    createCards();
-    createTaglist();
 }
-/*
-window.addEventListener('scroll', function() {
-if(window.pageYOffset > 20) {
-    document.getElementsByClassName("scroll").style.display = 'block';
-    }
-});*/
 
-let allTag = [];
-function addTags(photographTag){
-    for (let h=0; h<photographs.length; h++){
-        photographTag=photographs[h].tags;
-        for (let k = 0; k < photographTag.length; k++){
-            if (allTag.indexOf(photographTag[k])==-1){
-                allTag.push(photographTag[k]);
-            } 
-        }
-    }
-}   
 
 // creation of the tag list
-function createTaglist (){
+/*function createTaglist (){
     addTags();
     for (let k = 0; k < allTag.length; k++){
         let listTags = document.createElement("a");
@@ -41,7 +22,7 @@ function createTaglist (){
         let nav = document.getElementById('header__filters');
         nav.appendChild(listTags);
     }
-}
+}*/
 
 
 
@@ -68,7 +49,7 @@ function pagePhotographer (){
     let currentURL = window.location.href;
     let url = new URL(currentURL);
     url.searchParams.append('id', photographs[i].id);
-    let html = '<html><head> <script src="pages/script_pages.js"></script> <link rel="stylesheet" type="text/css" href="pages/stylesheets/style_pages.css"></head>    <body></body></html>';
+    let html = '<html><head> <script src="js/script_pages.js"></script> <link rel="stylesheet" type="text/css" href="pages/stylesheets/style_pages.css"></head>    <body></body></html>';
     newPage.document.write(html);
 }
 }
@@ -79,19 +60,16 @@ function pagePhotographer (){
 
 
 
-class TagList {
-    #tags;
 
-    constructor() {
-    }
-}
 
 
 let dbPhotographers = new Database("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json");
 dbPhotographers.load().then(
     function () {
         let page = new PhotographerList("#photographer", dbPhotographers);
+        let tag = new TagList("#header__filters", dbPhotographers)
         page.init();
+        tag.init();
     }
 );
 

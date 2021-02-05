@@ -43,4 +43,19 @@ class Photographer {
         return article;
     }
 
+    getHeaderHTML(){
+        let article = `<div class="flex__img"><img class="card__image" src="../${this.chosenPicture}" alt="picture ${this.name}"></div>
+  <div class="flex__contact"><button class="contact__btn" onclick="launchModal()" aria-label="Formulaire de contact de ${this.name}">Contactez moi</button></div>
+  <div class="flex__details"><h3 class="card__name">${this.name}</h3>
+  <p class="card__location">${this.city}, ${this.country}</p>
+  <p class="card__tagline">${this.tagline}</p>
+  <p class="card__price">${this.price}€/jour</p>
+  <ul class="card__taglist" id="taglist_${this.id}">
+  ${this.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
+  </ul>
+  <div class="card__number">Nombre total de clichés : </div>
+  </div>`;
+        return article
+    }
+
 }
