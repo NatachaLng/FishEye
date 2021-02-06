@@ -52,11 +52,13 @@ class PhotographerList {
 
     filterCards(text) {
         console.log("click");
-        /*photographer.forEach((photograph) => {
-            let tags = photograph.tags;
-            let isMatch = (tags.indexOf(text) != -1);
+        let photographer = this.getPhotographers();
+        for (let i = 0; i < photographer.length; i++) {
+            let tags = photographer[i].tags;
+            let isMatch = (tags.indexOf(text) != -1)
             if (isMatch) {
-                document.querySelector(this.selector_id_list).innerHTML += photographer.getCardHTML();*/
+                document.querySelector(this.selector_id_list).innerHTML += photographer.getCardHTML();
             }
-
+        }
+        }
 }
