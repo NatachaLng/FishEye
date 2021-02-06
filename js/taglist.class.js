@@ -26,8 +26,6 @@ class TagList {
                 let mediaTags = new tag(
                     p.tags[0])
                     allTags.push(mediaTags);
-                // Add to List
-                //document.querySelector(this.selector_id_list).innerHTML += mediaTags.getTagHTML();
             }
             return allTags;
         }
@@ -42,6 +40,10 @@ class TagList {
         }
 
         createTagList(){
-
+            let tagList = this.cleanTagList();
+            for (let i = 0; i < tagList.length; i++){
+                // Add to List
+                document.querySelector(this.selector_id_list).innerHTML += tagList[i].getTagHTML();
+            }
         }
     }
