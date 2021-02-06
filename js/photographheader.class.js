@@ -2,8 +2,8 @@ class PhotographerHeader {
     /**
      * Private property (pas supporté sinon possible de mettre un # devant)
      */
-    #selector_id_list = "#photographer";
-    #db;
+    selector_id_list = "#photographer";
+    db;
 
     /**
      * Constuctor transform class to unique object
@@ -41,9 +41,11 @@ class PhotographerHeader {
                 p.tagline,
                 p.tags
             );
-
-            // Add to List
-            document.querySelector(this.selector_id_list).innerHTML += photographer.getHeaderHTML();
+            pageId = url.match(/[^=/]+$/)[0];
+            if (photographer.id == pageId) {
+                // Add to List
+                document.querySelector(this.selector_id_list).innerHTML += photographer.getHeaderHTML();
+            }
         }
     }
 }
