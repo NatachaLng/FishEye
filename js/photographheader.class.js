@@ -12,7 +12,6 @@ class PhotographerHeader {
     constructor(selector_id_list, db, pageId) {
         this.selector_id_list = selector_id_list;
         this.db = db;
-        this.pageId = pageId
     }
 
     /**
@@ -41,7 +40,7 @@ class PhotographerHeader {
                 p.tagline,
                 p.tags
             );
-            pageId = url.match(/[^=/]+$/)[0];
+            let pageId = url.match(/[^=/]+$/)[0];
             if (photographer.id == pageId) {
                 // Add to List
                 document.querySelector(this.selector_id_list).innerHTML += photographer.getHeaderHTML();

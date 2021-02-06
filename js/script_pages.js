@@ -246,7 +246,7 @@ function sortByDate () {
 let dbPhotographers = new Database("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json");
 dbPhotographers.load().then(
     function () {
-      let page = new PhotographerHeader("#photograph__header", dbPhotographers);
-      page.init();
+      let header = new PhotographerHeader("#photograph__header", dbPhotographers);
+      header.init();
     }
 );

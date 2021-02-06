@@ -13,6 +13,7 @@ class PhotographerList {
      */
     init() {
         console.log('init()');
+        this.getPhotographers();
         this.createCards();
 
         // @todo: onclick
@@ -21,11 +22,12 @@ class PhotographerList {
     /**
      * Create Cards with local database
      */
-    createCards() {
+    getPhotographers() {
         console.log("Create cards");
         console.log(this.db);
+        let photographers = new Array;
         for (let p of this.db.getDatas().photographers) {
-            let photographer = new Photographer(
+            let allPhotographer = new Photographer(
                 p.chosenPicture,
                 p.city,
                 p.country,
@@ -34,11 +36,27 @@ class PhotographerList {
                 p.portrait,
                 p.price,
                 p.tagline,
-                p.tags
-            );
+                p.tags)
+            photographers.push(allPhotographer)
+        }
+        return photographers;
+    }
 
-            // Add to List
-            document.querySelector(this.selector_id_list).innerHTML += photographer.getCardHTML();
+    createCards() {
+        // Add to List
+        let photographer = this.getPhotographers();
+        for (let i = 0; i < photographer.length; i++) {
+            document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
         }
     }
+
+    filterCards(text) {
+        console.log("click");
+        /*photographer.forEach((photograph) => {
+            let tags = photograph.tags;
+            let isMatch = (tags.indexOf(text) != -1);
+            if (isMatch) {
+                document.querySelector(this.selector_id_list).innerHTML += photographer.getCardHTML();*/
+            }
+
 }

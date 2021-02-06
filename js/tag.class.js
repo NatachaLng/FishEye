@@ -12,7 +12,7 @@ class tag {
      * @returns {string}
      */
     getTagHTML() {
-        let a = `<a href="#" class="header__filter" aria-label="filtre par tag ${this.tags}">#${this.tags}</a>`;
+        let a = `<a href="#" class="header__filter" aria-label="filtre par tag ${this.tags}" onclick="filterCards(${this.tags})">#${this.tags}</a>`;
         return a;
     }
 

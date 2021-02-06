@@ -8,40 +8,6 @@ function load(body){
 }
 
 
-// creation of the tag list
-/*function createTaglist (){
-    addTags();
-    for (let k = 0; k < allTag.length; k++){
-        let listTags = document.createElement("a");
-        listTags.href = '#';
-        listTags.className = 'header__filter';
-        listTags.setAttribute("data-clic", 0);
-        listTags.setAttribute("aria-label", "filtre par tag " + allTag[k])
-        listTags.textContent = '#' + allTag[k];
-        listTags.addEventListener("click", () => {filterCards(listTags.innerHTML)});
-        let nav = document.getElementById('header__filters');
-        nav.appendChild(listTags);
-    }
-}*/
-
-
-
-
-
-function filterCards(text) {
-    text = text.substring(1, text.length);
-    cardContainer.innerHTML = "";
-    photographs.forEach((photograph) => {
-          let tags = photograph.tags;
-          let isMatch = (tags.indexOf(text) != -1);
-          if (isMatch) {    
-                document.getElementById('photographer').innerHTML += showPhotographer(photograph);
-        }
-    });
-   
-}
-
-
 function pagePhotographer (){
     for (let i = 0; i < photographs.length; i++) {
     photograph = photographs[i];
