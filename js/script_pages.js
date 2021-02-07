@@ -64,7 +64,7 @@ function createBottomPages (photograph){
   return templateBottomPages
 }
 
-function showGallery() {
+/*function showGallery() {
   let galery = document.getElementById("galery");
   let slider = document.querySelector(".slider-content");
   galery.innerHTML = "";
@@ -89,17 +89,17 @@ function showGallery() {
   });
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
   numberLikes = arrayLikes.reduce(reducer);
-}
+}*/
 
 
 
-function getSlideNumber (id){
+/*function getSlideNumber (id){
   for(var i = 0; i < photographerMedia.length; i++) {
     if(photographerMedia[i].prop.id === id) {
       return i+1;
     }
  }
-}
+}*/
 
 //Sort by 
 
@@ -165,8 +165,7 @@ function sortByDate () {
       }
     btn.addEventListener("click", () => like(getArticle(btn)))
   })
-  }  
-
+  }
 
 let dbPhotographers = new Database("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json");
 dbPhotographers.load().then(

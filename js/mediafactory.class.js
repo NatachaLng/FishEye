@@ -26,11 +26,13 @@ class MediaFactory {
         let photographerMedia = new Array();
         console.log (photographerMedia)
         for (let p of this.db.getDatas().media){
-            if (media.image && media.id ==  pageId) {
-                photographerMedia.push(new image)
+            console.log(p);
+            console.log(pageId)
+            if (p.image && p.photographerId ==  pageId) {
+                photographerMedia.push(new image(p.id, p.photographerId, p.image, p.alt, p.tags, p.likes, p.date, p.price))
             }
-            if (media.video && media.id == pageId) {
-                photographerMedia.push(new video)
+            if (p.video && p.photographerId == pageId) {
+                photographerMedia.push(new video(p.id, p.photographerId, p.video, p.alt, p.tags, p.likes, p.date, p.price))
             }
         }
         console.log(photographerMedia)
