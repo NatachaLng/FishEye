@@ -51,13 +51,15 @@ class PhotographerList {
     }
 
     filterCards(text) {
-        console.log("click");
+        console.log(text)
+        document.querySelector(this.selector_id_list).innerHTML = "";
         let photographer = this.getPhotographers();
+        console.log(photographer)
         for (let i = 0; i < photographer.length; i++) {
             let tags = photographer[i].tags;
             let isMatch = (tags.indexOf(text) != -1)
             if (isMatch) {
-                document.querySelector(this.selector_id_list).innerHTML += photographer.getCardHTML();
+                document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
             }
         }
         }

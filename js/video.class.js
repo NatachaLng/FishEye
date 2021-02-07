@@ -1,15 +1,4 @@
-class image {
-    /**
-     * Private property (pas supporté sinon possible de mettre un # devant)
-     */
-    #id;
-    #photographerId;
-    #video;
-    #alt;
-    #tags;
-    #like;
-    #date;
-    #price;
+class video {
 
     /**
      *
@@ -23,14 +12,14 @@ class image {
      * @param price
      */
     constructor(id, photographerId, video, alt, tags, likes, date, price) {
-        this.#id = id;
-        this.#photographerId = photographerId;
-        this.#video = video;
-        this.#alt = alt;
-        this.#tags = tags;
-        this.#likes = likes;
-        this.#date = date;
-        this.#price = price;
+        this.id = id;
+        this.photographerId = photographerId;
+        this.video = video;
+        this.alt = alt;
+        this.tags = tags;
+        this.likes = likes;
+        this.date = date;
+        this.price = price;
     }
 
     /**
@@ -38,13 +27,13 @@ class image {
      * @returns {string}
      */
     getHTML() {
-        let article = `<article class="galery__card" data-like="${this.#like}" data-userlike=0 onload="Article()">
-  <a href ="javascript:void(0);" aria-label="afficher ${this.#alt}" class="lightbox__triger"><video class="galery__card--video" onclick="openLightbox();toSlide(getSlideNumber(${this.#id}))">
-    <source src="../images/${this.#photographerId}/${this.#video}" type="video/mp4" alt='${this.#alt}'>
+        let article = `<article class="galery__card" data-like="${this.like}" data-userlike=0 onload="Article()">
+  <a href ="javascript:void(0);" aria-label="afficher ${this.alt}" class="lightbox__triger"><video class="galery__card--video" onclick="openLightbox();toSlide(getSlideNumber(${this.id}))">
+    <source src="../images/${this.photographerId}/${this.video}" type="video/mp4" alt='${this.alt}'>
   </video></a>
   <div class="galery__card--details">
-  <div><h4 class="galery__card--title galery__card--text">${this.#alt}</h4></div>
-  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${this.#price}€<div class="number__likes galery__card--text" aria-label="aimer la vidéo">${this.#like}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" alt="liker la photo ${this.#alt}"></div>
+  <div><h4 class="galery__card--title galery__card--text">${this.alt}</h4></div>
+  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${this.price}€<div class="number__likes galery__card--text" aria-label="aimer la vidéo">${this.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" alt="liker la photo ${this.alt}"></div>
   </div>
 </article>`;
         return article;

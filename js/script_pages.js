@@ -1,72 +1,22 @@
 
-
-var photographer;
 var photographs;
-var medias;
+var photographs;
 let url = window.location.href
-let pageId = url.match(/[^=/]+$/)[0];
 
-console.log(pageId)
+
 
 function load(body){
     photographs=body['photographers'];
     medias=body['media'];
 }
 
-let photographerMedia = [];
 let allMedias = []; 
 let arrayLikes = [];
 let numberLikes
 let userLikes = 0;
 
-
-function showPhotographer(text) {
-  let header = document.getElementById('photograph__header');
-  header.innerHTML= " ";
-  photographs.forEach((photograph) => {
-        let id = photograph.id;
-        let isMatch = (id == pageId);
-        if (isMatch) {    
-              document.getElementById('photograph__header').innerHTML += populateHeader(photograph);
-              let bottomPage = document.querySelector('.bottom__page');
-              bottomPage.innerHTML += createBottomPages(photograph);
-      }
-  });
-}
-
-//filter function
-
-function filter() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  
-  // Close the dropdown if the user clicks outside of it
-  window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    }
-  }
-
 //Galery 
 
-class images{
-  constructor(prop) {
-    this.prop = prop;
-  }
-}
-
-class videos{
-  constructor(prop) {
-    this.prop = prop;
-  }
-}
 
 
 
@@ -84,17 +34,6 @@ function mediasCreation (){
 
 
 
-function createImage(images){
-  let templateImage = `<article class="galery__card" data-like="${images.prop.likes}" data-userlike=0 onload="Article()">
-  <a href="javascript:void(0);" alt="${images.prop.alt}" aria-label="afficher ${images.prop.alt}" class="lightbox__triger" onclick="openLightbox();toSlide(getSlideNumber(${images.prop.id}))"><img class="galery__card--image" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'></a>
-  <div class="galery__card--details">
-  <div><h4 class="galery__card--title galery__card--text">${images.prop.alt}</h4></div>
-  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${images.prop.price}€ <div class="number__likes galery__card--text" aria-label="aimer la photo">${images.prop.likes + userLikes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" alt="liker la photo ${images.prop.alt}">
-  </div>
-  </div>
-  </article>`;
-    return templateImage;
-}
 
 function createSlideImage(images){
   let templateSlideImage = `
@@ -103,19 +42,6 @@ function createSlideImage(images){
   <h4 class="galery__card--title galery__card--text slide__title">${images.prop.alt}</h4>
   </div>`
   return templateSlideImage
-}
-
-function createVideo(videos){
-  let templateVideo = `<article class="galery__card" data-like="${videos.prop.likes}" data-userlike=0 onload="Article()">
-  <a href ="javascript:void(0);" aria-label="afficher ${videos.prop.alt}" class="lightbox__triger"><video class="galery__card--video" onclick="openLightbox();toSlide(getSlideNumber(${videos.prop.id}))">
-    <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}'>
-  </video></a>
-  <div class="galery__card--details">
-  <div><h4 class="galery__card--title galery__card--text">${videos.prop.alt}</h4></div>
-  <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${videos.prop.price}€<div class="number__likes galery__card--text" aria-label="aimer la vidéo">${videos.prop.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" alt="liker la photo ${videos.prop.alt}"></div>
-  </div>
-</article>`;
-    return templateVideo;
 }
 
 function createSlideVideo(videos){
@@ -143,7 +69,6 @@ function showGallery() {
   let slider = document.querySelector(".slider-content");
   galery.innerHTML = "";
   slider.innerHTML = "";
-  photographerMedia = [];
   arrayLikes = [];
   console.log(photographerMedia);
   allMedias.forEach((media) => {
@@ -248,5 +173,7 @@ dbPhotographers.load().then(
     function () {
       let header = new PhotographerHeader("#photograph__header", dbPhotographers);
       header.init();
+      let gallery = new MediaFactory("#gallery", dbPhotographers);
+      gallery.init()
     }
 );
