@@ -24,10 +24,7 @@ class MediaFactory {
     build() {
         let pageId = url.match(/[^=/]+$/)[0];
         let photographerMedia = new Array();
-        console.log (photographerMedia)
         for (let p of this.db.getDatas().media){
-            console.log(p);
-            console.log(pageId)
             if (p.image && p.photographerId ==  pageId) {
                 photographerMedia.push(new image(p.id, p.photographerId, p.image, p.alt, p.tags, p.likes, p.date, p.price))
             }
@@ -35,7 +32,6 @@ class MediaFactory {
                 photographerMedia.push(new video(p.id, p.photographerId, p.video, p.alt, p.tags, p.likes, p.date, p.price))
             }
         }
-        console.log(photographerMedia)
         return photographerMedia
     }
 
@@ -46,5 +42,16 @@ class MediaFactory {
             // Add to List
             document.querySelector(this.selector_id_list).innerHTML += photographerMedia[i].getHTML();
         }
+        //document.querySelector("#sortByDate").addEventListener(this.sortByDate())
     }
-}
+/*
+    sortByDate() {
+        let photographerMedia = this.build();
+        photographerMedia.sort(function(a, b){
+            let c = new Date(a.date);
+            let d = new Date(b.date);
+            return c - d;
+            });
+            this.init();
+        }*/
+    }

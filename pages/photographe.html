@@ -26,10 +26,10 @@
         <div class='filter__section'>
             <div>Trier par</div>
         <div class="dropdown">
-            <a class="dropbtn dropOne" href="javascript:void(0);" onclick="sortByPopularity()" aria-label="tri des médias par popularité" for='popularité'><label id='popularité'>Popularité</label></a><button onclick="filter()" class="dropbtn triger" role='button' aria-haspopup="lisbox" aria-expanded=""><span class="triger__content" onclick="filter()" aria-label="afficher la liste des tris">></span></button>
+            <a class="dropbtn dropOne" href="javascript:void(0);" id="sortByPopularity" aria-label="tri des médias par popularité" for='popularité'><label id='popularité'>Popularité</label></a><button onclick="filter()" class="dropbtn triger" role='button' aria-haspopup="lisbox" aria-expanded=""><span class="triger__content" onclick="filter()" aria-label="afficher la liste des tris">></span></button>
             <div id="myDropdown" class="dropdown-content">
-              <a href="javascript:void(0);" aria-label="tri des médias par date" role="listbox" onclick="sortByDate()" for='date'><label class="droptext" id="date">Date</label></a>
-              <a href="javascript:void(0);" aria-label="tri des médias par prix" onclick="sortByPrice()" for='prix'><label class="droptext" id="prix">Prix</label></a>
+              <a href="javascript:void(0);" aria-label="tri des médias par date" role="listbox" id="sortByDate" for='date'><label class="droptext" id="date">Date</label></a>
+              <a href="javascript:void(0);" aria-label="tri des médias par prix" id="sortByPrice" for='prix'><label class="droptext" id="prix">Prix</label></a>
             </div>
           </div>
         </div>

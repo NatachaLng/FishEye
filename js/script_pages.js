@@ -102,7 +102,7 @@ function createBottomPages (photograph){
 }*/
 
 //Sort by 
-
+/*
 function sortByPrice (media) {
   allMedias.sort(function(a, b){
   return a.prop.price - b.prop.price;
@@ -128,7 +128,7 @@ function sortByDate () {
   showGallery();
   Article();
 }
-
+*/
   //like function
 
   function like(article) {
@@ -156,7 +156,7 @@ function sortByDate () {
     }
 
 
-  function Article(){
+/*  function Article(){
     document.querySelectorAll(".like").forEach(btn => {
       function getArticle(object) {
         if (object.nodeName === "ARTICLE")
@@ -165,7 +165,7 @@ function sortByDate () {
       }
     btn.addEventListener("click", () => like(getArticle(btn)))
   })
-  }
+  }*/
 
 let dbPhotographers = new Database("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json");
 dbPhotographers.load().then(
