@@ -247,7 +247,7 @@ margin-top: 0;}
 
 /*Galery section*/
 
-#gallery{
+#galery{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

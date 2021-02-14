@@ -1,7 +1,7 @@
 
 class MediaFactory {
 
-    selector_id_list = "#gallery";
+    selector_id_list = "#galery";
     db;
 
     /**
@@ -35,15 +35,6 @@ class MediaFactory {
         return photographerMedia
     }
 
-    init() {
-        let photographerMedia = this.build();
-        console.log(photographerMedia)
-        for (let i = 0; i < photographerMedia.length; i++) {
-            // Add to List
-            document.querySelector(this.selector_id_list).innerHTML += photographerMedia[i].getHTML();
-        }
-        //document.querySelector("#sortByDate").addEventListener(this.sortByDate())
-    }
 /*
     sortByDate() {
         let photographerMedia = this.build();

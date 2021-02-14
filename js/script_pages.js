@@ -5,32 +5,9 @@ let url = window.location.href
 
 
 
-function load(body){
-    photographs=body['photographers'];
-    medias=body['media'];
-}
-
-let allMedias = []; 
-let arrayLikes = [];
 let numberLikes
 let userLikes = 0;
 
-//Galery 
-
-
-
-
-function mediasCreation (){
-  for (let i = 0; i < medias.length; i++) {
-  media = medias[i];
-    if (media.image){
-      allMedias.push(new images(media));
-    }
-    if (media.video){
-      allMedias.push(new videos(media));
-    }
-  }
-}
 
 
 
@@ -167,12 +144,16 @@ function sortByDate () {
   })
   }*/
 
+
 let dbPhotographers = new Database("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json");
+
+let galery = new Galery("#galery", dbPhotographers)
+
+
 dbPhotographers.load().then(
     function () {
       let header = new PhotographerHeader("#photograph__header", dbPhotographers);
       header.init();
-      let gallery = new MediaFactory("#gallery", dbPhotographers);
-      gallery.init()
+      galery.init();
     }
 );
