@@ -10,6 +10,17 @@ class Galery {
         return media
     }
 
+    getNumberOfLikes (){
+        let totalLikes = new Array();
+        let medias = this.getDatas();
+        for (let i = 0; i < medias.length; i++) {
+            totalLikes.push(medias[i].likes);
+        }
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        let numberLikes = totalLikes.reduce(reducer);
+        return numberLikes
+    }
+
     init() {
         this.createHTML(this.getDatas())
     }
@@ -56,6 +67,7 @@ class Galery {
         this.createHTML(media);
     }
 
+
     like(id) {
         let media = document.getElementById(id);
         let userLike = media.dataset.userlike;
@@ -65,14 +77,22 @@ class Galery {
             let numberLikes = media.dataset.like;
             numberLikes = parseInt(media.dataset.like) + 1;
             media.querySelector('.number__likes').innerHTML = numberLikes;
-            media.setAttribute("data-like", numberLikes++)
+            media.setAttribute("data-like", numberLikes++);
+            let detailsLike = document.querySelector('.bottom__likes');
+            let allLikes = parseInt(detailsLike.dataset.alllikes) + 1;
+            detailsLike.setAttribute("data-alllikes", allLikes)
+            detailsLike.innerHTML = allLikes;
         } else {
             userLike--;
             media.setAttribute('data-userlike', 0);
             let numberLikes = media.dataset.like;
             numberLikes = parseInt(media.dataset.like) - 1;
             media.querySelector('.number__likes').innerHTML = numberLikes;
-            media.setAttribute("data-like", numberLikes--)
+            media.setAttribute("data-like", numberLikes--);
+            let detailsLike = document.querySelector('.bottom__likes');
+            let allLikes = parseInt(detailsLike.dataset.alllikes) - 1;
+            detailsLike.setAttribute("data-alllikes", allLikes)
+            detailsLike.innerHTML = allLikes;
         }
     }
 }

@@ -5,11 +5,6 @@ let url = window.location.href
 
 
 
-let numberLikes
-let userLikes = 0;
-
-
-
 
 
 function createSlideImage(images){
@@ -79,49 +74,10 @@ function createBottomPages (photograph){
 }*/
 
 
-  //like function
-
-  function like(article) {
-    let userLike = article.dataset.userlike;
-      if (userLike==0) {
-        userLike++;
-        userLikes++;
-        article.setAttribute("data-userlike", 1);
-        article.dataset.like = parseInt(article.dataset.like) + 1;
-        let nombreLike = article.dataset.like;
-      article.querySelector(".number__likes").innerHTML = nombreLike;
-      article.setAttribute("data-like", (nombreLike++))
-      document.querySelector(".bottom__likes").innerHTML = numberLikes + userLikes;
-      }
-      else{
-        userLike--;
-        userLikes--;
-        article.setAttribute("data-userlike", 0);
-        article.dataset.like = parseInt(article.dataset.like) - 1;
-        nombreLike = article.dataset.like;
-      article.querySelector(".number__likes").innerHTML = nombreLike;
-      article.setAttribute("data-like", (nombreLike--))
-      document.querySelector(".bottom__likes").innerHTML = numberLikes + userLikes;
-      }
-    }
-
-
-/*  function Article(){
-    document.querySelectorAll(".like").forEach(btn => {
-      function getArticle(object) {
-        if (object.nodeName === "ARTICLE")
-                return object;
-            return getArticle(object.parentNode)
-      }
-    btn.addEventListener("click", () => like(getArticle(btn)))
-  })
-  }*/
-
 
 let dbPhotographers = new Database("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json");
 
 let galery = new Galery("#galery", dbPhotographers)
-
 
 dbPhotographers.load().then(
     function () {

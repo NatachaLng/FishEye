@@ -1,5 +1,5 @@
 class PhotographerHeader {
-    selector_id_list = "#photographer";
+    selector_id_list = ".#photographer";
     db;
 
     /**
@@ -43,6 +43,7 @@ class PhotographerHeader {
             if (photographer.id == pageId) {
                 // Add to List
                 document.querySelector(this.selector_id_list).innerHTML += photographer.getHeaderHTML();
+                document.querySelector('.bottom__page').innerHTML += photographer.getDetailsHTML();
             }
         }
     }

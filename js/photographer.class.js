@@ -43,7 +43,7 @@ class Photographer {
         return article;
     }
 
-    getHeaderHTML(){
+    getHeaderHTML() {
         let article = `<div class="flex__img"><img class="card__image" src="../${this.chosenPicture}" alt="picture ${this.name}"></div>
   <div class="flex__contact"><button class="contact__btn" onclick="launchModal()" aria-label="Formulaire de contact de ${this.name}">Contactez moi</button></div>
   <div class="flex__details"><h3 class="card__name">${this.name}</h3>
@@ -58,4 +58,12 @@ class Photographer {
         return article
     }
 
+    getDetailsHTML() {
+        let templateBottomPages = `
+    <div class="bottom__flex">
+    <div class="bottom__likes" data-allLikes = ${galery.getNumberOfLikes()}>${galery.getNumberOfLikes()}</div><span class="bottom__heart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg></span>
+    <div class="bottom__price">${this.price}€/jour</div>
+    </div>;`
+        return templateBottomPages
+    }
 }
