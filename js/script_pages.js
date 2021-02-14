@@ -78,34 +78,7 @@ function createBottomPages (photograph){
  }
 }*/
 
-//Sort by 
-/*
-function sortByPrice (media) {
-  allMedias.sort(function(a, b){
-  return a.prop.price - b.prop.price;
-});
-  showGallery();
-  Article();
-}
 
-function sortByPopularity () {
-  allMedias.sort(function(a, b){
-  return b.prop.likes - a.prop.likes;
-});
-  showGallery();
-  Article();
-}
-
-function sortByDate () {
-  allMedias.sort(function(a, b){
-  let c = new Date(a.prop.date);
-  let d = new Date(b.prop.date);
-  return c - d; 
-});
-  showGallery();
-  Article();
-}
-*/
   //like function
 
   function like(article) {

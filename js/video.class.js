@@ -27,7 +27,7 @@ class video {
      * @returns {string}
      */
     getHTML() {
-        let article = `<article class="galery__card" data-like="${this.like}" data-userlike=0 onload="Article()">
+        let article = `<article class="galery__card" data-like="${this.like}" data-userlike=0 id="${this.id}">
   <a href ="javascript:void(0);" aria-label="afficher ${this.alt}" class="lightbox__triger"><video class="galery__card--video" onclick="openLightbox();toSlide(getSlideNumber(${this.id}))">
     <source src="../images/${this.photographerId}/${this.video}" type="video/mp4" alt='${this.alt}'>
   </video></a>
