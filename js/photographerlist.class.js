@@ -50,27 +50,38 @@ class PhotographerList {
         }
     }
 
+    check(text, tag){
+        let checkedTag = document.getElementsByClassName("active");
+        if (checkedTag.length != 0){
+            checkedTag[0].classList.remove('active');
+            this.filterCards(text, tag)
+        }
+        else{
+            this.filterCards(text, tag)
+        }
+    }
+
     filterCards(text, tag) {
         document.querySelector(this.selector_id_list).innerHTML = "";
-        let photographer = this.getPhotographers();
-        let Tag = document.getElementById(tag);
-        let userClic = Tag.dataset.clic;
-        Tag.classList.add("active");
-        if (userClic == 0) {
-            Tag.setAttribute("data-clic", 1)
-            for (let i = 0; i < photographer.length; i++) {
-                let tags = photographer[i].tags;
-                let isMatch = (tags.indexOf(text) != -1)
-                if (isMatch) {
+            let photographer = this.getPhotographers();
+            let Tag = document.getElementById(tag);
+            let userClic = Tag.dataset.clic;
+            Tag.classList.add("active");
+            if (userClic == 0) {
+                Tag.setAttribute("data-clic", 1)
+                for (let i = 0; i < photographer.length; i++) {
+                    let tags = photographer[i].tags;
+                    let isMatch = (tags.indexOf(text) != -1)
+                    if (isMatch) {
+                        document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
+                    }
+                }
+            } else {
+                Tag.setAttribute("data-clic", 0)
+                Tag.classList.remove("active");
+                for (let i = 0; i < photographer.length; i++) {
                     document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
                 }
             }
-        } else {
-            Tag.setAttribute("data-clic", 0)
-            Tag.classList.remove("active");
-            for (let i = 0; i < photographer.length; i++) {
-                document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
-            }
         }
-    }
 }
