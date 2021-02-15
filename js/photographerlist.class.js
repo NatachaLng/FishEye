@@ -55,6 +55,7 @@ class PhotographerList {
         let photographer = this.getPhotographers();
         let Tag = document.getElementById(tag);
         let userClic = Tag.dataset.clic;
+        Tag.classList.add("active");
         if (userClic == 0) {
             Tag.setAttribute("data-clic", 1)
             for (let i = 0; i < photographer.length; i++) {
@@ -66,6 +67,7 @@ class PhotographerList {
             }
         } else {
             Tag.setAttribute("data-clic", 0)
+            Tag.classList.remove("active");
             for (let i = 0; i < photographer.length; i++) {
                 document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
             }

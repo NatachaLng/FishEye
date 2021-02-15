@@ -180,6 +180,11 @@ h3
     background-color: #901C1C;
 }
 
+.active{
+    color: blanchedalmond;
+    background-color: #901C1C;
+}
+
 @media only screen and (max-width: 450px)
 {
     .header__logo
