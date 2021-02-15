@@ -50,15 +50,25 @@ class PhotographerList {
         }
     }
 
-    filterCards(text) {
+    filterCards(text, tag) {
         document.querySelector(this.selector_id_list).innerHTML = "";
         let photographer = this.getPhotographers();
-        for (let i = 0; i < photographer.length; i++) {
-            let tags = photographer[i].tags;
-            let isMatch = (tags.indexOf(text) != -1)
-            if (isMatch) {
+        let Tag = document.getElementById(tag);
+        let userClic = Tag.dataset.clic;
+        if (userClic == 0) {
+            Tag.setAttribute("data-clic", 1)
+            for (let i = 0; i < photographer.length; i++) {
+                let tags = photographer[i].tags;
+                let isMatch = (tags.indexOf(text) != -1)
+                if (isMatch) {
+                    document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
+                }
+            }
+        } else {
+            Tag.setAttribute("data-clic", 0)
+            for (let i = 0; i < photographer.length; i++) {
                 document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
             }
         }
-        }
+    }
 }
