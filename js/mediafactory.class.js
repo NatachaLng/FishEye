@@ -35,14 +35,5 @@ class MediaFactory {
         return photographerMedia
     }
 
-/*
-    sortByDate() {
-        let photographerMedia = this.build();
-        photographerMedia.sort(function(a, b){
-            let c = new Date(a.date);
-            let d = new Date(b.date);
-            return c - d;
-            });
-            this.init();
-        }*/
+
     }

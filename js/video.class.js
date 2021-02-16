@@ -28,7 +28,7 @@ class video {
      */
     getHTML() {
         let article = `<article class="galery__card" data-like="${this.likes}" data-userlike=0 id="${this.id}">
-  <a href ="javascript:void(0);" aria-label="afficher ${this.alt}" class="lightbox__triger"><video class="galery__card--video" onclick="openLightbox();toSlide(getSlideNumber(${this.id}))">
+  <a href ="javascript:void(0);" aria-label="afficher ${this.alt}" class="lightbox__triger"><video class="galery__card--video" onclick="lightbox.openLightbox();lightbox.toSlide(galery.getSlideNumber(${this.id}))">
     <source src="../images/${this.photographerId}/${this.video}" type="video/mp4" alt='${this.alt}'>
   </video></a>
   <div class="galery__card--details">
@@ -37,6 +37,16 @@ class video {
   </div>
 </article>`;
         return article;
+    }
+
+    getSliderHTML(){
+        let templateSlideVideo = `
+  <div class="slide">
+  <video controls="true" class="image-slide">
+  <source src="../images/${this.photographerId}/${this.video}" type="video/mp4" alt='${this.alt}' class="image-slide"><video>
+  <h4 class="galery__card--title galery__card--text slide__title">${this.alt}</h4>
+  </div>`
+        return templateSlideVideo
     }
 
 }

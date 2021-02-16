@@ -53,6 +53,8 @@ class PhotographerList {
     check(text, tag){
         let checkedTag = document.getElementsByClassName("active");
         if (checkedTag.length != 0){
+            console.log ()
+            //checkedTag[0].setAttribute('data-clic', 0)
             checkedTag[0].classList.remove('active');
             this.filterCards(text, tag)
         }

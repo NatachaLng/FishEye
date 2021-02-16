@@ -24,7 +24,7 @@ class Photographer {
     }
 
     /**
-     * Get Card HTML
+     * Get HTML
      * @returns {string}
      */
     getCardHTML() {
@@ -53,7 +53,7 @@ class Photographer {
   <ul class="card__taglist" id="taglist_${this.id}">
   ${this.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
   </ul>
-  <div class="card__number">Nombre total de clichés : </div>
+  <div class="card__number">Nombre total de clichés : ${galery.getNumberOfMedias()}</div>
   </div>`;
         return article
     }

@@ -1,14 +1,23 @@
 class Galery {
 
+    /**
+     *
+     * @param selector_id_list
+     */
+
     constructor(selector_id_list) {
         this.selector_id_list = selector_id_list
     }
+
+    //get the datas from the MediaFactory
 
     getDatas() {
         let mediaFactory = new MediaFactory("#galery", dbPhotographers)
         let media = mediaFactory.build();
         return media
     }
+
+    // Calculate number of likes
 
     getNumberOfLikes (){
         let totalLikes = new Array();
@@ -21,22 +30,48 @@ class Galery {
         return numberLikes
     }
 
+    // Calculate number of medias
+
+    getNumberOfMedias (){
+        let medias = this.getDatas();
+        return medias.length;
+    }
+
+    getSlideNumber (id) {
+        let medias = this.getDatas();
+        for (let i = 0; i < medias.length; i++) {
+            if (medias[i].id === id) {
+                return i + 1;
+            }
+        }
+    }
+
+    // init HTML
+
     init() {
         this.createHTML(this.getDatas())
     }
 
+    // empty HTML
+
     emptyHTML() {
         console.log("empty ok")
         document.getElementById("galery").innerHTML = "";
+        document.getElementById("slider-content").innerText = "";
     }
+
+    //get HMTL
 
     createHTML(medias) {
         console.log(medias)
         for (let i = 0; i < medias.length; i++) {
             // Add to List
             document.querySelector(this.selector_id_list).innerHTML += medias[i].getHTML();
+            document.querySelector("#slider-content").innerHTML += medias[i].getSliderHTML();
         }
     }
+
+    //Sort by function
 
     sortByPrice() {
         this.emptyHTML();
@@ -74,8 +109,7 @@ class Galery {
         if (userLike == 0) {
             userLike++;
             media.setAttribute('data-userlike', 1);
-            let numberLikes = media.dataset.like;
-            numberLikes = parseInt(media.dataset.like) + 1;
+            let numberLikes = parseInt(media.dataset.like) + 1;
             media.querySelector('.number__likes').innerHTML = numberLikes;
             media.setAttribute("data-like", numberLikes++);
             let detailsLike = document.querySelector('.bottom__likes');
@@ -85,8 +119,7 @@ class Galery {
         } else {
             userLike--;
             media.setAttribute('data-userlike', 0);
-            let numberLikes = media.dataset.like;
-            numberLikes = parseInt(media.dataset.like) - 1;
+            let numberLikes = parseInt(media.dataset.like) - 1;
             media.querySelector('.number__likes').innerHTML = numberLikes;
             media.setAttribute("data-like", numberLikes--);
             let detailsLike = document.querySelector('.bottom__likes');

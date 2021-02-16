@@ -7,34 +7,7 @@ let url = window.location.href
 
 
 
-function createSlideImage(images){
-  let templateSlideImage = `
-  <div class="slide">
-  <img class="image-slide" src="../images/${images.prop.photographerId}/${images.prop.image}" alt='${images.prop.alt}'>
-  <h4 class="galery__card--title galery__card--text slide__title">${images.prop.alt}</h4>
-  </div>`
-  return templateSlideImage
-}
 
-function createSlideVideo(videos){
-  let templateSlideVideo = `
-  <div class="slide">
-  <video controls="true" class="image-slide">
-  <source src="../images/${videos.prop.photographerId}/${videos.prop.video}" type="video/mp4" alt='${videos.prop.alt}' class="image-slide"><video>
-  <h4 class="galery__card--title galery__card--text slide__title">${videos.prop.alt}</h4>
-  </div>`
-  return templateSlideVideo
-}
-
-function createBottomPages (photograph){
-  let templateBottomPages = `
-  <div class="bottom__flex">
-<div class="bottom__likes">${numberLikes}</div><span class="bottom__heart"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg></span>
-<div class="bottom__price">${photograph.price}€/jour</div>
-</div>
-  `
-  return templateBottomPages
-}
 
 /*function showGallery() {
   let galery = document.getElementById("galery");
@@ -77,12 +50,17 @@ function createBottomPages (photograph){
 
 let dbPhotographers = new Database("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json");
 
-let galery = new Galery("#galery", dbPhotographers)
+let galery = new Galery("#galery", dbPhotographers);
+
+let slider = new Slider("#slider-content");
+
+let lightbox = new Lightbox("#Lightbox");
 
 dbPhotographers.load().then(
     function () {
       let header = new PhotographerHeader("#photograph__header", dbPhotographers);
       header.init();
       galery.init();
+      slider.init();
     }
 );

@@ -27,7 +27,7 @@ class image {
     getHTML() {
         let article = `<article class="galery__card" data-like="${this.likes}" data-userlike=0 id="${this.id}">
     <a href="javascript:void(0);" alt="${this.alt}" aria-label="afficher ${this.alt}"
-       class="lightbox__triger" onclick="openLightbox();toSlide(getSlideNumber(${this.id}))"><img
+       class="lightbox__triger" onclick="lightbox.openLightbox();lightbox.toSlide(galery.getSlideNumber(${this.id}))"><img
             class="galery__card--image" src="../images/${this.photographerId}/${this.image}" alt='${this.alt}'></a>
     <div class="galery__card--details">
         <div><h4 class="galery__card--title galery__card--text">${this.alt}</h4></div>
@@ -38,6 +38,15 @@ class image {
     </div>
 </article>`;
         return article;
+    }
+
+    getSliderHTML(){
+            let templateSlideImage = `
+  <div class="slide">
+  <img class="image-slide" src="../images/${this.photographerId}/${this.image}" alt='${this.alt}'>
+  <h4 class="galery__card--title galery__card--text slide__title">${this.alt}</h4>
+  </div>`
+            return templateSlideImage
     }
 
 
