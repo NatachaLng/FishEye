@@ -129,13 +129,4 @@ class Galery {
         }
     }
 }
-        /*else{
-            userLike--;
-            userLikes--;
-            article.setAttribute("data-userlike", 0);
-            article.dataset.like = parseInt(article.dataset.like) - 1;
-            nombreLike = article.dataset.like;
-            article.querySelector(".number__likes").innerHTML = nombreLike;
-            article.setAttribute("data-like", (nombreLike--))
-            document.querySelector(".bottom__likes").innerHTML = numberLikes + userLikes;
-        }*/
+

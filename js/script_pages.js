@@ -60,8 +60,8 @@ let modal = new Modal("#bground")
 
 dbPhotographers.load().then(
     function () {
-      let header = new PhotographerHeader("#photograph__header", dbPhotographers);
-      header.init();
+      let infos = new PhotographerInfos("#photograph__header", dbPhotographers);
+      infos.init();
       galery.init();
       slider.init();
 

@@ -40,6 +40,11 @@ class image {
         return article;
     }
 
+    /**
+     * Get Card HTML
+     * @returns {string}
+     */
+
     getSliderHTML(){
             let templateSlideImage = `
   <div class="slide">

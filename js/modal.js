@@ -87,20 +87,3 @@ class Modal {
         }
 }
 
-
-/* function confirmationMessage(){
-   if ((validate()==true)){
-     let formSent = document.getElementById("form__sent");
-   formSent.style.display="block";
-   }
- }
-//display confirmation
-
-let formSent = document.getElementById("form__sent"); //validation message
-
-/*if(window.location.href.indexOf("?") > 1){ //if the url contain a ? (because of the get method of the datas in the form)
- formSent.style.display = "block"; //then we display the validation message
- }
-else{
- formSent.style.display="none"; //otherwise we don't
-}*/

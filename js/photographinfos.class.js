@@ -1,4 +1,4 @@
-class PhotographerHeader {
+class PhotographerInfos {
     selector_id_list = ".#photographer";
     db;
 
