@@ -16,6 +16,7 @@
     <script src="../js/slider.class.js"></script>
     <script src="../js/lightbox.js"></script>
     <script src="../js/dropdown.list.js"></script>
+    <script src="../js/modal.js"></script>
     <script src="../js/script_pages.js" ></script>
 </head>
 <body>
@@ -55,15 +56,15 @@
       </div>
 
 
-        <div class="bground">
+        <div id="bground">
             <div class="content" id="formular">
-                <h3 id="modal__title">Contact</h3>
-              <span class="close" id="close" onclick="closeModal()"></span>
+                <h3 id="modal__title"></h3>
+              <span class="close" id="close" onclick="modal.closeModal()"></span>
               <div class="modal-body">
                 <form
                   name="contact"
                   method="POST"
-                  onsubmit="return validate();"
+                  onsubmit="return modal.validate();"
                 >
                   <div
                     class="formData">
@@ -117,15 +118,13 @@
                 </form>
               </div>
             </div>
+              </div>
 
-              <div class="form__sent" id="form__sent">
-                <div class="content">
-                  <a href="#"><span class="close2" id="close2"></span></a>
-                <p id="validationMsg">Merci, nous avons bien reçu votre demande.<br>Mimi va vous répondre dans les plus brefs délais.</p>
-              </div>
-              </div>
-              </div>
+        <div class="form__sent" id="form__sent">
+            <div class="content">
+                <a href="javascript:void(0);"  onclick="modal.closeConfirmationMessage()"><span class="close2" id="close2"></span></a>
+                <p id="validationMsg"></p>
+            </div>
+        </div>
     </main>
-
-    <script src="../js/modal.js" ></script>
 </body>

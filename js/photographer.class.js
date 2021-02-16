@@ -45,7 +45,7 @@ class Photographer {
 
     getHeaderHTML() {
         let article = `<div class="flex__img"><img class="card__image" src="../${this.chosenPicture}" alt="picture ${this.name}"></div>
-  <div class="flex__contact"><button class="contact__btn" onclick="launchModal()" aria-label="Formulaire de contact de ${this.name}">Contactez moi</button></div>
+  <div class="flex__contact"><button class="contact__btn" onclick="modal.launchModal()" aria-label="Formulaire de contact de ${this.name}">Contactez moi</button></div>
   <div class="flex__details"><h3 class="card__name">${this.name}</h3>
   <p class="card__location">${this.city}, ${this.country}</p>
   <p class="card__tagline">${this.tagline}</p>
@@ -65,5 +65,17 @@ class Photographer {
     <div class="bottom__price">${this.price}€/jour</div>
     </div>`
         return templateBottomPages
+    }
+
+    getTitleModalHTML(){
+        let template = `
+        Contactez-moi <br> ${this.name}
+       `
+        return template
+    }
+
+    getConfirmationMessage(){
+        let template = `Merci, nous avons bien reçu votre demande.<br>${this.name} va vous répondre dans les plus brefs délais.`
+        return template
     }
 }

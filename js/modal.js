@@ -1,95 +1,91 @@
-//modal 
-const modalbg = document.querySelector(".bground");
-const formData = document.querySelectorAll(".formData");
+class Modal {
 
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
+    /**
+     *
+     * @param selector_id_list
+     */
+
+    constructor(selector_id_list) {
+        this.selector_id_list = selector_id_list;
+    }
+
+    launchModal(){
+        document.querySelector(this.selector_id_list).style.display = "block";
+    }
+
+    closeModal(){
+        document.querySelector(this.selector_id_list).style.display = "none";
+    }
+
+    validateFirstName(){
+        let firstName = document.getElementById("first");
+        let msgFirst = document.getElementById("msgFirst");
+        if ((firstName.value.length < 2) || (!firstName.value.match(/^([a-zA-Z]+)$/))){ //double check from HTML
+            msgFirst.style.display = "block";
+            return false;
+        }
+        msgFirst.style.display = "none";
+        return true;
+    }
+
+    validateLastName(){
+        let msgLast = document.getElementById("msgLast");
+        let lastName = document.getElementById("last");
+        if ((lastName.value.length < 2) || (!lastName.value.match(/^([a-zA-Z]+)$/))){ //double check from HTML
+            msgLast.style.display = "block";
+            return false;
+        }
+        msgLast.style.display = "none";
+        return true;
+    }
+
+    validateEmail(){
+        let email = document.getElementById("email");
+        let mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (!email.value.match(mailformat)){ //double check from HTML
+            return false;
+        }
+        return true;
+    }
+
+    validateMessage(){
+        let message = document.getElementById("message");
+        let msgMessage = document.getElementById("msgMsg");
+        if (message.value.length < 2){ //double check from HTML
+            msgMessage.style.display = "block";
+            return false;
+        }
+        msgMessage.style.display = "none";
+        return true;
+    }
+
+    validate(){
+        let formValid = true;
+        let firstName = document.getElementById("first");
+        formValid=(formValid && this.validateFirstName());
+        console.log(firstName.value);
+        let lastName = document.getElementById("last");
+        formValid=(formValid && this.validateLastName());
+        console.log(lastName.value);
+        let email = document.getElementById("email");
+        formValid=(formValid && this.validateEmail());
+        console.log(email.value);
+        let message = document.getElementById("message");
+        formValid=(formValid && this.validateMessage());
+        console.log(message.value);
+        this.confirmationMessage();
+    }
+
+    confirmationMessage(){
+            let formSent = document.getElementById("form__sent");
+            formSent.style.display="block";
+        }
+
+        closeConfirmationMessage(){
+            let formSent = document.getElementById("form__sent");
+            formSent.style.display="block";
+        }
 }
-
-
-// close modal form
-function closeModal() {
-  modalbg.style.display = "none";
-}
-
-//name 
-function templateModal(photograph){
-  let templateTitle = `Contactez-moi <br> ${photograph.name}`;
-  return templateTitle
-}
-
-function titleModal() {
-  let modalTitle = document.getElementById('modal__title');
-  modalTitle.innerHTML= "";
-  photographs.forEach((photograph) => {
-        let id = photograph.id;;
-        if (id == pageId) {    
-              modalTitle.innerHTML += templateModal(photograph);
-      }
-  });
-}
-
-// Form elements
-let firstName = document.getElementById("first");
-let msgFirst = document.getElementById("msgFirst");
-let msgLast = document.getElementById("msgLast");
-let lastName = document.getElementById("last");
-let email = document.getElementById("email");
-let mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-let message = document.getElementById("message");
-let msgMessage = document.getElementById("msgMsg");
-
-//validate first name
-function validateFirstName(){
-    if ((firstName.value.length < 2) || (!firstName.value.match(/^([a-zA-Z]+)$/))){ //double check from HTML
-      msgFirst.style.display = "block";
-    return false;
-      }
-      msgFirst.style.display = "none";
-    return true;
-  }
-
-//validate last name
-function validateLastName(){
-    if ((lastName.value.length < 2) || (!lastName.value.match(/^([a-zA-Z]+)$/))){ //double check from HTML
-      msgLast.style.display = "block";
-    return false;
-      }
-      msgLast.style.display = "none";
-    return true;
-  }
-  
-  //validation email 
-  function validateEmail(){
-    if (!email.value.match(mailformat)){ //double check from HTML
-    return false;
-      }
-    return true;
-  }
-
-  //validate message
-function validateMessage(){
-    if (message.value.length < 2){ //double check from HTML
-      msgMessage.style.display = "block";
-    return false;
-      }
-      msgMessage.style.display = "none";
-    return true;
-  }
-
-  function validate(){
-    formValid = true;
-    formValid=(formValid && validateFirstName());
-    console.log(firstName.value);
-    formValid=(formValid && validateLastName());
-    console.log(lastName.value);
-    formValid=(formValid && validateEmail());
-    console.log(email.value); 
-    formValid=(formValid && validateMessage());
-    console.log(message.value);
-    return formValid; // return true as formValid=true
-  }
 
 
 /* function confirmationMessage(){

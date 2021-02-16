@@ -17,7 +17,7 @@ class PhotographerHeader {
      * Init to load Datas and others event
      */
     init() {
-        this.createHeader();
+        this.createInfos();
 
         // @todo: Bind events
     }
@@ -25,7 +25,7 @@ class PhotographerHeader {
     /**
      * Create Cards with local database
      */
-    createHeader()
+    createInfos()
             {
         for (let p of this.db.getDatas().photographers) {
             let photographer = new Photographer(
@@ -44,6 +44,8 @@ class PhotographerHeader {
                 // Add to List
                 document.querySelector(this.selector_id_list).innerHTML += photographer.getHeaderHTML();
                 document.querySelector('.bottom__page').innerHTML += photographer.getDetailsHTML();
+                document.querySelector('#modal__title').innerHTML += photographer.getTitleModalHTML();
+                document.querySelector('#validationMsg').innerHTML += photographer.getConfirmationMessage();
             }
         }
     }

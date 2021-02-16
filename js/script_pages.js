@@ -56,11 +56,14 @@ let slider = new Slider("#slider-content");
 
 let lightbox = new Lightbox("#Lightbox");
 
+let modal = new Modal("#bground")
+
 dbPhotographers.load().then(
     function () {
       let header = new PhotographerHeader("#photograph__header", dbPhotographers);
       header.init();
       galery.init();
       slider.init();
+
     }
 );
