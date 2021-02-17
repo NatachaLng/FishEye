@@ -1,6 +1,18 @@
 let Page;
 let Tag;
 
+document.addEventListener("scroll", showDiv);
+
+function showDiv(){
+    if(window.pageYOffset > 120) {
+        document.querySelector(".scroll").style.display = 'block';
+    }
+    else{
+        document.querySelector(".scroll").style.display = 'none';
+    }
+}
+
+
 
 let dbPhotographers = new Database("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json");
 dbPhotographers.load().then(
