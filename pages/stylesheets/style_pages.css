@@ -576,6 +576,10 @@ color: black;}
 
   @media only screen and (max-width: 450px)
   {
+      .header__logo{
+          margin-top: 20px;
+          margin-left: 20px;
+      }
     .photograph__header
     {
       display: block;
@@ -587,9 +591,31 @@ color: black;}
     .card__image
     {
       float: right;
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
       margin-top: 10px;
+    }
+
+    .card__location
+    {
+        font-size: 15px;
+    }
+
+    .card__tagline
+    {
+        color: grey;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .card__price
+    {
+        display: none;
+    }
+
+    .card__number
+    {
+        display: none;
     }
 
     .contact__btn

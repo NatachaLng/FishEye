@@ -69,7 +69,7 @@ class Photographer {
 
     getTitleModalHTML(){
         let template = `
-        <h3>Contactez-moi <br> ${this.name}</h3>
+        <h3 id="modal__title">Contactez-moi <br> ${this.name}</h3>
        `
         return template
     }
