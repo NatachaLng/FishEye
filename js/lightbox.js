@@ -54,25 +54,8 @@ class Lightbox {
 
 
 
-// Initialize here and run showSlide() to give your lightbox a default state.
 
-    /*let slideIndex = 1;
 
-    document.addEventListener("keydown", checkKey);
-
-    function checkKey(e) {
-        e = e || window.event;
-        if (e.keyCode == '27') {
-            closeLightbox();
-        }
-        else if (e.keyCode == '37') {
-            goPrevious();
-        }
-        else if (e.keyCode == '39') {
-            goNext();
-        }
-
-    }*/
 
 
 

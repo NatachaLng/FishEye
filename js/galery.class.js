@@ -1,3 +1,5 @@
+let media
+
 class Galery {
 
     /**
@@ -37,19 +39,12 @@ class Galery {
         return medias.length;
     }
 
-    getSlideNumber (id) {
-        let medias = this.getDatas();
-        for (let i = 0; i < medias.length; i++) {
-            if (medias[i].id === id) {
-                return i + 1;
-            }
-        }
-    }
 
     // init HTML
 
     init() {
         this.createHTML(this.getDatas())
+        media = this.getDatas();
     }
 
     // empty HTML
@@ -73,35 +68,39 @@ class Galery {
 
     //Sort by function
 
-    sortByPrice() {
+    sortBy (type){
         this.emptyHTML();
-        let media = this.getDatas();
-        media.sort(function (a, b) {
-            return a.price - b.price;
-        });
+        media = this.getDatas()
+        switch (type){
+            case "popularity":
+                media.sort(function (a, b) {
+                    return b.likes - a.likes;
+                });
+                break;
+            case "price":
+                media.sort(function (a, b) {
+                    return a.price - b.price;
+                });
+                break;
+            case "date":
+                media.sort(function (a, b) {
+                    let c = new Date(a.date);
+                    let d = new Date(b.date);
+                    return c - d;
+                });
+                break;
+        }
         this.createHTML(media);
+        return media
     }
 
-    sortByPopularity() {
-        this.emptyHTML();
-        let media = this.getDatas();
-        media.sort(function (a, b) {
-            return b.likes - a.likes;
-        });
-        this.createHTML(media);
+    getSlideNumber (id) {
+        for (let i = 0; i < media.length; i++) {
+            if (media[i].id === id) {
+                return i + 1;
+            }
+        }
     }
-
-    sortByDate() {
-        this.emptyHTML();
-        let media = this.getDatas();
-        media.sort(function (a, b) {
-            let c = new Date(a.date);
-            let d = new Date(b.date);
-            return c - d;
-        });
-        this.createHTML(media);
-    }
-
 
     like(id) {
         let media = document.getElementById(id);
