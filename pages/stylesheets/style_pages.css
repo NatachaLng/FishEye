@@ -11,6 +11,7 @@
 
 ul, li{
     list-style: none;
+    margin-left: 0;
 }
 
 a{
@@ -614,6 +615,11 @@ color: black;}
     }
 
     .card__number
+    {
+        display: none;
+    }
+
+    .filter__section
     {
         display: none;
     }
