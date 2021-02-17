@@ -12,19 +12,17 @@ class PhotographerList {
      * Init to load Datas and others event
      */
     init() {
-        console.log('init()');
         this.getPhotographers();
         this.createCards();
-
-        // @todo: onclick
     }
 
     /**
-     * Create Cards with local database
+     * Get all photographers from local database
+     * @return {Array}
      */
+
+
     getPhotographers() {
-        console.log("Create cards");
-        console.log(this.db);
         let photographers = new Array;
         for (let p of this.db.getDatas().photographers) {
             let allPhotographer = new Photographer(
@@ -42,19 +40,26 @@ class PhotographerList {
         return photographers;
     }
 
+    /**
+     * Create Cards from getPhotographers()
+     */
+
     createCards() {
-        // Add to List
         let photographer = this.getPhotographers();
         for (let i = 0; i < photographer.length; i++) {
             document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
         }
     }
 
+    /**
+     * Check if the Tag has been checked
+     * @param text
+     * @param tag
+     */
+
     check(text, tag){
         let checkedTag = document.getElementsByClassName("active");
         if (checkedTag.length != 0){
-            console.log ()
-            //checkedTag[0].setAttribute('data-clic', 0)
             checkedTag[0].classList.remove('active');
             this.filterCards(text, tag)
         }
@@ -62,6 +67,12 @@ class PhotographerList {
             this.filterCards(text, tag)
         }
     }
+
+    /**
+     * filter cards
+     * @param text
+     * @param tag
+     */
 
     filterCards(text, tag) {
         document.querySelector(this.selector_id_list).innerHTML = "";

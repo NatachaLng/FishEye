@@ -18,12 +18,10 @@ class PhotographerInfos {
      */
     init() {
         this.createInfos();
-
-        // @todo: Bind events
     }
 
     /**
-     * Create Cards with local database
+     * Create infos with local database
      */
     createInfos()
             {

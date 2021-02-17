@@ -41,7 +41,7 @@ class image {
     }
 
     /**
-     * Get Card HTML
+     * Get Slider HTML
      * @returns {string}
      */
 

@@ -9,13 +9,26 @@ class Modal {
         this.selector_id_list = selector_id_list;
     }
 
+    /**
+     * Display the modal
+     */
+
     launchModal(){
         document.querySelector(this.selector_id_list).style.display = "block";
     }
 
+    /**
+     * Hide the modal
+     */
+
     closeModal(){
         document.querySelector(this.selector_id_list).style.display = "none";
     }
+
+    /**
+     * Validate the first name
+     * @return {boolean}
+     */
 
     validateFirstName(){
         let firstName = document.getElementById("first");
@@ -28,6 +41,11 @@ class Modal {
         return true;
     }
 
+    /**
+     * Validate the last name
+     * @return {boolean}
+     */
+
     validateLastName(){
         let msgLast = document.getElementById("msgLast");
         let lastName = document.getElementById("last");
@@ -39,6 +57,11 @@ class Modal {
         return true;
     }
 
+    /**
+     * Validate the email
+     * @return {boolean}
+     */
+
     validateEmail(){
         let email = document.getElementById("email");
         let mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -47,6 +70,11 @@ class Modal {
         }
         return true;
     }
+
+    /**
+     * Validate the message
+     * @return {boolean}
+     */
 
     validateMessage(){
         let message = document.getElementById("message");
@@ -58,6 +86,10 @@ class Modal {
         msgMessage.style.display = "none";
         return true;
     }
+
+    /**
+     * Validate the form
+     */
 
     validate(){
         let formValid = true;
@@ -76,12 +108,20 @@ class Modal {
         this.confirmationMessage();
     }
 
+    /**
+     * Display confirmation message
+     */
+
     confirmationMessage(){
             let formSent = document.getElementById("form__sent");
             formSent.style.display="block";
         }
 
-        closeConfirmationMessage(){
+    /**
+     * Hide the confimration message
+     */
+
+    closeConfirmationMessage(){
             let formSent = document.getElementById("form__sent");
             formSent.style.display="block";
         }

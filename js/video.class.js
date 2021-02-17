@@ -39,6 +39,11 @@ class video {
         return article;
     }
 
+    /**
+     * Get Slider HTML
+     * @return {string}
+     */
+
     getSliderHTML(){
         let templateSlideVideo = `
   <div class="slide">

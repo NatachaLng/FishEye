@@ -11,7 +11,11 @@ class Galery {
         this.selector_id_list = selector_id_list
     }
 
-    //get the datas from the MediaFactory
+    /**
+     * get the datas from the MediaFactory
+     * @return {Array}
+     **/
+
 
     getDatas() {
         let mediaFactory = new MediaFactory("#galery", dbPhotographers)
@@ -19,7 +23,11 @@ class Galery {
         return media
     }
 
-    // Calculate number of likes
+    /**
+     * calculate the total number of likes
+     * @return {number}
+     */
+
 
     getNumberOfLikes (){
         let totalLikes = new Array();
@@ -32,7 +40,10 @@ class Galery {
         return numberLikes
     }
 
-    // Calculate number of medias
+    /**
+     * calculate the total number of medias
+     * @return {number}
+     */
 
     getNumberOfMedias (){
         let medias = this.getDatas();
@@ -40,22 +51,28 @@ class Galery {
     }
 
 
-    // init HTML
+    /**
+     * create HTML and update media
+     */
 
     init() {
         this.createHTML(this.getDatas())
         media = this.getDatas();
     }
 
-    // empty HTML
+    /**
+     * empty HTML before creatio,
+     */
 
     emptyHTML() {
-        console.log("empty ok")
         document.getElementById("galery").innerHTML = "";
         document.getElementById("slider-content").innerText = "";
     }
 
-    //get HMTL
+    /**
+     * getHTML from the media factory
+     * @param medias type {Array}
+     */
 
     createHTML(medias) {
         console.log(medias)
@@ -66,7 +83,11 @@ class Galery {
         }
     }
 
-    //Sort by function
+    /**
+     * Sort function
+     * @param type
+     * @returns {Array}
+     */
 
     sortBy (type){
         this.emptyHTML();
@@ -94,6 +115,12 @@ class Galery {
         return media
     }
 
+    /**
+     * Get the slide number
+     * @param id
+     * @returns {number}
+     */
+
     getSlideNumber (id) {
         for (let i = 0; i < media.length; i++) {
             if (media[i].id === id) {
@@ -101,6 +128,11 @@ class Galery {
             }
         }
     }
+
+    /**
+     * Like/dislike function
+     * @param id
+     */
 
     like(id) {
         let media = document.getElementById(id);

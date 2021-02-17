@@ -43,6 +43,11 @@ class Photographer {
         return article;
     }
 
+    /**
+     * Get headerHTML
+     * @return {string}
+     */
+
     getHeaderHTML() {
         let article = `<div class="flex__img"><img class="card__image" src="../${this.chosenPicture}" alt="picture ${this.name}"></div>
   <div class="flex__contact"><button class="contact__btn" onclick="modal.launchModal()" aria-label="Formulaire de contact de ${this.name}">Contactez moi</button></div>
@@ -58,6 +63,11 @@ class Photographer {
         return article
     }
 
+    /**
+     * Get details HTML
+     * @return {string}
+     */
+
     getDetailsHTML() {
         let templateBottomPages = `
     <div class="bottom__flex">
@@ -67,12 +77,22 @@ class Photographer {
         return templateBottomPages
     }
 
+    /**
+     * Get title of the modal HTML
+     * @return {string}
+     */
+
     getTitleModalHTML(){
         let template = `
         <h3 id="modal__title">Contactez-moi <br> ${this.name}</h3>
        `
         return template
     }
+
+    /**
+     * Get the confirmation message HTML
+     * @return {string}
+     */
 
     getConfirmationMessage(){
         let template = `Merci, nous avons bien reçu votre demande.<br>${this.name} va vous répondre dans les plus brefs délais.`

@@ -17,9 +17,8 @@ class MediaFactory {
 
     /**
      * Create Cards with local database
+     * @return {Array}
      */
-
-
 
     build() {
         let pageId = url.match(/[^=/]+$/)[0];
