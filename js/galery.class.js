@@ -77,9 +77,9 @@ class Galery {
                     return b.likes - a.likes;
                 });
                 break;
-            case "price":
+            case "title":
                 media.sort(function (a, b) {
-                    return a.price - b.price;
+                    return a.alt.localeCompare(b.alt);
                 });
                 break;
             case "date":
