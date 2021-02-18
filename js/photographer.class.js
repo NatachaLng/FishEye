@@ -27,6 +27,7 @@ class Photographer {
      * Get HTML
      * @returns {string}
      */
+
     getCardHTML() {
         let article = `<article id="photographer-${this.id}" class="card">
                             <a href="pages/photographe.html?id=${this.id}" aria-label="aller vers la page de ${this.name}">

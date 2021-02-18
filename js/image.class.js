@@ -24,6 +24,7 @@ class image {
      * Get Card HTML
      * @returns {string}
      */
+
     getHTML() {
         let article = `<article class="galery__card" data-like="${this.likes}" data-userlike=0 id="${this.id}">
     <a href="javascript:void(0);" alt="${this.alt}" aria-label="afficher ${this.alt}"
