@@ -64,7 +64,7 @@ class Galery {
      * empty HTML before creatio,
      */
 
-    emptyHTML() {
+    clear() {
         document.getElementById("galery").innerHTML = "";
         document.getElementById("slider-content").innerText = "";
     }
@@ -90,7 +90,7 @@ class Galery {
      */
 
     sortBy (type){
-        this.emptyHTML();
+        this.clear();
         media = this.getDatas()
         switch (type){
             case "popularity":

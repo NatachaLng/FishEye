@@ -1,11 +1,10 @@
 
-var slideIndex = 1;
+let slideIndex = 1;
 
 class Lightbox {
 
     /**
      * @param selector_id_list
-     * @param db
      */
 
     constructor(selector_id_list) {
@@ -71,18 +70,4 @@ class Lightbox {
         this.showSlide(slideIndex += n);
     }
 }
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
 
