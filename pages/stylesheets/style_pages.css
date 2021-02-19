@@ -7,6 +7,7 @@
 *
 {
     font-family: "DMSansRegular";
+    scroll-behavior: smooth;
 }
 
 ul, li{
@@ -38,6 +39,7 @@ top: 42px;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .flex__details
@@ -574,6 +576,34 @@ color: black;}
     display: block;
     text-align: center;
   }
+
+@media only screen and (max-width: 860px) {
+    .photograph__header
+    {
+        display: block;
+        height: auto;
+        background-color: white;
+        margin-top: -70px;
+    }
+
+    .contact__btn
+    {
+        position: fixed;
+        z-index: 3;
+        left: 25%;
+        bottom: 15px;
+        width: 50%;
+        height: 35px;
+    }
+
+    .card__image{
+        margin-top: 10px;
+    }
+
+    .bottom__page{
+        display: none;
+    }
+}
 
   @media only screen and (max-width: 450px)
   {

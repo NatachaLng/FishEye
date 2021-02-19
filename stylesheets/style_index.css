@@ -7,6 +7,7 @@
 *
 {
     font-family: "DMSansRegular";
+    scroll-behavior: smooth;
 }
 
 a
@@ -68,7 +69,6 @@ top: 42px;
 
 h1
 {
-    width: 25%;
     position:absolute;
     margin-left: 10px;
     top: -10px;
@@ -156,6 +156,7 @@ h3
 {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .tag,
@@ -185,11 +186,36 @@ h3
     background-color: #901C1C;
 }
 
-@media only screen and (max-width: 450px)
+@media only screen and (max-width: 1270px)
 {
+    main > h1{
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 1270px)
+{
+    main > h1{
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 730px)
+{
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-self: center;
+        width: 100%;
+    }
+
+    .logo__container
+    {
+        max-width: 40%;
+    }
     .header__logo
     {
-        width: 120px;
+        max-width: 120px;
         height: auto;
         margin-top: 15px;
         margin-left: 15px;
@@ -197,8 +223,9 @@ h3
 
     main > h1
     {
-        width: 40%;
-        font-size: 14px;
+        max-width: 60%;
+        text-align: right;
+        font-size: 20px;
         margin-top: 25px;
         margin-right: 15px;
     }
@@ -221,5 +248,41 @@ h3
     .card
     {
         min-width: 250px;
+    }
+
+
+}
+
+    @media only screen and (max-width: 450px)
+    {
+        main > h1{
+            font-size: 16px;
+        }
+
+        .scroll
+        {
+            width: 50%;
+            left: 25%;
+        }
+    }
+
+    @media only screen and (max-width: 340px)
+    {
+        main > h1{
+            font-size: 14px;
+        }
+    }
+
+    @media only screen and (max-width: 290px)
+    {
+        main > h1{
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        .header__logo
+        {
+            max-width: 80px;
+            height: auto;
     }
 }
