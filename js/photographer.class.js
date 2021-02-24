@@ -27,9 +27,8 @@ class Photographer {
      * Get HTML
      * @returns {string}
      */
-
     getCardHTML() {
-        let article = `<article id="photographer-${this.id}" class="card">
+        return `<article id="photographer-${this.id}" class="card">
                             <a href="pages/photographe.html?id=${this.id}" aria-label="aller vers la page de ${this.name}">
                                 <img class="card__image" src="${this.chosenPicture}" alt="">
                                 <h3 class="card__name">${this.name}</h3>
@@ -41,14 +40,12 @@ class Photographer {
                                 ${this.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
                             </ul>
                         </article>`;
-        return article;
     }
 
     /**
      * Get headerHTML
      * @return {string}
      */
-
     getHeaderHTML() {
         let article = `<div class="flex__img"><img class="card__image" src="../${this.chosenPicture}" alt="picture ${this.name}"></div>
   <div class="flex__contact"><button class="contact__btn" onclick="modal.launchModal()" aria-label="Formulaire de contact de ${this.name}">Contactez moi</button></div>
@@ -68,7 +65,6 @@ class Photographer {
      * Get details HTML
      * @return {string}
      */
-
     getDetailsHTML() {
         let templateBottomPages = `
     <div class="bottom__flex">
@@ -82,7 +78,6 @@ class Photographer {
      * Get title of the modal HTML
      * @return {string}
      */
-
     getTitleModalHTML(){
         let template = `
         <h3 id="modal__title">Contactez-moi <br> ${this.name}</h3>
@@ -94,7 +89,6 @@ class Photographer {
      * Get the confirmation message HTML
      * @return {string}
      */
-
     getConfirmationMessage(){
         let template = `Merci, nous avons bien reçu votre demande.<br>${this.name} va vous répondre dans les plus brefs délais.`
         return template

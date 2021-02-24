@@ -20,8 +20,6 @@ class TagList {
         * Get all tags
         * @return {Array}
         */
-
-
         allTaglist()
         {
             let allTags = new Array();
@@ -33,12 +31,11 @@ class TagList {
             return allTags;
         }
 
-    /**
-     * Clean the tag list to get unique tags
-     * @return {Array}
-     */
-
-    cleanTagList(){
+        /**
+        * Clean the tag list to get unique tags
+        * @return {Array}
+        */
+        cleanTagList(){
            let allTags = this.allTaglist();
             const uniqueTag = Array.from(new Set(allTags.map(a => a.tags)))
                 .map(tags => {
@@ -47,11 +44,10 @@ class TagList {
            return uniqueTag;
         }
 
-    /**
-     * Create the tag list from the clean list
-     */
-
-    createTagList(){
+        /**
+        * Create the tag list from the clean list
+        */
+        createTagList(){
             let tagList = this.cleanTagList();
             for (let i = 0; i < tagList.length; i++){
                 document.querySelector(this.selector_id_list).innerHTML += tagList[i].getTagHTML();

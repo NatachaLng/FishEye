@@ -6,7 +6,6 @@ class Lightbox {
     /**
      * @param selector_id_list
      */
-
     constructor(selector_id_list) {
         this.selector_id_list = selector_id_list
     }
@@ -14,7 +13,6 @@ class Lightbox {
     /**
      * Open lightbox
      */
-
     openLightbox() {
         document.querySelector(this.selector_id_list).style.display = 'block';
     }
@@ -22,7 +20,6 @@ class Lightbox {
     /**
      * Close lightbox
      */
-
     closeLightbox() {
         document.querySelector(this.selector_id_list).style.display = 'none';
     }
@@ -32,7 +29,6 @@ class Lightbox {
      * @param n
      * @returns {number}
      */
-
     toSlide(n) {
         this.showSlide(slideIndex = n);
         return n
@@ -43,7 +39,6 @@ class Lightbox {
      * @param n
      * @returns {number}
      */
-
     showSlide(n) {
         let slides = document.getElementsByClassName("slide");
         if (n > slides.length) {
@@ -65,7 +60,6 @@ class Lightbox {
      * Change slide
      * @param n {number}
      */
-
     plusSlides(n) {
         this.showSlide(slideIndex += n);
     }

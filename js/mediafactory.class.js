@@ -9,7 +9,6 @@ class MediaFactory {
      * @param selector_id_list
      * @param db
      */
-
     constructor(selector_id_list, db) {
         this.selector_id_list = selector_id_list;
         this.db = db;
@@ -19,7 +18,6 @@ class MediaFactory {
      * Create Cards with local database
      * @return {Array}
      */
-
     build() {
         let pageId = url.match(/[^=/]+$/)[0];
         let photographerMedia = new Array();

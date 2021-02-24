@@ -4,7 +4,6 @@ class Galery {
      *
      * @param selector_id_list
      */
-
     constructor(selector_id_list) {
         this.selector_id_list = selector_id_list;
         this.media = []
@@ -13,7 +12,6 @@ class Galery {
     /**
      * create HTML and update media
      */
-
     init() {
         this.createHTML(this.getDatas())
         this.media = this.getDatas();
@@ -23,8 +21,6 @@ class Galery {
      * get the datas from the MediaFactory
      * @return {Array}
      **/
-
-
     getDatas() {
         let mediaFactory = new MediaFactory("#galery", dbPhotographers)
         let media = mediaFactory.build();
@@ -35,8 +31,6 @@ class Galery {
      * calculate the total number of likes
      * @return {number}
      */
-
-
     getNumberOfLikes (){
         let totalLikes = new Array();
         let medias = this.getDatas();
@@ -52,7 +46,6 @@ class Galery {
      * calculate the total number of medias
      * @return {number}
      */
-
     getNumberOfMedias (){
         let medias = this.getDatas();
         return medias.length;
@@ -62,7 +55,6 @@ class Galery {
     /**
      * clear HTML before creatio,
      */
-
     clear() {
         document.getElementById("galery").innerHTML = "";
         document.getElementById("slider-content").innerText = "";
@@ -72,7 +64,6 @@ class Galery {
      * getHTML from the media factory
      * @param medias type {Array}
      */
-
     createHTML(medias) {
         console.log(medias)
         for (let i = 0; i < medias.length; i++) {
@@ -87,7 +78,6 @@ class Galery {
      * @param type
      * @returns {Array}
      */
-
     sortBy (type){
         this.clear();
         this.media = this.getDatas()
@@ -119,7 +109,6 @@ class Galery {
      * @param id
      * @returns {number}
      */
-
     getSlideNumber (id) {
         for (let i = 0; i < this.media.length; i++) {
             if (this.media[i].id === id) {
@@ -132,7 +121,6 @@ class Galery {
      * Like/dislike function
      * @param id
      */
-
     like(id) {
         let media = document.getElementById(id);
         let userLike = media.dataset.userlike;

@@ -20,8 +20,6 @@ class PhotographerList {
      * Get all photographers from local database
      * @return {Array}
      */
-
-
     getPhotographers() {
         let photographers = new Array;
         for (let p of this.db.getDatas().photographers) {
@@ -43,7 +41,6 @@ class PhotographerList {
     /**
      * Create Cards from getPhotographers()
      */
-
     createCards() {
         let photographer = this.getPhotographers();
         for (let i = 0; i < photographer.length; i++) {
@@ -56,7 +53,6 @@ class PhotographerList {
      * @param text
      * @param tag
      */
-
     check(text, tag){
         let checkedTag = document.getElementsByClassName("active");
         if (checkedTag.length != 0){
@@ -73,7 +69,6 @@ class PhotographerList {
      * @param text
      * @param tag
      */
-
     filterCards(text, tag) {
         document.querySelector(this.selector_id_list).innerHTML = "";
             let photographer = this.getPhotographers();

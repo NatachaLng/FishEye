@@ -24,35 +24,28 @@ class image {
      * Get Card HTML
      * @returns {string}
      */
-
     getHTML() {
-        let article = `<article class="galery__card" data-like="${this.likes}" data-userlike=0 id="${this.id}">
-    <a href="javascript:void(0);" alt="${this.alt}" aria-label="afficher ${this.alt}"
-       class="lightbox__triger" onclick="lightbox.openLightbox();lightbox.toSlide(galery.getSlideNumber(${this.id}))"><img
-            class="galery__card--image" src="../images/${this.photographerId}/${this.image}" alt='${this.alt}'></a>
-    <div class="galery__card--details">
-        <div><h4 class="galery__card--title galery__card--text">${this.alt}</h4></div>
-        <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${this.price}€
-            <div class="number__likes galery__card--text" aria-label="aimer la photo">${this.likes}</div>
-            <img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" alt="liker la photo ${this.alt}" onclick="galery.like('${this.id}')">
-        </div>
-    </div>
-</article>`;
-        return article;
+        return `<article class="galery__card" data-like="${this.likes}" data-userlike=0 id="${this.id}">
+                <a href="javascript:void(0);" alt="${this.alt}" aria-label="afficher ${this.alt}" class="lightbox__triger" onclick="lightbox.openLightbox();lightbox.toSlide(galery.getSlideNumber(${this.id}))"><img class="galery__card--image" src="../images/${this.photographerId}/${this.image}" alt='${this.alt}'></a>
+                <div class="galery__card--details">
+                <div><h4 class="galery__card--title galery__card--text">${this.alt}</h4></div>
+                <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${this.price}€
+                <div class="number__likes galery__card--text" aria-label="aimer la photo">${this.likes}</div>
+                <img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" alt="liker la photo ${this.alt}" onclick="galery.like('${this.id}')">
+                </div>
+                </div>
+                </article>`;
     }
 
     /**
      * Get Slider HTML
      * @returns {string}
      */
-
     getSliderHTML(){
-            let templateSlideImage = `
-  <div class="slide">
-  <img class="image-slide" src="../images/${this.photographerId}/${this.image}" alt='${this.alt}'>
-  <h4 class="galery__card--title galery__card--text slide__title">${this.alt}</h4>
-  </div>`
-            return templateSlideImage
+        return `<div class="slide">
+                <img class="image-slide" src="../images/${this.photographerId}/${this.image}" alt='${this.alt}'>
+                <h4 class="galery__card--title galery__card--text slide__title">${this.alt}</h4>
+                   </div>`
     }
 
 

@@ -1,12 +1,8 @@
 
 let url = window.location.href
-
 let dbPhotographers = new Database("https://natachalng.github.io/NatachaLang_6_21122020/data/FishEyeDataFR.json");
-
 let galery = new Galery("#galery", dbPhotographers);
-
 let lightbox = new Lightbox("#Lightbox");
-
 let modal = new Modal("#bground")
 
 dbPhotographers.load().then(

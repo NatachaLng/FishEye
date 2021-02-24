@@ -4,7 +4,6 @@ class Modal {
      *
      * @param selector_id_list
      */
-
     constructor(selector_id_list) {
         this.selector_id_list = selector_id_list;
     }
@@ -12,7 +11,6 @@ class Modal {
     /**
      * Display the modal
      */
-
     launchModal(){
         document.querySelector(this.selector_id_list).style.display = "block";
     }
@@ -20,7 +18,6 @@ class Modal {
     /**
      * Hide the modal
      */
-
     closeModal(){
         document.querySelector(this.selector_id_list).style.display = "none";
     }
@@ -29,7 +26,6 @@ class Modal {
      * Validate the first name
      * @return {boolean}
      */
-
     validateFirstName(){
         let firstName = document.getElementById("first");
         let msgFirst = document.getElementById("msgFirst");
@@ -45,7 +41,6 @@ class Modal {
      * Validate the last name
      * @return {boolean}
      */
-
     validateLastName(){
         let msgLast = document.getElementById("msgLast");
         let lastName = document.getElementById("last");
@@ -61,7 +56,6 @@ class Modal {
      * Validate the email
      * @return {boolean}
      */
-
     validateEmail(){
         let email = document.getElementById("email");
         let mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -75,7 +69,6 @@ class Modal {
      * Validate the message
      * @return {boolean}
      */
-
     validateMessage(){
         let message = document.getElementById("message");
         let msgMessage = document.getElementById("msgMsg");
@@ -90,7 +83,6 @@ class Modal {
     /**
      * Validate the form
      */
-
     validate(){
         let formValid = true;
         let firstName = document.getElementById("first");
@@ -111,7 +103,6 @@ class Modal {
     /**
      * Display confirmation message
      */
-
     confirmationMessage(){
             let formSent = document.getElementById("form__sent");
             formSent.style.display="block";
@@ -120,7 +111,6 @@ class Modal {
     /**
      * Hide the confimration message
      */
-
     closeConfirmationMessage(){
             let formSent = document.getElementById("form__sent");
             formSent.style.display="block";
