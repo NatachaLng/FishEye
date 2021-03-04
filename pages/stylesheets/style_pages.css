@@ -45,6 +45,7 @@ top: 42px;
 .flex__details
 {
     margin-top: 100px;
+    max-width: 50%;
 }
 
 .flex__contact
@@ -135,6 +136,9 @@ h3
 {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .tag
@@ -394,7 +398,7 @@ color: black;}
   
   #bground {
     display: none;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
@@ -577,7 +581,7 @@ color: black;}
     text-align: center;
   }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 866px) {
     .photograph__header
     {
         display: block;
@@ -605,7 +609,7 @@ color: black;}
     }
 }
 
-  @media only screen and (max-width: 450px)
+  @media only screen and (max-width: 550px)
   {
       .header__logo{
           margin-top: 20px;
@@ -617,6 +621,16 @@ color: black;}
       height: auto;
       background-color: white;
       margin-top: -70px;
+    }
+
+    .flex__details
+    {
+        max-width: 100%;
+    }
+
+    .card__taglist{
+        margin-top: 30px;
+        margin-left: -30px;
     }
 
     .card__image

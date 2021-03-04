@@ -44,7 +44,7 @@ class video {
      */
     getSliderHTML(){
         return `<div class="slide">
-                <video controls="true" class="image-slide">
+                <video controls="true" class="image-slide" autoplay="true">
                 <source src="../images/${this.photographerId}/${this.video}" type="video/mp4" alt='${this.alt}' class="image-slide"><video>
                 <h4 class="galery__card--title galery__card--text slide__title">${this.alt}</h4>
                 </div>`
