@@ -65,7 +65,6 @@ class Galery {
      * @param medias type {Array}
      */
     createHTML(medias) {
-        console.log(medias)
         for (let i = 0; i < medias.length; i++) {
             // Add to List
             document.querySelector(this.selector_id_list).innerHTML += medias[i].getHTML();

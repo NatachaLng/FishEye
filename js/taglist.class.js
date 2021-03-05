@@ -10,7 +10,6 @@ class TagList {
          */
         init()
         {
-            console.log('init()');
             this.allTaglist();
             this.cleanTagList();
             this.createTagList();

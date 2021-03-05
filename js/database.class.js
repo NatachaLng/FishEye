@@ -25,7 +25,6 @@ class Database {
      * @param datas
      */
     saveDatabase(datas) {
-        console.log('saveDatabase');
         this.database = datas;
     }
 
