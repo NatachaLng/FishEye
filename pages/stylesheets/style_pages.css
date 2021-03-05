@@ -221,6 +221,10 @@ h3
     width: 156px;
   }
 
+  .dropdown__btn {
+      width: 160px;
+  }
+
   .droptext
   {
     margin-top: 0;

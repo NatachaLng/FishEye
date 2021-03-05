@@ -80,16 +80,27 @@ class Galery {
     sortBy (type){
         this.clear();
         this.media = this.getDatas()
+        let dropdowlist = document.querySelector(".dropdown")
         switch (type){
             case "popularity":
                 this.media.sort(function (a, b) {
                     return b.likes - a.likes;
                 });
+                dropdowlist.innerHTML = `<a class="dropbtn dropOne" href="javascript:void(0);" id="sortByPopularity" aria-label="tri des médias par popularité"  onclick="galery.sortBy('popularity')">Popularité</a><button onclick="filter()" class="dropbtn triger" aria-haspopup="listbox" aria-expanded="true"><span class="triger__content" onclick="filter()" aria-label="afficher la liste des tris">></span></button>
+            <div id="myDropdown" class="dropdown-content">
+              <a class="dropTwo" aria-label="tri des médias par date" role="listbox" id="sortByDate" onclick="galery.sortBy('date')"><p class="droptext dropTwo" id="date">Date</p></a>
+              <a class="dropbtn dropThree" aria-label="tri des médias par titre" id="sortByTitle" onclick="galery.sortBy('title')"><p class="droptext dropThree" id="prix">Titre</p></a>
+            </div>`
                 break;
             case "title":
                 this.media.sort(function (a, b) {
                     return a.alt.localeCompare(b.alt);
                 });
+                dropdowlist.innerHTML = `<a class="dropbtn dropOne" href="javascript:void(0);" id="sortTitle" aria-label="tri des médias par titre"  onclick="galery.sortBy('title')">Titre</a><button onclick="filter()" class="dropbtn triger" aria-haspopup="listbox" aria-expanded="true"><span class="triger__content" onclick="filter()" aria-label="afficher la liste des tris">></span></button>
+            <div id="myDropdown" class="dropdown-content">
+              <a class="dropTwo" aria-label="tri des médias par date" role="listbox" id="sortByDate" onclick="galery.sortBy('date')"><p class="droptext dropTwo" id="date">Date</p></a>
+              <a class="dropbtn dropThree" aria-label="tri des médias par popularité" id="sortByTitle" onclick="galery.sortBy('popularity')"><p class="droptext dropThree" id="prix">Popularité</p></a>
+            </div>`
                 break;
             case "date":
                 this.media.sort(function (a, b) {
@@ -97,6 +108,11 @@ class Galery {
                     let d = new Date(b.date);
                     return c - d;
                 });
+                dropdowlist.innerHTML = `<a class="dropbtn dropOne" href="javascript:void(0);" id="sortByDate" aria-label="tri des médias par date"  onclick="galery.sortBy('date')">Date</a><button onclick="filter()" class="dropbtn triger" aria-haspopup="listbox" aria-expanded="true"><span class="triger__content" onclick="filter()" aria-label="afficher la liste des tris">></span></button>
+            <div id="myDropdown" class="dropdown-content">
+              <a class="dropTwo" aria-label="tri des médias par popularité" role="listbox" id="sortByPopularity" onclick="galery.sortBy('popularity')"><p class="droptext dropTwo" id="date">Popularité</p></a>
+              <a class="dropbtn dropThree" aria-label="tri des médias par titre" id="sortByTitle" onclick="galery.sortBy('title')"><p class="droptext dropThree" id="prix">Titre</p></a>
+            </div>`
                 break;
         }
         this.createHTML(this.media);

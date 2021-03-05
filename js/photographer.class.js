@@ -54,11 +54,16 @@ class Photographer {
   <p class="card__tagline">${this.tagline}</p>
   <p class="card__price">${this.price}€/jour</p>
   <ul class="card__taglist" id="taglist_${this.id}">
-  ${this.tags.map(tag => `<li class="tag">#${tag}</li>`).join('')}
+  ${this.tags.map(tag => `<a href="javascript:void(0)" onclick="this.redirect('${this.tags}, ${this.tags}')"><li class="tag">#${tag}</li></a>`).join('')}
   </ul>
   <div class="card__number">Nombre total de clichés : ${galery.getNumberOfMedias()}</div>
   </div>`;
         return article
+    }
+
+    redirect(text, tag){
+        location.href= "../index.html";
+        Page.filterCards(text, tag)
     }
 
     /**
@@ -82,15 +87,6 @@ class Photographer {
         let template = `
         <h3 id="modal__title">Contactez-moi <br> ${this.name}</h3>
        `
-        return template
-    }
-
-    /**
-     * Get the confirmation message HTML
-     * @return {string}
-     */
-    getConfirmationMessage(){
-        let template = `Merci, nous avons bien reçu votre demande.<br>${this.name} va vous répondre dans les plus brefs délais.`
         return template
     }
 }
