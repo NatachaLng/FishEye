@@ -42,21 +42,30 @@ class PhotographerList {
      * Create Cards from getPhotographers()
      */
     createCards() {
-        let url = window.location.href
-        let tag = url.match(/[^=/]+$/)[0];
         let photographer = this.getPhotographers();
-        if (tag == 'index.html' || tag === null){
+        let url = window.location.href
+        if (url == "https://natachalng.github.io/NatachaLang_6_21122020/index.html" || url == "https://natachalng.github.io/NatachaLang_6_21122020/") {
             let photographer = this.getPhotographers();
             for (let i = 0; i < photographer.length; i++) {
                 document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
             }
         }
         else {
-            for (let i = 0; i < photographer.length; i++) {
-                let tags = photographer[i].tags;
-                let isMatch = (tags.indexOf(tag) != -1)
-                if (isMatch) {
-                    document.querySelector("#photographer").innerHTML += photographer[i].getCardHTML();
+            let tag = url.match(/[^=/]+$/)[0];
+            if (tag == "index.html") {
+                let photographer = this.getPhotographers();
+                for (let i = 0; i < photographer.length; i++) {
+                    document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
+                }
+            }
+                else{
+                    for (let i = 0; i < photographer.length; i++) {
+                        let tags = photographer[i].tags;
+                        let isMatch = (tags.indexOf(tag) != -1)
+                        if (isMatch) {
+                            document.querySelector("#photographer").innerHTML += photographer[i].getCardHTML();
+            }
+
                 }
             }
         }
