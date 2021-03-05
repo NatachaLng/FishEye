@@ -44,7 +44,7 @@ class PhotographerList {
     createCards() {
         let url = window.location.href
         let tag = url.match(/[^=/]+$/)[0];
-
+        console.log(tag);
         let photographer = this.getPhotographers();
         if (tag == 'index.html' || tag === undefined){
             let photographer = this.getPhotographers();
