@@ -22,4 +22,6 @@ dbPhotographers.load().then(
     }
 );
 
-
+function redirect(){
+    window.location = "https://natachalng.github.io/NatachaLang_6_21122020/index.html";
+}
