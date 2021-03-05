@@ -97,23 +97,7 @@ class Modal {
         let message = document.getElementById("message");
         formValid=(formValid && this.validateMessage());
         console.log(message.value);
-        this.confirmationMessage();
     }
-
-    /**
-     * Display confirmation message
-     */
-    confirmationMessage(){
-            let formSent = document.getElementById("form__sent");
-            formSent.style.display="block";
-        }
-
-    /**
-     * Hide the confimration message
-     */
-    closeConfirmationMessage(){
-            let formSent = document.getElementById("form__sent");
-            formSent.style.display="block";
-        }
+    
 }
 
