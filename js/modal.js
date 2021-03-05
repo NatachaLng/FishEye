@@ -98,6 +98,6 @@ class Modal {
         formValid=(formValid && this.validateMessage());
         console.log(message.value);
     }
-    
+
 }
 

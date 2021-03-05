@@ -43,7 +43,6 @@ class PhotographerInfos {
                 document.querySelector(this.selector_id_list).innerHTML += photographer.getHeaderHTML();
                 document.querySelector('.bottom__page').innerHTML += photographer.getDetailsHTML();
                 document.querySelector('.modal__title').innerHTML += photographer.getTitleModalHTML();
-                document.querySelector('#validationMsg').innerHTML += photographer.getConfirmationMessage();
             }
         }
     }
