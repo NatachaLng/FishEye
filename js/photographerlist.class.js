@@ -45,15 +45,12 @@ class PhotographerList {
         let url = window.location.href
         let tag
         tag = url.match(/[^=/]+$/)[0];
-        console.log(tag);
-        let photographer = this.getPhotographers();
-        if (tag == 'index.html' || tag === null){
             let photographer = this.getPhotographers();
             for (let i = 0; i < photographer.length; i++) {
                 document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
             }
-        }
-        else {
+        if (tag !== 'index.html') {
+            document.querySelector("#photographer").innerHTML = "";
             for (let i = 0; i < photographer.length; i++) {
                 let tags = photographer[i].tags;
                 let isMatch = (tags.indexOf(tag) != -1)
