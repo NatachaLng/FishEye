@@ -43,14 +43,15 @@ class PhotographerList {
      */
     createCards() {
         let url = window.location.href
-        let tag
-        tag = url.match(/[^=/]+$/)[0];
+        let tag = url.match(/[^=/]+$/)[0];
+        let photographer = this.getPhotographers();
+        if (tag == 'index.html' || tag === null){
             let photographer = this.getPhotographers();
             for (let i = 0; i < photographer.length; i++) {
                 document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
             }
-        if (tag !== 'index.html') {
-            document.querySelector("#photographer").innerHTML = "";
+        }
+        else {
             for (let i = 0; i < photographer.length; i++) {
                 let tags = photographer[i].tags;
                 let isMatch = (tags.indexOf(tag) != -1)
