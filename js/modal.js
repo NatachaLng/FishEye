@@ -84,7 +84,7 @@ class Modal {
     /**
      * Validate the form
      */
-    validate(){
+    validate(e){
         e.preventDefault();
         let formValid = true;
         let firstName = document.getElementById("first");
