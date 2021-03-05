@@ -6,6 +6,7 @@ class Modal {
      */
     constructor(selector_id_list) {
         this.selector_id_list = selector_id_list;
+        this.url = url
     }
 
     /**
@@ -84,6 +85,7 @@ class Modal {
      * Validate the form
      */
     validate(){
+        e.preventDefault();
         let formValid = true;
         let firstName = document.getElementById("first");
         formValid=(formValid && this.validateFirstName());
