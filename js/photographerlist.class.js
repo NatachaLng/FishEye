@@ -45,7 +45,7 @@ class PhotographerList {
         let url = window.location.href
         let tag = url.match(/[^=/]+$/)[0];
         let photographer = this.getPhotographers();
-        if (tag == 'index.html'){
+        if (tag == 'index.html' || tag == null){
             let photographer = this.getPhotographers();
             for (let i = 0; i < photographer.length; i++) {
                 document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
