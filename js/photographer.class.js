@@ -54,17 +54,14 @@ class Photographer {
   <p class="card__tagline">${this.tagline}</p>
   <p class="card__price">${this.price}€/jour</p>
   <ul class="card__taglist" id="taglist_${this.id}">
-  ${this.tags.map(tag => `<a href="javascript:void(0)" onclick="this.redirect('${this.tags}, ${this.tags}')"><li class="tag">#${tag}</li></a>`).join('')}
+  ${this.tags.map(tag => `<a href="../index.html?tag=${tag}"><li class="tag">#${tag}</li></a>`).join('')}
   </ul>
   <div class="card__number">Nombre total de clichés : ${galery.getNumberOfMedias()}</div>
   </div>`;
         return article
     }
 
-    redirect(text, tag){
-        location.href= "../index.html";
-        Page.filterCards(text, tag)
-    }
+
 
     /**
      * Get details HTML

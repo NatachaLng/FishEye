@@ -42,9 +42,23 @@ class PhotographerList {
      * Create Cards from getPhotographers()
      */
     createCards() {
+        let url = window.location.href
+        let tag = url.match(/[^=/]+$/)[0];
         let photographer = this.getPhotographers();
-        for (let i = 0; i < photographer.length; i++) {
-            document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
+        if (tag == 'index.html'){
+            let photographer = this.getPhotographers();
+            for (let i = 0; i < photographer.length; i++) {
+                document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
+            }
+        }
+        else {
+            for (let i = 0; i < photographer.length; i++) {
+                let tags = photographer[i].tags;
+                let isMatch = (tags.indexOf(tag) != -1)
+                if (isMatch) {
+                    document.querySelector("#photographer").innerHTML += photographer[i].getCardHTML();
+                }
+            }
         }
     }
 
@@ -70,7 +84,7 @@ class PhotographerList {
      * @param tag
      */
     filterCards(text, tag) {
-        document.querySelector(this.selector_id_list).innerHTML = "";
+        document.getElementById("photographer").innerHTML = "";
             let photographer = this.getPhotographers();
             let Tag = document.getElementById(tag);
             let userClic = Tag.dataset.clic;
@@ -81,14 +95,14 @@ class PhotographerList {
                     let tags = photographer[i].tags;
                     let isMatch = (tags.indexOf(text) != -1)
                     if (isMatch) {
-                        document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
+                        document.querySelector("#photographer").innerHTML += photographer[i].getCardHTML();
                     }
                 }
             } else {
                 Tag.setAttribute("data-clic", 0)
                 Tag.classList.remove("active");
                 for (let i = 0; i < photographer.length; i++) {
-                    document.querySelector(this.selector_id_list).innerHTML += photographer[i].getCardHTML();
+                    document.querySelector("#photographer").innerHTML += photographer[i].getCardHTML();
                 }
             }
         }
