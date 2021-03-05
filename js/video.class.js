@@ -33,7 +33,8 @@ class video {
                 </video></a>
                 <div class="galery__card--details">
                 <div><h4 class="galery__card--title galery__card--text">${this.alt}</h4></div>
-                <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${this.price}€<div class="number__likes galery__card--text" aria-label="aimer la vidéo">${this.likes}</div><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" alt="liker la photo ${this.alt}" onclick="galery.like('${this.id}')"></div>
+                <div class="galery__card--details2"><p class='galery__card--price galery__card--text'>${this.price}€<div class="number__likes galery__card--text" aria-label="aimer la vidéo">${this.likes}</div>
+                <a href="javascript:void(0);" aria-label="liker la photo ${this.alt}" onclick="galery.like('${this.id}')"><img class="like" src="../images/1024px-OOjs_UI_icon_heart.jpg" alt="liker la photo ${this.alt}"></a></div>
                 </div>
                 </article>`;
     }
