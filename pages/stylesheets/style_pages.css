@@ -156,6 +156,12 @@ h3
     padding-right: 5px;
 }
 
+.tag:hover
+{
+    color: blanchedalmond;
+    background-color: #901C1C;
+}
+
 
 /*filter section*/
 
